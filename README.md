@@ -1,20 +1,75 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Python Package
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+```
+cd kyonkat
+virtualenv kyonkat_env
+source kyonkat_env/bin/activate
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+pip install -r requirements.txt
+pip install gunicorn
+```
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+# Python Deploy
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+```
+python manage.py makemigrations entity
+python manage.py migrate
+python manage.py collectstatic
+gunicorn --bind 0.0.0.0:8000 kyonkat.wsgi
+
+```
+
+# Create Gunicorn Service
+
+```
+sudo nano /etc/systemd/system/kyonkat.service
+
+------------------------------------------
+
+[Unit]
+    Description=kyonkat service
+    After=network.target
+
+[Service]
+    User=ubuntu
+    Group=www-data
+    WorkingDirectory=/home/ubuntu/kyonkat/kyonkat
+    ExecStart=/home/ubuntu/kyonkat/kyonkat_env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/ubuntu/kyonkat/kyonkat/kyonkat.sock kyonkat.wsgi:application
+
+[Install]
+    WantedBy=multi-user.target
+
+------------------------------------------
+```
+
+# Create Nginx Server
+
+```
+
+sudo nano /etc/nginx/sites-available/kyonkat
+
+------------------------------------------
+
+server {
+    listen 80;
+    server_name kyonkat.in www.kyonkat.in;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    
+    location /static/ {
+        root /home/ubuntu/kyonkat/kyonkat;
+    }
+    location /media/ {
+        root /home/ubuntu/kyonkat/kyonkat;
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/ubuntu/kyonkat/kyonkat/kyonkat.sock;
+    }
+}
+
+------------------------------------------
+
+sudo ln -s /etc/nginx/sites-available/kyonkat /etc/nginx/sites-enabled
+```
