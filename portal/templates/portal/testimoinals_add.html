@@ -1,0 +1,143 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}{{page_title|default:'Add New Testimoinals'}}{% endblock %}
+{% block css %}
+<link href="{% static 'assets/js/vendors/quill/quill.snow.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'assets/js/vendors/quill/editor.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'assets/js/vendors/quill/typography.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block content %}
+
+{% include 'portal/shared/left-menu.html' %}
+<main class="main-wrap">
+    {% include 'portal/shared/top-menu.html' %}
+    <form class="content-main pt-0" enctype='multipart/form-data' method="post" id="formProduct"> {% csrf_token %}
+        <input type="hidden" name="content" id="htmlContent" required>
+        <div class="container row pt-25" id="opt-header">
+            <div class="col-lg-8">
+                <div class="content-header">
+                    <h2 class="content-title">Add New Testimoinals</h2>
+                    <div>
+                        <button class="btn btn-light rounded font-sm mr-5 text-body hover-up" onclick="history.back()"> <i class="icon material-icons md-arrow_back mr-5"></i> Black</button>
+                        <button class="btn btn-md rounded font-sm hover-up"> <i class="icon material-icons md-save mr-5"></i> Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h6>1. General info</h6>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="mb-4">
+                                    <label class="form-label">Name <span class="text-danger">*</span></label>
+                                    <input type="text" name="title" required placeholder="Title" class="form-control">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Content</label>
+                                    <div id="editor"></div>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Status <span class="text-danger">*</span></label>
+                                    <select class="form-select" placeholder="Select Status" name="is_status" required >
+                                        <option value="True">Publish</option>
+                                        <option value="False">Draft</option>
+                                    </select>
+                                </div>
+                            </div> <!-- col.// -->
+                        </div> <!-- row.// -->
+                        <hr class="mb-4 mt-0">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h6>2. Media</h6>
+                            </div>
+                            <div class="col-md-9">
+                              <div class="mb-4 custom_select">
+                                  <label class="form-label">Media</label>
+                                  <select class="form-select select-nice" placeholder="Select Media" name="media">
+                                    <option value="">Select Media</option>
+                                    {% for data in media %}
+                                      <option value="{{data.id}}">{{data.name}}</option>
+                                    {% endfor%}
+                                  </select>
+                              </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Image</label>
+                                    <input class="form-control" type="file" name="file" >
+                                </div>
+                            </div> <!-- col.// -->
+                        </div> <!-- .row end// -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- card .// -->
+    </form>
+</main>
+{% endblock %}
+{% block js %}
+<script src="{% static 'assets/js/vendors/quill/katex.js' %}"></script>
+<script src="{% static 'assets/js/vendors/quill/quill.js' %}"></script>
+<script src="{% static 'assets/js/vendors/quill/image-resize.min.js' %}"></script>
+<script src="{% static 'assets/js/sticky.js' %}" type="text/javascript"></script>
+<script>
+    var quill = new Quill('#editor', {
+        debug: 'info',
+        bounds: "#editor",
+        placeholder: "Type Something...",
+        modules: {
+          formula: !0,
+          toolbar: [
+            [{
+              font: []
+            }, { 'header': [1, 2, 3, 4, 5, 6, false] }],
+            ["bold", "italic", "underline", "strike"],
+            [{
+              color: []
+            }, {
+              background: []
+            }],
+            [{
+              script: "super"
+            }, {
+              script: "sub"
+            }],
+            [{
+              header: "1"
+            }, {
+              header: "2"
+            }, "blockquote", "code-block"],
+            [{
+              list: "ordered"
+            }, {
+              list: "bullet"
+            }, {
+              indent: "-1"
+            }, {
+              indent: "+1"
+            }],
+            ["direction", {
+              align: []
+            }],
+            ["link", "image", "video", "formula"],
+            ["clean"]
+          ],
+          imageResize: {
+            displaySize: true
+          }
+          
+        },
+        theme: "snow"
+      });
+      var form = document.querySelector("#formProduct");
+      var hiddenInput = document.querySelector('#htmlContent');
+      
+      form.addEventListener('submit', function (e) {
+        hiddenInput.value = quill.root.innerHTML;
+      });
+</script>
+{% endblock %}

@@ -1,0 +1,411 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}{{page_title|default:'Navigation'}}{% endblock %}
+{% block css %}
+<style type="text/css">
+  ol {
+    max-width: 450px;
+    padding-left: 25px;
+  }
+
+  ol.sortable,
+  ol.sortable ol {
+    list-style-type: none;
+  }
+
+  .sortable li div {
+    border: 1px solid #d4d4d4;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    cursor: move;
+    border-color: #D4D4D4 #D4D4D4 #BCBCBC;
+    margin: 0;
+    padding: 3px;
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
+
+  .disclose,
+  .expandEditor {
+    cursor: pointer;
+    width: 20px;
+    display: none;
+  }
+
+  .sortable li.mjs-nestedSortable-collapsed>ol {
+    display: none;
+  }
+
+  .sortable li.mjs-nestedSortable-branch>div>.disclose {
+    display: inline-block;
+  }
+
+  .sortable span.ui-icon {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menuDiv {
+    padding-top: 10px !important;
+    padding-left: 10px !important;
+    padding: 10px;
+    font-weight: 800;
+    font-size: 13px;
+    color: #292f46;
+    line-height: 2;
+    background: #fff;
+    margin-bottom: 10px !important;
+  }
+
+  .menuDiv:hover {
+    -webkit-transition: .2s linear;
+    transition: .2s linear;
+    background-color: #e9ecef;
+  }
+
+  .menuEdit {
+    background: #FFF;
+  }
+
+  .itemTitle {
+    vertical-align: middle;
+    cursor: pointer;
+    top: 0;
+    top: -7px;
+    position: relative;
+    padding-left: 5px;
+  }
+
+  .deleteMenu {
+    float: right;
+    cursor: pointer;
+  }
+
+</style>
+{% endblock %}
+{% block content %}
+
+{% include 'portal/shared/left-menu.html' %}
+<main class="main-wrap">
+  
+  {% include 'portal/shared/top-menu.html' %}
+  <form class="content-main pt-0" action="{% url 'portal_navigation_update' %}" method="post" id="formMenu"> {% csrf_token %}
+    <input type="hidden" name="content" id="htmlContent" required>
+    <div class="container row pt-25" id="opt-header">
+      <div class="col-lg-8">
+        <div class="content-header">
+          <h2 class="content-title">Navigation</h2>
+          <div>
+            <button class="btn btn-light rounded font-sm mr-5 text-body hover-up" onclick="history.back()"> <i
+                class="icon material-icons md-arrow_back mr-5"></i> Black</button>
+            <a href="{% url 'portal_navigation_add' %}" class="btn btn-md rounded font-sm hover-up"> <i class="icon material-icons md-save mr-5"></i> Add</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3">
+                <h6>1. Top Navigation</h6>
+              </div>
+              <div class="col-md-9">
+
+                <section>
+                  <ol id="topNavigation" class="menu-item  sortable ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded">
+                    {% for data in navigation %}
+                      {% if data.type == 0 and data.level == 1 %}
+                      <li
+                        class="menu-list  mjs-nestedSortable-branch mjs-nestedSortable-expanded" id="menuItem_{{data.id}}">
+                        <div class="menuDiv box shadow-sm">
+                          <a href="{% url 'portal_navigation_edit' data.id%}" data-id="{{data.id}}"
+                            class="pointer ui-icon ui-icon-triangle-1-n icon text-success material-icons md-edit"  data-id="{{data.id}}" data-label="{{data.name}}">
+                            <span></span>
+                          </a>
+                          <span data-id="{{data.id}}" data-id="{{data.id}}" data-label="{{data.name}}"
+                            class="pointer ui-icon ui-icon-triangle-1-n icon text-danger material-icons md-close delete-data  ">
+                            <span></span>
+                          </span>
+                          <span data-id="{{data.id}}"
+                            class="expandEditor ui-icon ui-icon-triangle-1-n icon material-icons md-arrow_downward">
+                            <span></span>
+                          </span>
+                          <span>
+                            <span data-id="{{data.id}}" class="itemTitle">{{data.name}}</span>
+                          </span>
+                          <div id="menuEdit{{data.id}}" class="menuEdit hidden mb-5 mr-5">
+                            <p class="p-10">
+                              {{data.get_menu_display}} - {{data.title}}
+                                {% if data.is_active %}
+                                    <span class="badge badge-pill badge-soft-success">Active</span>
+                                {% else %}
+                                    <span class="badge badge-pill badge-soft-danger">Draft</span>
+                                {% endif  %}
+                            </p>
+                          </div>
+                        </div>
+
+                        {% if data.navigation_set.all %}
+                        <ol>
+                          {% for data in data.navigation_set.all %}
+                          {% if data.is_valid%}
+                          <li
+                            class="menu-list  mjs-nestedSortable-branch mjs-nestedSortable-expanded" id="menuItem_{{data.id}}">
+                            <div class="menuDiv box shadow-sm">
+                              <a href="{% url 'portal_navigation_edit' data.id%}" data-id="{{data.id}}"
+                                class="pointer ui-icon ui-icon-triangle-1-n icon text-success material-icons md-edit"  data-id="{{data.id}}" data-label="{{data.name}}">
+                                <span></span>
+                              </a>
+                              <span data-id="{{data.id}}"
+                                class="pointer ui-icon ui-icon-triangle-1-n icon text-danger material-icons md-close delete-data"  data-id="{{data.id}}" data-label="{{data.name}}">
+                                <span></span>
+                              </span>
+                              <span data-id="{{data.id}}"
+                                class="expandEditor ui-icon ui-icon-triangle-1-n icon material-icons md-arrow_downward">
+                                <span></span>
+                              </span>
+                              <span>
+                                <span data-id="{{data.id}}" class="itemTitle">{{data.name}}</span>
+                              </span>
+                              <div id="menuEdit{{data.id}}" class="menuEdit hidden mb-5 mr-5">
+                                <p class="p-10">
+                                  {{data.get_menu_display}} - {{data.title}}
+                                  {% if data.is_active %}
+                                    <span class="badge badge-pill badge-soft-success">Active</span>
+                                  {% else %}
+                                    <span class="badge badge-pill badge-soft-danger">Draft</span>
+                                  {% endif  %}
+                                </p>
+                              </div>
+                            </div>
+                          </li>
+                          {% endif %}
+                          {% endfor %}
+                        </ol>
+                        {% endif %}
+
+                      </li>
+                      {% endif %}
+                    {% endfor %}
+
+                    
+                  </ol>
+
+                </section><!-- END #demo -->
+
+                <div>
+                  <button type="button" class="btn btn-md rounded font-sm hover-up" id="topNavigationUpdate"> <i class="icon material-icons md-save mr-5"></i>Update</button>
+                </div>
+
+              </div> <!-- col.// -->
+            </div> <!-- row.// -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- card .// -->
+    <input type="hidden" name="menus" id="menus">
+  </form>
+
+
+
+</main>
+
+{% endblock %}
+{% block js %}
+
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script src="{% static 'assets/js/nestedSortable.js' %}"></script>
+
+<script>
+  $().ready(function () {
+    $('#topNavigationUpdate').hide();
+    $('#bottomNavigationUpdate').hide();
+    $('#sideNavigationUpdate').hide();
+    $('#dropdownNavigationUpdate').hide();
+    var ns = $('#topNavigation').nestedSortable({
+      forcePlaceholderSize: true,
+      handle: 'div',
+      helper: 'clone',
+      items: 'li',
+      opacity: .6,
+      placeholder: 'placeholder',
+      revert: 250,
+      tabSize: 25,
+      tolerance: 'pointer',
+      toleranceElement: '> div',
+      maxLevels: 2,
+      isTree: true,
+      expandOnHover: 700,
+      startCollapsed: false,
+      change: function () {
+        $('#topNavigationUpdate').show();
+        console.log('Relocated item');
+      }
+    });
+    
+    $('#topNavigationUpdate').click(function (e) {
+      arraied = $('#topNavigation').nestedSortable('toArray', {
+        startDepthCount: 0
+      });
+      $('#menus').val(JSON.stringify(arraied))
+      $('#formMenu').submit()
+    });
+
+    
+    var ns = $('#bottomNavigation').nestedSortable({
+      forcePlaceholderSize: true,
+      handle: 'div',
+      helper: 'clone',
+      items: 'li',
+      opacity: .6,
+      placeholder: 'placeholder',
+      revert: 250,
+      tabSize: 25,
+      tolerance: 'pointer',
+      toleranceElement: '> div',
+      maxLevels: 2,
+      isTree: true,
+      expandOnHover: 700,
+      startCollapsed: false,
+      change: function () {
+        $('#bottomNavigationUpdate').show();
+        console.log('Relocated item');
+      }
+    });
+    
+    $('#bottomNavigationUpdate').click(function (e) {
+      arraied = $('#bottomNavigation').nestedSortable('toArray', {
+        startDepthCount: 0
+      });
+      $('#menus').val(JSON.stringify(arraied))
+      $('#formMenu').submit()
+    });
+
+    
+    var ns = $('#sideNavigation').nestedSortable({
+      forcePlaceholderSize: true,
+      handle: 'div',
+      helper: 'clone',
+      items: 'li',
+      opacity: .6,
+      placeholder: 'placeholder',
+      revert: 250,
+      tabSize: 25,
+      tolerance: 'pointer',
+      toleranceElement: '> div',
+      maxLevels: 2,
+      isTree: true,
+      expandOnHover: 700,
+      startCollapsed: false,
+      change: function () {
+        $('#sideNavigationUpdate').show();
+        console.log('Relocated item');
+      }
+    });
+    
+    $('#sideNavigationUpdate').click(function (e) {
+      arraied = $('#sideNavigation').nestedSortable('toArray', {
+        startDepthCount: 0
+      });
+      $('#menus').val(JSON.stringify(arraied))
+      $('#formMenu').submit()
+    });
+
+    
+    var ns = $('#dropdownNavigation').nestedSortable({
+      forcePlaceholderSize: true,
+      handle: 'div',
+      helper: 'clone',
+      items: 'li',
+      opacity: .6,
+      placeholder: 'placeholder',
+      revert: 250,
+      tabSize: 25,
+      tolerance: 'pointer',
+      toleranceElement: '> div',
+      maxLevels: 2,
+      isTree: true,
+      expandOnHover: 700,
+      startCollapsed: false,
+      change: function () {
+        $('#dropdownNavigationUpdate').show();
+        console.log('Relocated item');
+      }
+    });
+    
+    $('#dropdownNavigationUpdate').click(function (e) {
+      arraied = $('#dropdownNavigation').nestedSortable('toArray', {
+        startDepthCount: 0
+      });
+      $('#menus').val(JSON.stringify(arraied))
+      $('#formMenu').submit()
+    });
+
+
+    $('.disclose').on('click', function () {
+      $(this).closest('li').toggleClass('mjs-nestedSortable-collapsed').toggleClass(
+        'mjs-nestedSortable-expanded');
+      $(this).toggleClass('ui-icon-plusthick').toggleClass('ui-icon-minusthick');
+    });
+
+    $('.expandEditor, .itemTitle').click(function () {
+      var id = $(this).attr('data-id');
+      $('#menuEdit' + id).toggle();
+      $(this).toggleClass('ui-icon-triangle-1-n').toggleClass('ui-icon-triangle-1-s');
+    });
+
+    $('.deleteMenu').click(function () {
+      var id = $(this).attr('data-id');
+      $('#menuItem_' + id).remove();
+    });
+
+    $('#serialize').click(function () {
+      serialized = $('ol.sortable').nestedSortable('serialize');
+      $('#serializeOutput').text(serialized + '\n\n');
+    })
+
+    $('#toHierarchy').click(function (e) {
+      hiered = $('ol.sortable').nestedSortable('toHierarchy', {
+        startDepthCount: 0
+      });
+      hiered = dump(hiered);
+      (typeof ($('#toHierarchyOutput')[0].textContent) != 'undefined') ?
+      $('#toHierarchyOutput')[0].textContent = hiered: $('#toHierarchyOutput')[0].innerText = hiered;
+    })
+
+  });
+
+  function dump(arr, level) {
+    var dumped_text = "";
+    if (!level) level = 0;
+
+    //The padding given at the beginning of the line.
+    var level_padding = "";
+    for (var j = 0; j < level + 1; j++) level_padding += "    ";
+
+    if (typeof (arr) == 'object') { //Array/Hashes/Objects
+      for (var item in arr) {
+        var value = arr[item];
+
+        if (typeof (value) == 'object') { //If it is an array,
+          dumped_text += level_padding + "'" + item + "' ...\n";
+          dumped_text += dump(value, level + 1);
+        } else {
+          dumped_text += level_padding + "'" + item + "' => \"" + value + "\"\n";
+        }
+      }
+    } else { //Strings/Chars/Numbers etc.
+      dumped_text = "===>" + arr + "<===(" + typeof (arr) + ")";
+    }
+    return dumped_text;
+  }
+</script>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+<html>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>HOF ID</th>
+                    <th>ITS ID</th>
+                    <th>TYPE</th>
+                    <th>NAME</th>
+                    <th>AGE</th>
+                    <th>GENDER</th>
+                    <th>MISAQ</th>
+                    <th>Namaz Pass Preference</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in profiles %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{data.hof_id}}</td>
+                    <td>{{data.its_id}}</td>
+                    <td>{{data.type}}</td>
+                    <td>{{data.name}}</td>
+                    <td>{{data.age}}</td>
+                    <td>{{data.gender}}</td>
+                    <td>{{data.misaq}}</td>
+                    <td>{{data.area}}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Mehman Gents</td>
+                    <td></td>
+                    <td>Male</td>
+                    <td></td>
+                    <td>{{mehman.area}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Mehman Ladies</td>
+                    <td></td>
+                    <td>Female</td>
+                    <td></td>
+                    <td>{{mehmanFemale.area}}</td>
+                </tr>
+            </tbody>
+    </body>
+</html>

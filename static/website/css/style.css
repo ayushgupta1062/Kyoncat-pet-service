@@ -1,0 +1,3748 @@
+
+/*=====================================================================================
+
+	Project: PetCare project
+	Version: 1.0
+	Last change: 12/06/2023
+	Author : kodeforest
+
+	/**
+	* Table of Contents :
+	* 1.0 - main header start
+	* 2.0 - main banner start
+	* 3.0 - pet service start
+	* 4.0 - pet about start
+	* 5.0 - pet service02 wrap start
+	* 6.0 - pet counter wrap start
+	* 7.0 - pet exercise wrap start
+	* 8.0 - pet gallary wrap start
+	* 9.0 - pet client wrap start
+	* 10.0 - pet price table warp start
+	* 11.0 - pet company warp start
+	* 12.0 - pet widget start
+	* 13.0 - pet copyright startT
+	* 14.0 - home page 02 start
+	* 15.0 - sab banner warper  start
+	* 16.0 - blog post start
+	* 17.0 - contact us page start
+	* 18.0 - all service page style start
+	* 19.0 - about us page start
+	* 20.0 - pet team  start
+	* 21.0 - pet team detail start
+	* 22.0 - pet 404  wrap start
+	* 23.0 - OUR pet DETAIL PAGE START
+	* 24.0 - pet PRODUCT ITEM START
+	* 25.0 - TEAM WRAP START
+	* 26.0 - CONTACT US PAGE START
+	* 27.0 - MAP LIST START
+	* 28.0 - CONTACT US LIST START
+	* 29.0 - CAREER PAGE START
+	* 30.0 - SEARCH STYE START
+	* 31.0 - KODE 404 WRAPER START
+	* 32.0 - HOME PAGE 02 START
+	* 33.0 - TOP BAR BAR2 START
+	* 34.0 - NAVIGATION WRAP NAVI2 START
+	* 35.0 - BANNER02 WRAP START
+	* 36.0 - FAST SERVICE WRAP START
+	* 37.0 - SERVICE2 WRAP START
+	* 38.0 - ACHIEVEMET WRAP START
+	* 39.0 - GET WRAP START
+	* 40.0 - PROJECT2 WRAP START
+	* 41.0 - CAREER2 WRAP START
+	* 42.0 - TEXTIMONIAL2 WRAP START
+	* 43.0 - WIDGET LINK START
+	* 44.0 - LOGIN WRAP START
+	* 45.0 - CART DROPDOWN STYLE START
+	* 46.0 - HOME PAGE 03 START
+	* 47.0 - KODE COUNTER WRAPER START
+	* 48.0 - KODE PLUMBER ENGINER START
+	* 49.0 - PROJECT PAGE START
+	* 50.0 - PROJECT FILTER WRAP START
+	* 51.0 - PROJECT DETAIL PAGE START
+	* 52.0 - PROJECT DETAIL WRAP START
+	* 53.0 - SHOP PAGE START
+	* 54.0 - OUR SHOP DETAIL PAGE START
+	* 55.0 - SHOP PRODUCT ITEM START
+	* 56.0 - SHOP SIDEBAR PAGE START
+	* 57.0 - PRICE TABLE PAGE START
+	* 58.0 - COMING SOON PAGE START
+
+
+	[Color codes]
+
+	Background: #ffffff (white)
+	Content: #666666 (light black)
+	Header h1: #111111 (dark black)
+	Footer:  #000000 (dark black)
+
+	a (standard): #999999 (light black)
+	a (visited): #999999 (light black)
+	a (active): #999999 (light black)
+
+	[Typography]
+
+	Body copy:  15px/ 'Open Sans', sans-serif;
+	Headers:  'Poppins', sans-serif;
+	Input, textarea: 'Poppins', sans-serif;
+	Sidebar heading: 'Poppins', sans-serif;
+
+
+==============================================================================================	*/
+.bg-overlay,
+.overlay{
+	position: relative;
+	z-index: 1;
+}
+.bg-overlay:before,
+.overlay:before{
+	position: absolute;
+	content: "";
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-color: #000;
+	opacity: 0.4;
+}
+section{
+	padding:100px 0px;
+}
+.custom-container{
+	padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 1170px;
+}
+.custom-container-fluid {
+	width:100%;
+	padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.dl-menuwrapper{
+	display: none;
+}
+/*
+	=====================================
+		main header start
+	=====================================
+*/
+.main_header{
+	display: flex;
+	flex-direction: column;
+	padding:50px 40px 0px;
+	position: absolute;
+	z-index: 2;
+	width: 100%;
+}
+.main_top_bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main_top_bar h1{
+	margin-bottom: 0px;
+}
+.navigation{
+	display: flex;
+	justify-content: space-between;
+}
+.navigation li{
+	margin-right: 40px;
+	position: relative;
+}
+.navigation li:last-child{
+	margin-right: 0px;
+}
+.navigation > li > a{
+	color:#fff;
+	padding: 13px 0px;
+	display: flex;
+	align-items: center;
+}
+.navigation > li > a{
+	position: relative;
+}
+.navigation > li > a:before{
+	position: absolute;
+    content: "";
+    top: 10px;
+    left:0px;
+    right: 0px;
+    bottom: 0px;
+    background-image: url(images/navigation-bg.png);
+    background-repeat: no-repeat;
+    width: 200%;
+    z-index: -1;
+    opacity: 0;
+}
+.navigation > li > a:hover:before{
+	top: 0px;
+	opacity:0.1;
+}
+.navigation li a i{
+	margin-left: 10px;
+}
+.main_button{
+	padding: 16px 25px;
+	border:2px  solid #fff;
+	border-radius: 50px;
+	color:#272522;
+	font-weight: 500;
+}
+.main_top_bar .main_button{
+	color:#fff;
+}
+.main_top_bar .main_button:hover{
+	box-shadow: 0px 0px 6px -1px #fff;
+}
+.btn2{
+	padding: 16px 40px;
+}
+/*sub menu style start*/
+.sub-menu{
+	position: absolute;
+	top: 60px;
+	left: 0px;
+	right: 0px;
+	width: 240px;
+	opacity:0;
+	overflow: hidden;
+	visibility: hidden;
+	padding:0px 20px;
+}
+.sub-menu:before{
+	position: absolute;
+	content: "";
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-color:#fff;
+	border-radius: 6px;
+}
+.navigation li:hover .sub-menu{
+	visibility: visible;
+	opacity: 1;
+	overflow: visible;
+	top: 100%;
+	box-shadow: 0px 9px 32px -16px #c7c5c5;
+}
+.navigation li .sub-menu li{
+	margin-right: 0px;
+}
+.navigation li .sub-menu li a{
+	color: #333;
+    padding: 12px 0px;
+    display: flex;
+    flex-direction: column;
+    text-transform: capitalize;
+    border-bottom: 1px solid rgb(239 236,236,0.8);
+    position: relative;
+    z-index: 1;
+    font-size: 14px;
+    border-radius: 5px;
+}
+.navigation li .sub-menu li a:hover{
+	padding: 12px 28px 12px 15px;
+}
+.navigation li .sub-menu li a:before{
+	position: absolute;
+    content: "";
+    top: 13px;
+    left: 0px;
+    right: 0px;
+    bottom: 13px;
+    width: 0px;
+    z-index: -1;
+    width: 0px;
+}
+.navigation li .sub-menu li a:hover:before{
+	width:4px;
+}
+/* sticky header start*/
+.main_header.fixed{
+  position: fixed;
+  padding: 10px 0px;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: -webkit-transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: -webkit-transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1), -webkit-transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.main_header.fixed > ul {
+  margin: 0 0px 0 0;
+}
+.main_header.fixed {
+  -webkit-transform: translate3d(0, -80px, 0);
+  transform: translate3d(0, -124px, 0);
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.09804) 0px 2px 4px;
+}
+.main_header.fixed .navigation > li > a{
+	color:#333;
+}
+.main_header.fixed .main_top_bar .main_button{
+	color:#333;
+	border-color:#333;
+}
+.main_header.fixed .main_top_bar .main_button:hover{
+	color:#fff;
+}
+.scrolled .main_header.fixed {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+/**/
+.header02{
+	padding:20px 40px 0px;
+}
+.header02 .main_top_bar{
+	padding:15px 30px;
+	border-radius: 50px;
+}
+/*
+	=====================================
+		main header start
+	=====================================
+*/
+.main_banner .bg-overlay:before{
+	min-height: 900px;
+}
+.main_banner.top_banner:before{
+	background: none;
+}
+.main_banner.top_banner:after{
+    position: absolute;
+    content: "";
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    border-radius: 0px;
+    transform: rotate(-0deg);
+    background-color: #bc5000;
+    z-index: -1;
+}
+.main_banner .top_banner{
+	height: 1000px;
+}
+.top_banner .main_banner_row{
+	padding:150px 251px 0px 270px;
+}
+.main_banner .top_banner .main_banner_row:after{
+	background-size: cover;
+}
+.bg_layer{
+	position: relative;
+}
+.bg_layer:after{
+	position: absolute;
+	content: "";
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	background-image: url(images/service-bg-paw.png);
+	opacity: 0.1;
+	animation: layer 100s ease-in-out infinite;
+}
+@keyframes layer {
+0% {top: 0;}
+50% {top: -40%;}
+100% {top: 0%;}
+}
+.top_banner .main_banner_row:after{
+	background-image:none;
+}
+.top_banner .mian_banner_text {
+    padding-top: 150px;
+    z-index: 999;
+}
+.top_banner .slick-slider{
+	width: 45%;
+}
+.main_banner.top_banner .slick-prev,
+.main_banner.top_banner .slick-next{
+	display: none !important;
+}
+.website-divider-container-500113 {
+  position: relative;
+  height: 100%;
+  z-index: 2;
+}
+.divider-img-500113{
+	position: absolute;
+    width: 4000px;
+    height: 170px;
+    transform: scale(1, 5);
+    bottom: 0px;
+    left: 0px;
+    fill: rgb(255 255 255);
+    top: 130px;
+}
+.top_banner .divider-img-500113{
+    height: 80px;
+    top: auto;
+}
+ .website-divider-container-500113 svg path{
+ 	opacity: 1 !important;
+}
+.main_banner .divider-img-500113{
+    height: 85px;
+}
+
+/*
+	=====================================
+		main banner start
+	=====================================
+*/
+.main_banner{
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+	background-image: url(images/banner-bg01.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height:900px;
+}
+.main_banner_row{
+	display: flex;
+	display: -webkit-flex;
+	position: relative;
+	z-index: 2;
+	padding: 150px 251px 40px 170px;
+	background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+}
+.main_banner_row:after{
+	position: absolute;
+    content: "";
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-image: url(images/banner-bg-paw.png);
+    background-repeat: no-repeat;
+    animation: animate 25s linear infinite;
+    z-index: -1;
+    background-size: 28% 85%;
+}
+@keyframes animate {
+
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+
+    100%{
+        transform: translateY(-10px) rotate(20deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+
+}
+.main_banner_row:before{
+	position: absolute;
+    content: "";
+    top: 200px;
+    left: 240px;
+    right: 0px;
+    bottom: 0px;
+    background-image: url(images/anda-banner.png);
+    background-repeat: no-repeat;
+    opacity: 0.3;
+}
+.mian_banner_text{
+	padding-top: 80px;
+}
+.mian_banner_text h2{
+	 font-family: 'Allison', cursive;
+	  font-size: 92px;
+	  margin-bottom: 0px;
+	  position: relative;
+	  animation-name: slide-fade;
+   	  animation-duration: 2s;
+   	  animation-fill-mode: forwards;
+}
+@keyframes slide-fade {
+  from {
+    transform: translate(100px, 50px);
+  }
+  to {
+    transform: translate(0%);
+  }
+}
+.mian_banner_text h1{
+	font-weight: 600;
+	line-height: 80px;
+	margin-bottom: 40px;
+	color:#fff;
+	animation-name: slide-in;
+   animation-duration: 2s;
+   animation-fill-mode: forwards;
+}
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+.mian_banner_text {
+    flex-grow: 0;
+    flex-shrink: 0;
+ }
+.mian_banner_text p{
+	margin-bottom: 45px;
+	color:#fff;
+	font-size: 18px;
+	line-height: 30px;
+	animation-name: slide-out;
+   animation-duration: 2s;
+   animation-fill-mode: forwards;
+}
+@keyframes slide-out {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+.banner_video{
+	justify-content: flex-start;
+	display: flex;
+	align-items: center;
+}
+.banner_video .main_button{
+	color:#fff;
+}
+.play_btn{
+	display: flex;
+	align-items: center;
+	color:#fff;
+	position: relative;
+	z-index: 1;
+	margin-left: 22px;
+}
+.play_btn:hover{
+	color:#fff;
+}
+.play_btn i{
+	font-size: 50px;
+	margin-right: 10px;
+}
+.mian_banner_fig figure img,
+.mian_banner_fig figure{
+	width:auto;
+}
+/*bx slider start*/
+.banner_fig_slider{
+	position: relative;
+}
+div#bx-pager {
+    position: absolute;
+    bottom: 0px;
+}
+.main_banner_row .bx-controls-direction{
+	display: none;
+}
+.main_banner_row .bx-viewport{
+	height: auto !important;
+	margin: 0 auto 0px;
+	background:none;
+}
+.main_banner_row .bx-wrapper{
+	margin: 0 auto 0px;
+}
+.main_banner_row div#bx-pager {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+.banner_fig_slider a.active{
+	transform: scale(1.2);
+	-webkit-transform: scale(1.2);
+	-moz-transform: scale(1.2);
+}
+.banner_fig_slider a.fig02,
+.banner_fig_slider a.fig01 {
+    position: absolute;
+}
+.banner_fig_slider a.fig02,
+.banner_fig_slider a.fig01 {
+    position: absolute;
+    bottom: 280px;
+    left: -127px;
+}
+.banner_fig_slider a.fig02{
+	bottom: 150px;
+    left: 24px;
+}
+.banner_fig_slider a.fig04,
+.banner_fig_slider a.fig03 {
+    position: absolute;
+    right: 60px;
+    left: auto;
+    bottom: 20px;
+}
+.banner_fig_slider a.fig04{
+	 bottom: 94px;
+    right: -90px;
+}
+/*
+	=====================================
+		main banner end
+	=====================================
+*/
+
+
+/*
+	=====================================
+		pet service start
+	=====================================
+*/
+.pet_service{
+	padding: 80px 0px 100px;
+}
+.pet_service_row{
+	display: flex;
+	justify-content: space-evenly;
+}
+.pet_service_column{
+	display: flex;
+	flex-direction: column;
+	align-items: center
+}
+.pet_service_column figure img,
+.pet_service_column figure{
+	position: relative;
+	width: auto;
+	text-align: center;
+}
+.pet_service_column figure:hover img{
+	transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+}
+.pet_service_column figure{
+	margin-bottom: 25px;
+	overflow: visible;
+	padding: 10px 10px;
+}
+.pet_service_column figure:before{
+	position: absolute;
+	content: "";
+    top: 20px;
+    left: 13px;
+    right: 0px;
+    bottom: 0px;
+    background-image: url(images/border_hover.png);
+    background-repeat: no-repeat;
+    opacity: 0;
+    z-index: 1;
+}
+.pet_service_column:hover figure:before{
+	opacity: 1;
+}
+.pet_service_column figure .hover_img{
+	position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 10px 10px;
+    transform: scale(0);
+   -webkit-transform: scale(0);
+	-moz-transform: scale(0);
+}
+.pet_service_column:hover figure .hover_img{
+	transform: scale(1);
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+}
+.icon_img{
+	position: absolute;
+    top: 50%;
+    left: 0px;
+    right: 0px;
+    bottom: auto;
+    margin: auto;
+    text-align: center;
+    margin-top:-30px;
+    display: inline-table;
+    width: auto;
+    float: none;
+    z-index: 2;
+}
+.pet_service_column h6{
+	font-weight: 600;
+	margin-bottom: 0px;
+}
+/*
+	=====================================
+		pet service start
+	=====================================
+*/
+
+/*
+	=====================================
+		pet about start
+	=====================================
+*/
+.pet_about_wrap{
+	padding:40px 0px 100px;
+}
+.pet_about_row{
+	display: flex;
+	align-items: center;
+}
+.pet_about_fig{
+	flex-grow: 1;
+}
+.pet_about_text{
+    flex-shrink: 5;
+    padding-left: 60px;
+}
+.pet_about_text h3{
+	font-family: 'Allison', cursive;
+	font-size: 36px;
+	margin-bottom: 15px;
+}
+.pet_about_text h2{
+	font-weight: 600;
+	margin-bottom: 35px;
+}
+.pet_about_text p{
+	margin-bottom: 50px;
+	line-height: 36px;
+}
+/*
+	=====================================
+		pet about End
+	=====================================
+*/
+
+/*
+	=====================================
+		pet service02 wrap start
+	=====================================
+*/
+.pet_sevice02_wrap{
+	padding-top: 100px;
+    padding-bottom: 100px;
+}
+.pet_sevice02_wrap{
+	position: relative;
+	background-color: #272522;
+	z-index: 1;
+}
+.pet_sevice02_wrap:before{
+	position: absolute;
+	content: "";
+	top: 0px;
+	left: 0px;
+	right:0px;
+	bottom: 0px;
+	background-image: url("images/service-bg-paw.png");
+	background-repeat: no-repeat;
+	padding:0px 0px;
+	opacity: 0.1;
+	z-index: -1;
+}
+/*mian heading start*/
+.mian_heading{
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 80px;
+	align-items: center;
+}
+.mian_heading h2{
+	font-family: 'Allison', cursive;
+	margin-bottom: 10px;
+}
+.mian_heading h3{
+	font-weight: 600;
+	margin-bottom: 0px;
+	text-transform: capitalize;
+}
+.clr_white{
+	color:#fff;
+}
+/*mian heading end*/
+.pet_service02_row{
+	display: flex;
+	flex-direction: row;
+    flex-wrap: wrap;
+}
+.pet_service02_column{
+	background-color: #fff;
+	padding: 35px 35px;
+	margin:0px 12px 30px;
+	width:31%;
+	border-radius: 10px;
+}
+.pet_service02_row.service_grid .pet_service02_column:hover{
+
+}
+.pet_service02_column figure img,
+.pet_service02_column figure{
+	width:auto;
+	float: none;
+}
+.pet_service02_column figure{
+	margin-bottom: 20px;
+}
+.pet_service02_column h5{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	font-weight: 700;
+}
+.pet_service02_column p{
+	line-height: 30px;
+	margin-bottom: 20px;
+}
+.pet_service02_column a{
+	display: inline-block;
+    padding: 8px 30px;
+    border: 2px solid;
+}
+.pet_service02_column a:hover{
+	color:#fff;
+}
+.service_grid .pet_service02_column p{
+	line-height: 24px;
+}
+.service_grid  .pet_service02_column a{
+	padding: 0px 0px;
+	border:none;
+	font-weight: 600;
+}
+.service_grid  .pet_service02_column a:hover{
+	background:none;
+}
+.front,
+.pet_flip_back {
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+.pet_flip_back p{
+	line-height: 24px;
+	margin-bottom: 14px;
+}
+.pet_flip_back a{
+	border-radius: 20px;
+}
+.front{
+	margin:0px 0px;
+}
+.pet_flip_back {
+  background-color: #fff;
+  color: white;
+  transform: rotateY(180deg);
+  padding: 20px 20px;
+  position: absolute;
+}
+
+
+.custom-shape-divider-top-1687264903 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1687264903 svg {
+    position: relative;
+    display: block;
+    width: calc(131% + 1.3px);
+    height: 160px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top-1687264903 .shape-fill {
+    fill: #FFFFFF;
+}
+/*
+	=====================================
+		pet service wrap end
+	=====================================
+*/
+
+
+
+/*
+	=====================================
+		pet counter wrap start
+	=====================================
+*/
+.pet_counter_wrap{
+	position: relative;
+	background-repeat: no-repeat;
+	background-image: url("images/counter_fig01.png");
+	background-position: left;
+	padding:0px 0px;
+	margin-top: -7px;
+	z-index: 1;
+}
+.pet_counter_wrap:before{
+	position: absolute;
+	content: "";
+	top: 0px;
+	left: 0px;
+	right:0px;
+	bottom: 0px;
+	background:-webkit-linear-gradient(left, rgba(668,331,410,-134) -6%, #ff8931 31%);
+	z-index: -1;
+	width: 100%;
+	opacity: 1;
+}
+.pet_counter_wrap:after{
+	position: absolute;
+	content: "";
+	background-image: url("images/counter_fig.png");
+	background-repeat: no-repeat;
+	background-position: right, bottom;
+	top: 14px;
+	left: 0px;
+	right:40px;
+    background-size: 16% 100%;
+	bottom: 0px;
+	z-index: -1;
+}
+.pet_counter_bg{
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	z-index: 1;
+}
+.pet_counter_bg:after{
+	position: absolute;
+	content: "";
+	background-image: url("images/counter--bg01.png");
+	background-repeat: no-repeat;
+	background-position:top;
+	top: 0px;
+	left: 0px;
+	right:0px;
+	bottom: 0px;
+	z-index: -1;
+}
+.pet_counter_row{
+	display: flex;
+	justify-content: space-evenly;
+	padding: 140px 0px 160px;
+}
+.pet_counter_column{
+	display: flex;
+}
+.pet_counter_column span{
+	font-size: 40px;
+	color:#fff;
+}
+.pet_counter_text{
+	padding-left: 10px;
+}
+.pet_counter_text h3{
+	line-height: 38px;
+	margin-bottom: 4px;
+	font-weight: 700;
+	color:#fff;
+}
+.pet_counter_text p{
+	margin-bottom: 0px;
+	color:#fff;
+	font-weight: 500;
+	margin-top: 0px;
+	text-transform: uppercase;
+}
+.custom-shape-divider-bottom-1687266093 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1687266093 svg {
+    position: relative;
+    display: block;
+    width: calc(128% + 1.3px);
+    height: 126px;
+}
+
+.custom-shape-divider-bottom-1687266093 .shape-fill {
+    fill: #FFFFFF;
+
+}
+/*
+	=====================================
+		pet counter wrap end
+	=====================================
+*/
+
+
+
+/*
+	=====================================
+		pet exercise wrap start
+	=====================================
+*/
+.pet_service_list li,
+.pet_exercise_row{
+	display: flex;
+	justify-content: space-between;
+}
+.pet_exercise_row{
+	flex-direction: row;
+	align-items: center;
+}
+.pet_exercise_text{
+	padding-left: 35px;
+	flex-shrink: 2;
+}
+.pet_exercise_text h3{
+	font-weight: 600;
+	margin-bottom: 6px;
+}
+.pet_exercise_text p{
+	margin-bottom: 30px;
+}
+.pet_service_list li figure img,
+.pet_service_list li figure{
+	width:auto;
+	overflow: visible;
+}
+.pet_service_list li figure span{
+	top: -51px;
+    position: relative;
+    display: inline-block;
+    right: -23px;
+    font-size: 60px;
+    line-height: 30px;
+    font-weight: 800;
+}
+.pet_service_list li:nth-child(even){
+	margin-left: 30px;
+}
+.pet_exercise_list_text{
+	padding-left: 30px;
+}
+.pet_exercise_list_text h5{
+	font-weight: 600;
+	margin-bottom: 8px;
+}
+.pet_exercise_list_text p{
+	margin-bottom: 0px;
+}
+.pet_service_list li .btn2 {
+    padding: 16px 30px;
+}
+/*
+	=====================================
+		pet exercise wrap end
+	=====================================
+*/
+
+
+
+/*
+	=====================================
+		pet gallary wrap start
+	=====================================
+*/
+.pet_gallery_wrap{
+	padding-left:100px;
+	padding-right:100px;
+	background-color: #fff9f9dd;
+}
+.text-center{
+	display: flex;
+	flex-direction: column;
+}
+.pet_gallery_row{
+	display: flex;
+	align-items: center;
+}
+.pet_gallery_fig{
+	margin-right:10px;
+	flex-shrink: 3;
+}
+.pet_gallery_fig figure{
+	margin-bottom: 10px;
+	border-radius: 8px;
+}
+.pet_gallery_fig figure img{
+	cursor: pointer;
+}
+.flus_icon{
+	position: absolute;
+	top:80%;
+	left: 0px;
+	right:0px;
+	bottom: 0px;
+	height: 40px;
+	width:40px;
+	border-radius: 100px;
+	font-size: 18px;
+	border:1px solid #fff;
+	opacity: 0;
+	margin:-30px auto;
+	text-align: center;
+    line-height: 40px;
+    background-color: #fff;
+}
+.flus_icon:hover{
+	background-color: #333;
+	color:#fff;
+	border-color: #333;
+}
+.pet_gallery_fig figure:hover .flus_icon{
+	top: 50%;
+	opacity: 1;
+}
+.pet_gallery_fig:last-child{
+	margin-right: 0px;
+}
+.margin-top{
+	margin-top: -40px;
+}
+.pet_gallery_fig:first-child{
+	flex-shrink: 1;
+}
+.pet_gallery_fig:last-child{
+	flex-shrink: 1;
+}
+
+
+
+
+
+
+#modal-box {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 250px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #000;
+ 	opacity: 0.97;
+}
+
+#modal-image {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 120%;
+}
+
+.close {
+  	color: #fff;
+    position: absolute;
+    top: 170px;
+    right: 75px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    /* z-index: 9999999; */
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    background-color: #333;
+    text-align: center;
+    opacity: 1;
+    line-height: 50px;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+/*
+	=====================================
+		pet gallary wrap end
+	=====================================
+*/
+
+
+
+/*
+	=====================================
+		pet client wrap start
+	=====================================
+*/
+.pet_client_wrap{
+	position: relative;
+	z-index: 1;
+	padding:100px 0px 140px;
+	z-index: 2;
+}
+.pet_client_wrap:before{
+	position: absolute;
+	content: "";
+	background-image: url("images/client-bg-fig.png");
+	background-repeat: no-repeat;
+	background-position:left bottom;
+	background-size: 23%;
+	top: 0px;
+	left: 104px;
+	right:0px;
+	bottom: 0px;
+	z-index: -1;
+}
+
+.custom-shape-divider-bottom-1687357859 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1687357859 svg {
+    position: relative;
+    display: block;
+    width: calc(122% + 1.3px);
+    height: 135px;
+}
+
+.custom-shape-divider-bottom-1687357859 .shape-fill {
+    fill: #FFFFFF;
+}
+
+
+.pet_client_row{
+	display: flex;
+}
+.pet_client_fig{
+	flex-shrink: 1;
+}
+.pet_client_fig figure img,
+.pet_client_fig figure{
+	width:auto;
+}
+.pet_client_list{
+	flex-shrink: 30;
+	padding-left: 100px;
+	padding-right: 58px;
+}
+.pet_clien_text{
+	position: absolute;
+    top:25px;
+   font-family: 'Allison', cursive;
+    left:-39px;
+    align-items: center;
+    right:40px;
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    color:#fff;
+}
+.pet_client_list .mian_heading {
+	align-items: start;
+	margin-bottom: 20px;
+}
+.pet_client_list p{
+	color:#fff;
+	line-height: 36px;
+	margin-bottom: 30px;
+	position: relative;
+	z-index: 1;
+}
+.pet_client_list p:before{
+	position: absolute;
+    content: "\f10e";
+    top: 50%;
+    left: auto;
+    right: 33px;
+    bottom: 0px;
+    font-size: 140px;
+    font-family: fontawesome;
+    z-index: -1;
+    opacity: 0.2;
+    margin-top: -11px;
+    color: #333;
+}
+.pet_client_detail{
+	display: flex;
+	align-items: center;
+}
+.pet_client_detail figure img,
+.pet_client_detail figure{
+	width:auto;
+}
+.pet_client_detail_text h6{
+	color:#fff;
+	font-size: 18px;
+	margin-bottom: 10px;
+	font-weight: 600;
+	padding-left: 20px;
+}
+/*
+	=====================================
+		pet client wrap end
+	=====================================
+*/
+
+/*
+	=====================================
+		pet price table warp start
+	=====================================
+*/
+section.pet_price_table_wrap {
+    padding: 80px 0px 100px;
+}
+.pet_price_table_row{
+	display: flex;
+}
+.pet_price_table_column{
+	margin-right:20px ;
+	position: relative;
+	z-index: 1;
+}
+.pet_price_table_column:last-child{
+	margin-right:0px;
+}
+.pet_price_text{
+    padding: 40px 30px 35px;
+    flex-direction: column;
+    display: flex;
+    position: relative;
+    z-index: 5;
+}
+.pet_price_text:before{
+	position: absolute;
+	content: "";
+	background-image: url("images/price-table-layer-fig.png");
+	background-repeat: no-repeat;
+	background-position:top;
+	top: -62px;
+	left: 0px;
+	right:0px;
+	bottom: 0px;
+	z-index: -1;
+	background-size: 100%;
+}
+.pet_price_text:after{
+	position: absolute;
+	content: "";
+	top: -23px;
+	left: 0px;
+	right:0px;
+	bottom: 0px;
+	border:4px solid #dedddd;
+	border-top:none;
+	z-index: -1;
+}
+.pet_price_text h2{
+	font-weight: 700;
+	margin-bottom: 6px;
+}
+.pet_price_text h5{
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+.pet_price_list{
+	margin-bottom: 20px;
+}
+.pet_price_list li{
+	margin-bottom: 15px;
+}
+.pet_price_list li a{
+	font-weight: 600;
+}
+.pet_price_list li a i{
+	margin-right: 15px;
+}
+.pet_price_text .btn2{
+	padding: 10px 40px;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+}
+/*
+	=====================================
+		pet price table warp end
+	=====================================
+*/
+
+/*
+	=====================================
+		pet company warp start
+	=====================================
+*/
+.pet_company_wrap{
+	position: relative;
+	z-index: 1;
+	padding: 145px 0px 80px;
+	width:100%;
+	display: flex;
+}
+.custom-shape-divider-top-1687358087 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1687358087 svg {
+    position: relative;
+    display: block;
+    width: calc(122% + 1.3px);
+    height: 135px;
+}
+
+.custom-shape-divider-top-1687358087 .shape-fill {
+    fill: #FFFFFF;
+}
+.pet_company_row{
+	display: flex;
+	justify-content: center;
+}
+.pet_company_column{
+    margin: 0px 5px;
+}
+.pet_company_column figure{
+	border-radius: 5px;
+	cursor:pointer;
+}
+.pet_company_wrap .slick-prev,
+.pet_company_wrap  .slick-next{
+	display: none !important;
+}
+.instagram-fig{
+	padding:130px 0px 20px;
+}
+/*
+	=====================================
+		pet company warp end
+	=====================================
+*/
+
+/*
+	=====================================
+		pet widget start
+	=====================================
+*/
+.pet_widget{
+	background-color: #32302d;
+	float: left;
+	width:100%;
+	padding: 80px 0px 0px;
+	position: relative;
+	z-index: 1;
+}
+.pet_widget:before{
+	position: absolute;
+	content: "";
+	background-image: url("images/layer-widget.png");
+	background-repeat: no-repeat;
+	background-position:left top;
+	top: 0px;
+	left: 0px;
+	right:0px;
+	bottom: 0px;
+	z-index: -1;
+}
+.pet_widget:after{
+	position: absolute;
+	content: "";
+	background-image: url("images/widget-layer-bottom.png");
+	background-repeat: no-repeat;
+	background-position:right bottom ;
+	top: 0px;
+	left: 0px;
+	right:0px;
+	bottom: 50px;
+	z-index: -1;
+}
+.pet_widget_row{
+	display: flex;
+}
+.pet_widget_column{
+	width:25%;
+}
+.pet_widget_column > figure img,
+.pet_widget_column > figure{
+	width:auto;
+	display: flex;
+	flex-direction: column;
+}
+.pet_widget_column > figure{
+	margin-bottom: 25px;
+}
+.pet_widget_column > p{
+	display: inline-block;
+	color:#fff;
+	margin-bottom: 30px;
+	line-height: 30px;
+}
+.widget_social_share{
+	display: flex;
+}
+.widget_social_share li{
+	margin-right: 15px;
+}
+.widget_social_share li a{
+	display: flex;
+	flex-direction:column;
+	height: 45px;
+    width: 45px;
+	line-height: 50px;
+	border-radius:50px;
+	border:1px solid #fff;
+	color:#fff;
+	font-size: 14px;
+	align-items: center;
+    justify-content: center;
+}
+.widget_title{
+	font-weight: 600;
+	color:#fff;
+	margin-bottom: 40px;
+    margin-top: 30px;
+}
+.pet_widget_link li{
+	margin-bottom: 20px;
+}
+.pet_widget_column.widget_service{
+    margin-left: 30px;
+}
+.pet_widget_link li a{
+	color:#fff;
+}
+.pet_widget_post_row li{
+	margin-bottom: 24px;
+}
+.pet_widget_post{
+	display: flex;
+}
+.pet_widget_post figure img,
+.pet_widget_post figure{
+	width:auto;
+	border-radius: 5px;
+}
+.widget_post_text{
+	overflow: hidden;
+	padding-left: 15px;
+}
+.widget_post_text p{
+	color:#fff;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+.widget_post_text a{
+	color:#fff;
+	font-size: 14px;
+}
+.pet_widget_newslater p{
+	margin-bottom: 30px;
+	color:#fff;
+	line-height: 30px;
+}
+.pet_widget_newslater input{
+	height: 60px;
+	background-color:#5d5c59;
+	color:#fff;
+	border:none;
+}
+.pet_widget_newslater input::-moz-input-placeholder{
+	color:#fff;
+}
+.pet_widget_newslater input::-webkit-input-placeholder{
+	color:#fff;
+}
+/*
+	=====================================
+		pet widget start
+	=====================================
+*/
+
+/*
+	=====================================
+		pet widget 02 start
+	=====================================
+*/
+.main_widget_row {
+    display: flex;
+    justify-content: space-between;
+}
+.widget_contact{
+	display: flex;
+	flex-direction: column;
+}
+.main_widget_column {
+    display: flex;
+    align-items: center;
+    padding: 23px 0px;
+    border-bottom: 1px dashed #555050;
+}
+.main_widget_contact{
+	padding-left: 18px;
+}
+.main_widget_contact a{
+	display: flex;
+	flex-direction: column;
+	color:#fff;
+	line-height: 30px;
+}
+.main_widget_row .pet_widget_column{
+	width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main_widget_row .widtget-hours{
+	width: auto;
+}
+.main_widget_row .pet_widget_column > p{
+	text-align: center;
+}
+.pet_widget_column .btn2{
+	color:#fff;
+	border-width:1px;
+	border-color: #fff;
+}
+.main_widget_row  .widget_social_share{
+	margin-bottom: 33px;
+}
+.main_widget_row .pet_widget_link li{
+	display: flex;
+	justify-content: space-between;
+}
+.main_widget_row .pet_widget_link li span{
+	margin-left: 15px;
+	color:#fff;
+}
+.main_widget_column:last-child{
+	border-bottom:none;
+
+}
+
+
+/*
+	=====================================
+		pet copyright start
+	=====================================
+*/
+.pet_copyright{
+	display: flex;
+	flex-direction: column;
+	padding:20px 0px;
+	background-color: #2c2824;
+	margin-top: 60px;
+}
+.pet_copyright_text {
+    display: flex;
+    justify-content: center;
+}
+.pet_copyright_text p{
+	color:#fff;
+	margin-bottom:0px;
+	margin-top:0px;
+}
+
+/*
+	=====================================
+		pet copyright end
+	=====================================
+*/
+
+/*hover affect theme*/
+.hover-affect{
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgb(0 0 0 / 0%);
+    position: relative;
+    overflow: hidden;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    z-index: 1;
+}
+.hover-affect:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ff8931;
+    border-radius: 100%;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+.hover-affect:hover:before{
+	transform: scale(2);
+}
+.pet_price_text .btn2:hover,
+.main_button:hover{
+	color:#fff;
+}
+
+
+/*==============================================================================================*/
+	 							home page 02 start
+/*==============================================================================================*/
+
+
+.service_grid .pet_service02_column figure{
+	position: relative;
+}
+.service_grid .pet_service02_column{
+	 padding:15px 20px 35px;
+	 box-shadow: 0px 0px 4px 0px #ccc;
+}
+.service_grid .pet_service02_column figure:before{
+	position: absolute;
+	content: "";
+	top: 0px;
+	left: 0px;
+	right:0px;
+	bottom: 0px;
+	background-image: url("images/service-fig-layer.png");
+	background-position: bottom;
+	background-repeat: no-repeat;
+}
+.service_grid .pet_service02_column figure:after{
+	position: absolute;
+	content: "";
+	top: 0px;
+	left: 0px;
+	right:-18px;
+	bottom: 16px;
+	background-image: url("images/service-fig-layer2.png");
+	background-position: bottom;
+	background-repeat: no-repeat;
+}
+.textimonial_row .pet_client_text{
+	position: relative;
+	left: 0px;
+    top: 0px;
+    right: 0px;
+    align-items: flex-start;
+    padding-right: 40px;
+   font-family: 'Allison', cursive;
+   color: #fff;
+}
+.textimonial_row .pet_client_fig h2{
+	font-weight: 700;
+	margin-bottom: 20px;
+	color: #fff;
+}
+.textimonial_row .pet_client_fig p{
+	color:#fff;
+}
+.textimonial_row .pet_client_fig p:before{
+	opacity: 0.1;
+}
+.textimonial_row .pet_client_fig{
+	padding-top: 170px;
+    position: relative;
+    z-index: 99999;
+}
+.main_padding0{
+	padding:0px 0px;
+	height: 900px;
+    overflow: hidden;
+}
+.pet_client02_row {
+    display: flex;
+    align-items: center;
+}
+.pet_client02_column{
+	padding-right: 40px;
+	margin-top: -92px;
+}
+.pet_client02_column:last-child{
+	padding-right: 0px;
+}
+.pet_client02_column .pet_client_list{
+	position: relative;
+	margin-bottom: 30px;
+	padding: 30px 30px;
+}
+.pet_client02_column .pet_client_detail_text h6,
+.pet_client02_column .pet_client_list p{
+	color:#000;
+	z-index: 1;
+    position: relative;
+}
+.pet_client02_column .pet_client_list p:before{
+	opacity: 0.2;
+    color: #ccc;
+}
+.pet_client02_column .pet_client_list:before{
+	position: absolute;
+	content:"";
+	top:0px;
+	border-radius: 20px;
+	left: 0px;
+	right:0px;
+	bottom: 0px;
+	background-color:#fff;
+	opacity: 0.9;
+}
+.pet_client02_row .slick-slider{
+	padding:0px 20px;
+
+}
+/* -----------------------------------------------*/
+
+/*---------------------------------------------------*/
+
+/* child service row start*/
+.child_service_wrap{
+	padding: 100px 0px 220px;
+}
+.child_service_row{
+	display: flex;
+}
+.child_service_column{
+    padding: 0px 15px;
+    border-bottom: 1px solid #fefefe;
+}
+.child_service_column figure{
+	border-radius: 10px;
+}
+.child_service_text{
+	padding: 35px 20px 30px;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border-bottom: 1px solid #c3bfbf;
+}
+.fig-position{
+	position: absolute;
+    top: -65px;
+    right: 30px;
+    width: auto;
+}
+.child_service_text h5{
+	font-weight: 600;
+	margin-bottom: 15px;
+}
+.child_service_info{
+	display: flex;
+}
+.child_service_info li{
+	margin-right: 20px;
+}
+.child_service_info li a{
+	font-size: 12px;
+}
+.child_service_info li a i{
+	margin-right: 10px;
+}
+/**/
+.child_service_row .slick-prev{
+	left: 44%;
+}
+.child_service_row .slick-next{
+    right: 44%;
+}
+.child_service_row .slick-prev, .child_service_row .slick-next{
+	top:auto;
+	bottom: -130px;
+	height:60px;
+	width:60px;
+	background-color: #ff8931;
+}
+.child_service_row .slick-prev:before, .child_service_row .slick-next:before{
+	line-height: 60px;
+	color:#fff;
+}
+/*
+	=========================================================
+				blog post page start
+	=========================================================
+*/
+
+/*
+	=========================================================
+				sab banner warper  start
+	=========================================================
+*/
+.sab-banner-wraper{
+	padding: 170px 0px 190px 0px;
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	z-index: 1;
+}
+.sab-banner-wraper:before{
+	position: absolute;
+	content: "";
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-image: url(images/service-bg-paw.png);
+    opacity: 0.1;
+    background-repeat: no-repeat;
+    z-index: -1;
+
+}
+.sub_banner_position_fig{
+	position: absolute;
+	bottom: -99px;
+	z-index: -1;
+	left: 0px;
+	right:0px;
+}
+.sab-banner-text{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.sab-banner-text h2{
+	font-weight: 700;
+	margin:0px 0px 10px;
+	color:#fff;
+	text-transform: capitalize;
+}
+.breadcrumb{
+	background:none;
+	padding:0px 0px;
+	margin:0px 0px 0px 0px;
+}
+.breadcrumb li{
+	color:#fff;
+}
+.breadcrumb li a{
+	color:#fff;
+	padding: 0px 10px;
+	margin-right: 15px;
+	position: relative;
+}
+.breadcrumb li a:before{
+	position: absolute;
+	content: ">";
+	top: 0px;
+	left: auto;
+	right: -5px;
+	bottom: 0px;
+	font-family: fontawesome;
+}
+.breadcrumb>.active {
+    color: #fff;
+    text-transform: capitalize;
+}
+.custom-shape-divider-bottom-1687358784 {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1687358784 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 138px;
+}
+
+.custom-shape-divider-bottom-1687358784 .shape-fill {
+    fill: #FFFFFF;
+}
+/*
+	=========================================================
+				sab banner warper  end
+	=========================================================
+*/
+
+/*
+	=========================================================
+				blog post start
+	=========================================================
+*/
+/*blog post start*/
+.blog-post{
+	padding: 100px 0px;
+}
+.blog-post .child_service_row{
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.blog-post .child_service_column{
+	width:33%;
+	margin-bottom: 50px;
+}
+/*pet pagination start*/
+.pet-pagination{
+	display: flex;
+	width:100%;
+	margin-top: 30px;
+}
+.pet-pagination ul{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+}
+.pet-pagination ul li{
+	margin: 0px 7px;
+}
+.pet-pagination ul li a{
+	display: inline-block;
+	height: 45px;
+	width:45px;
+	text-align: center;
+	line-height: 43px;
+	border-radius: 50px;
+	font-weight: 600;
+	border:2px solid #272522;
+}
+.pet-pagination ul li a:hover{
+	color:#fff;
+}
+.pet-pagination ul li a.previous-btn{
+	display:inline-block;
+	width:175px;
+}
+.post-fig-postion{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width:auto;
+}
+.child_service_wrap.blog-full {
+    padding: 100px 0px 100px;
+}
+.blog-full .child_service_column{
+	margin-bottom: 30px;
+}
+.blog-full .child_service_row{
+	display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.blog-full .child_service_column{
+	display: flex;
+	width:100%;
+}
+.blog-full  .child_service_column figure{
+	width:auto;
+}
+.blog-full .child_service_text{
+	flex-shrink: 30;
+    align-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+   	padding: 10px 0px 0px 40px;
+}
+.blog-full .child_service_info{
+	margin-bottom: 15px;
+}
+.blog-full .child_service_text h5{
+	margin-bottom: 20px;
+	line-height: 35px;
+}
+.blog-full .child_service_text p{
+	line-height: 28px;
+	margin-bottom: 30px;
+}
+.child_service_botton_fig{
+    display: flex;
+    align-items: center;
+}
+.child_service_botton_fig figure{
+	margin-right: 10px;
+}
+.child_service_botton_fig  a{
+	font-weight: 700;
+}
+/* blog post datail start*/
+.blog_post_detail .child_service_row{
+	display: flex;
+	flex-wrap: initial;
+    flex-direction: inherit;
+}
+.pet_blog_full_detail {
+    width: 70%;
+}
+.pet_blog_full_detail .child_service_column{
+	flex-direction: column;
+	padding: 0px;
+	margin-bottom: 35px;
+}
+.pet_blog_full_detail {
+    flex-shrink: 1;
+    flex-grow: 0;
+}
+.pet_blog_full_detail .child_service_text{
+	padding: 25px 0px 30px 0px;
+	position: relative;
+}
+.shap_fig_position{
+	position: absolute;
+    top: -30px;
+    right: 50px;
+}
+.blog_post_info {
+    display: flex;
+    align-items: center;
+}
+.blog_post_info  .child_service_info{
+	margin-bottom: 0px;
+	margin-left: 15px;
+}
+
+/*pet sidebar wdiget*/
+.pet_sidebar_widget {
+   width: 30%;
+   padding-left: 30px;
+}
+.sidebar_column{
+	padding: 25px 30px 30px;
+	background-color: #ebebeb;
+	border-radius: 20px;
+	margin-bottom: 30px;
+}
+.sidebar_title{
+	font-weight: 600;
+	margin-bottom: 15px;
+}
+.sidebar_widget_search{
+	position: relative;
+}
+.search_icon{
+	position: absolute;
+	top: 50%;
+	margin-top:-10px;
+	right: 15px;
+	color:#a2a5a8;
+}
+/*sidebar widget search start*/
+.sidebar_widget_search{
+	display: flex;
+	flex-direction: column;
+}
+.sidebar_widget_search li{
+	margin-bottom: 12px;
+}
+.sidebar_widget_search li a{
+	display: flex;
+	flex-direction: column;
+	padding: 16px 35px;
+	background-color: #fff;
+	border-radius: 50px;
+	font-weight: 600;
+	text-transform: capitalize;
+}
+.sidebar_widget_search li a:hover{
+	color:#fff;
+}
+/*search filed*/
+.textarea,
+.search-filed{
+	margin-bottom: 15px;
+}
+.textarea .search_icon{
+	top:20px;
+	margin-top: 0px;
+}
+.textarea textarea{
+	padding: 16px 20px;
+}
+button.btn2 {
+    padding: 14px 21px;
+    color:#fff;
+}
+.downlord-file li:last-child{
+	margin-bottom: 0px;
+}
+.downlord-file li a {
+	flex-direction:inherit;
+	justify-content: space-between;
+    align-items: center;
+}
+.sidebar_support_fig figure{
+	border-radius: 10px;
+}
+.sidebar_support_text{
+	position: absolute;
+	top:50%;
+	left: 0px;
+	display: flex;
+	right: 0px;
+	flex-direction: column;
+	align-items: center;
+	margin-top:-90px;
+	padding: 0px 30px;
+}
+.sidebar_support_text h5,
+.sidebar_support_text h4 {
+	color:#fff;
+	font-weight: 600;
+	text-transform: capitalize;
+}
+.sidebar_support_text h5{
+	margin-bottom: 20px;
+}
+.sidebar_support_text p{
+	color:#fff;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.sidebar_support_text .main_button{
+	color:#fff;
+	cursor: pointer;
+	text-transform: capitalize;
+}
+.sidebar_support_text .main_button:hover{
+	background-color: #000;
+	border-color:#000;
+}
+/*
+	=========================================================
+				blog post end
+	=========================================================
+*/
+
+
+/*
+	=========================================================
+				contact us page start
+	=========================================================
+*/
+.contact_wrapper{
+	padding: 0px 0px 100px;
+}
+.contact_serviec .pet_service_column{
+	padding: 0px 24px 70px;
+	position: relative;
+	z-index: 1;
+	box-shadow: 0px 2px 8px -6px;
+}
+.contact_serviec .pet_service_column h6{
+	margin-bottom: 15px;
+}
+.contact_serviec .pet_service_column p{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 0px;
+}
+.contact_serviec .pet_service_column p a{
+	display: flex;
+	flex-direction: column;
+	line-height: 30px;
+	justify-content:center;
+	color:#433f3f;
+}
+.contact_row{
+	display: flex;
+	padding: 40px 40px;
+	background-color: #e8e8e8;
+}
+.contact_form_column{
+	margin-right:40px;
+}
+.contact_form_column:last-child{
+	margin-right: 0px;
+	width: 52%;
+	padding: 20px;
+	border-radius: 10px;
+}
+.contact_row .contact_form_column:last-child{
+	background-color: #fff;
+}
+.contact_filed{
+	margin-bottom: 30px;
+}
+.contact_filed{
+	display: flex;
+}
+.contact_filed  input{
+	border:none;
+	margin-right: 20px;
+	border-radius: 5px;
+}
+.contact_filed  input:last-child{
+	margin-right: 0px;
+}
+.contact_form_column textarea{
+	margin-bottom: 30px;
+	text-transform: capitalize;
+	border-radius: 6px;
+	height: 169px;
+}
+/*
+	=========================================================
+				contact us page end
+	=========================================================
+*/
+
+
+/*
+	=========================================================
+				all service page style start
+	=========================================================
+*/
+.service_grid02 .pet_service02_column{
+	box-shadow: 0px 0px 10px 0px #ccc;
+}
+.service_grid .pet_service02_column:hover,
+.service_grid02 .pet_service02_column:hover {
+    box-shadow: 0px 0px 20px 0px #ccc;
+}
+.pet_exercise_row.service03{
+	margin-bottom: 100px;
+}
+.service03 .pet_exercise_text{
+	flex-shrink: 4;
+}
+.service03 .pet_exercise_text h3{
+	margin-bottom: 18px;
+}
+.service03 .pet_exercise_text > p{
+	line-height: 26px;
+	margin-bottom: 30px;
+}
+.service03  .pet_service_list{
+	margin-bottom: 30px;
+}
+.service03  .pet_service_list li{
+	margin-bottom: 8px;
+	margin-left:0px;
+}
+.service03  .pet_service_list li a i{
+	margin-right: 10px;
+	font-size: 20px;
+	color:#a1a1a1;
+}
+.service03  .pet_service_list li:last-child{
+	margin-top: 30px;
+}
+.reverse-column{
+	margin-bottom: 0px !important;
+}
+.reverse-column .pet_exercise_fig{
+	margin-left: 30px;
+}
+/*service detail page start */
+.pet_service_detail{
+	display:flex;
+}
+.pet_service_detail_row .pet_exercise_fig{
+	display: flex;
+	flex-direction: column;
+	margin-bottom:25px;
+}
+.pet_service_detail_row .pet_exercise_fig figure{
+	border-radius: 10px;
+}
+.pet_service_detail_row{
+	width:70%;
+}
+.pet_service_detail_row.service03 .pet_exercise_text{
+	padding-left: 0px;
+}
+.pet_service_detail_row.service03 .pet_service_list li:last-child{
+	margin-top: 0px;
+}
+.pet_service_detail_row.service03 .pet_exercise_text  h4{
+	font-weight: 600;
+	text-transform: capitalize;
+}
+.paly_btn{
+	position: absolute;
+	top: 50%;
+	left: 0px;
+	right: 0px;
+	margin: 0px auto;
+	width: 80px;
+	height: 80px;
+	text-align: center;
+	font-size: 20px;
+	color: #fff;
+	line-height: 80px;
+	border-radius: 100px;
+	margin-top: -40px;
+}
+.paly_btn:before{
+	position: absolute;
+	content: "";
+	top: -15px;
+	left: -15px;
+	right: -15px;
+	bottom: -15px;
+	border: 1px solid;
+	border-radius: 100px;
+}
+.pet_banifit_service{
+	display: flex;
+	margin-bottom: 20px;
+}
+.pet_banifit_service figure{
+    flex-shrink: 1;
+    margin-right: 30px;
+}
+.pet_banifit_service .pet_service_list{
+	margin-bottom: 0px;
+}
+.pet_banifit_service .pet_service_list  li{
+	margin-bottom: 15px;
+}
+
+/*
+	=========================================================
+				all service page style end
+	=========================================================
+*/
+
+
+
+/*
+	=========================================================
+				about us page start
+	=========================================================
+*/
+.pet_accordian_row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.pet_accordian_fig {
+    padding-right: 50px;
+}
+/* accordion-1 */
+.accordion{
+    width: 540px;
+    height: 70px;
+    margin: 0 auto;
+    border-radius: 3px;
+    border-bottom: 1px solid #5b5957;
+    overflow: hidden;
+    transition: height 0.3s ease;
+}
+.accordion .accordion_tab{
+  padding: 20px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  position: relative;
+  color:#fff;
+}
+.accordion.active{
+  height: 235px;
+}
+.accordion .accordion_content{
+  border-top: 1px solid #5b5957;
+}
+.accordion .accordion_content .accordion_item p{
+  margin-bottom: 0px;
+  padding: 25px 30px;
+  background-color: #fff;
+  font-weight: 500;
+  border-bottom: 4px solid;
+}
+/*
+	=========================================================
+				pet team  start
+	=========================================================
+*/
+.pet_team_row{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.pet_team_column {
+    width: 31%;
+    margin: 0px 12px;
+    margin-bottom: 35px;
+    box-shadow: 0px 0px 5px 0px #e0e0e0;
+    border-radius: 50px;
+}
+.pet_team_column  figure{
+	border-top-left-radius:8px;
+	border-top-right-radius:8px;
+}
+.pet_team_text{
+	display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 27px 30px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: #fff;
+    z-index: 1;
+}
+.pet_team_text:before{
+	position: absolute;
+	content: "";
+	top: -57px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-image: url(images/team-layer.png);
+	background-position: top;
+	background-repeat: no-repeat;
+	z-index: -1;
+}
+.pet_team_detail_row .pet_team_text:before{
+	top: -75px;
+}
+.pet_team_text h5{
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+/*
+	=========================================================
+				pet team  end
+	=========================================================
+*/
+/*
+	=========================================================
+				pet team detail start
+	=========================================================
+*/
+section.pet_team_wrap {
+    padding: 100px 0px 80px;
+}
+.pet_team_detail_row{
+	display: flex;
+}
+.pet_team_detail_fig .pet_team_text:before{
+	background-size: 100%;
+}
+.pet_team_detail_text{
+	padding-left: 80px;
+	flex-shrink: 48;
+}
+.pet_team_detail_text h4{
+	font-weight: 600;
+	text-transform: capitalize;
+	margin-bottom: 25px;
+}
+.pet_team_detail_text h4 span{
+	display: block;
+}
+.pet_team_detail_text .pet_social_icon{
+	margin-bottom: 30px;
+	width:100%;
+	display: flex;
+}
+.pet_team_detail_text .pet_social_icon li a{
+	border-radius: 100%;
+	height: 40px;
+    width: 40px;
+    line-height:40px;
+}
+.pet_team_detail_text h6{
+	font-weight: 500;
+	margin-bottom: 20px;
+	line-height: normal;
+}
+.pet_team_detail_text p{
+	line-height: 30px;
+}
+.pet_team_detail_text .pet_tags_icon{
+    padding:14px 0px 7px 0px;
+ }
+ .pet_team_detail_text .pet_tags li {
+    margin-bottom: 10px;
+}
+/*personal experience*/
+.pet_experience_wrap{
+	padding-top: 0px;
+}
+.pet_team_experience_row{
+	display: flex;
+	padding-top: 100px;
+}
+.pet_experience_text {
+    width: 50%;
+}
+.pet_experience_text h2{
+	font-weight: 500;
+	margin-bottom: 20px;
+	text-transform: capitalize;
+}
+.pet_experience_text p{
+	line-height: 30px;
+}
+.pet_experience_detail {
+    width: 50%;
+    padding-left: 100px;
+}
+
+/*Progress Bar Wrap CSS Start*/
+
+.pet_experience_detail .progress-names{
+	float:left;
+	width:100%;
+	margin-bottom: 10px;
+}
+.pet_experience_detail .progress-names span{
+	font-size: 17px;
+    color: #000;
+    margin-bottom: 14px;
+    display: block;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.pet_experience_detail .progressbar{
+    position:relative;
+    width:100%;
+    height:12px;
+    padding:0;
+    margin:0 auto;
+   background-color: #e1e1e1;
+   border-radius:10px;
+   margin-bottom:21px;
+}
+.pet_experience_detail .bar {
+	position:absolute;
+	display:block;
+	width:0px;
+	height:12px;
+	top:0px;
+	left:0px;
+	overflow:hidden;
+	border-radius:10px;
+}
+.pet_experience_detail .label {
+	position:absolute;
+	display:block;
+	width:52px;
+	height:30px;
+	line-height:27px;
+	top:-38px;
+	left:0px;
+	background: #000;
+	font-weight:bold;
+	font-size:12px;
+	color:#fff;
+	text-align:center;
+	margin-left: -13px;
+	border-radius:0;
+}
+.pet_experience_detail .label span {
+	position:absolute;
+	display:block;
+	width:12px;
+	height:13px;
+	top:26px;
+	left:14px;
+	background:transparent;
+	overflow:hidden;
+	transform:rotate(30deg)
+}
+.pet_experience_detail .label span:before {
+	position:absolute;
+	display:block;
+	content:"";
+	width:8px;
+	height:8px;
+	top:1px;
+	left:2px;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 10px 2px 0;
+	border-color: #000 transparent transparent transparent;
+	line-height: 0px;
+}
+
+/*Progress Bar Wrap CSS End*/
+
+
+/*pet team detail warp Start*/
+.pet_team_detail_wrap{
+	padding:100px 0px 170px
+}
+.pet_team_detail_wrap{
+	position: relative;
+	z-index: 1;
+}
+.pet_team_detail_wrap .mian_heading{
+	margin-bottom: 50px;
+}
+.pet_team_detail_wrap:after {
+    position: absolute;
+    content: "";
+    background-image: url(images/client-layer.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100%;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: -1;
+}
+.pet_team_detail_wrap .contact_filed {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.pet_team_detail_wrap .pet_search_filed{
+	width: 49%;
+	margin-bottom: 30px;
+	margin-right: 15px;
+}
+.pet_team_detail_wrap .pet_search_filed:nth-child(4),
+.pet_team_detail_wrap .pet_search_filed:nth-child(2){
+	margin-right: 0px;
+}
+.pet_team_detail_wrap .pet_search_filed input{
+	width:100%;
+	text-transform: capitalize;
+}
+.pet_team_detail_wrap .pet_search_filed select{
+	height: 48px;
+    border-radius: 5px;
+    padding: 10px 15px;
+    color: #666;
+    font-size: 16px;
+   background-color: #fff;
+}
+.pet_team_detail_wrap .contact_form_column:last-child{
+	width: 70%;
+    margin: auto;
+    text-align: center;
+}
+.pet_team_detail_wrap .contact_filed {
+    margin-bottom: 0px;
+}
+.contact_form_column button.btn2{
+	background-color: #333;
+	padding: 16px 50px;
+	text-transform: capitalize;
+	border:none;
+}
+.contact_form_column button.btn2:hover{
+	color:#333;
+}
+.contact_form_column.blog-detail button.btn2:hover{
+	color: #fff !important;
+}
+.contact_form_column .main_button:hover,
+.contact_form_column .hover-affect::before{
+	background-color: #fff;
+}
+
+/*
+	=========================================================
+				pet 404  wrap start
+	=========================================================
+*/
+.pet_404_column{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.pet_404_column figure{
+    width:50%;
+    position: relative;
+}
+.Pet_404_heading{
+	position: absolute;
+    top: 53px;
+    left: auto;
+    right: 180px;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.pet_404_text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pet_404_text h4{
+	font-weight: 600;
+	text-transform: capitalize;
+	margin: 20px 0px;
+}
+.pet_404_text  p{
+	text-align: center;
+	text-transform: capitalize;
+	font-size: 16px;
+	margin-bottom: 25px;
+	font-weight: 600;
+	line-height: 28px;
+
+}
+/*
+	=========================================================
+				pet 404  wrap end
+	=========================================================
+*/
+
+
+
+
+
+
+/*
+	=========================================================
+			PROJECT FILTER WRAP START
+	=========================================================
+*/
+.project_row{
+	display: flex;
+	flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.project_fig{
+	margin:0px 10px 20px;
+	width:31%;
+}
+.project_fig figure{
+	border-radius: 10px;
+}
+.gallery_icon{
+	display: flex;
+	justify-content: center;
+	position: absolute;
+    top: 50%;
+    left: 0px;
+    right: 0px;
+    z-index: 999;
+    margin-top: -10px;
+    opacity: 0;
+}
+.project_fig:hover .gallery_icon,
+ .gallery_list2:hover .gallery_icon,
+  .galley_item:hover .gallery_icon {
+    margin-top: -20px;
+    opacity: 1;
+}
+.gallery_icon li{
+	margin:0px 5px;
+}
+.gallery_icon li a {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 17px;
+    color: #fff;
+    display: inline-block;
+    background-color: #fff;
+}
+.project_row .pet-pagination{
+	margin-top: 80px;
+}
+
+.gallery01 .project_fig{
+	width:48%;
+}
+/*
+	=========================================================
+			PROJECT FILTER WRAP END
+	=========================================================
+*/
+
+
+/*
+	=========================================================
+				new home page03  start
+	=========================================================
+*/
+.main_banner.banner03:before{
+	background-color: #333;
+}
+.pet_about02_wrap{
+	background-image: url("extra-images/about04.jpg");
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size: 50%, 100%;
+	padding:0px 0px 0px;
+}
+.pet_about02_row{
+	display: flex;
+}
+.pet_about02_column{
+	display: flex;
+}
+.pet_about02_left_column {
+    width: 50%;
+}
+.pet_about02_column.chang-column{
+	flex-direction: row-reverse;
+}
+.pet_about02_left_column .pet_about_text{
+	padding: 0px;
+    text-align: center;
+    display: flex;
+    flex-shrink: 57;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.pet_about02_left_column .pet_about_text h3{
+	font-family: 'Poppins', sans-serif;
+	text-transform: capitalize;
+	font-weight: 600;
+}
+.pet_about02_left_column .pet_about_text h3,
+.pet_about02_left_column .pet_about_text p{
+	color:#fff;
+}
+.pet_about02_left_column .main_button{
+	border-color:#fff;
+	background-color: #fff;
+}
+.pet_about02_column .slick-slider{
+	width: 50%;
+}
+.pet_about02_left_column .pet_about02_slider .pet_about_text{
+	padding:117px 0px;
+}
+.pet_about02_left_column .slick-prev, .pet_about02_left_column .slick-next{
+	display: none !important;
+}
+.pet_owner_wrap{
+	padding: 0px 0px;
+}
+.pet_owner_wrap .left-fig{
+	width: 44%;
+}
+.pet_owner_wrap .pet_about02_left_column {
+    width: 56%;
+}
+.pet_owner_wrap .pet_about_text{
+	padding: 0px 50px;
+}
+.play-icon{
+	position: absolute;
+	top: 50%;
+	left: 0px;
+	right: 0px;
+	height: 70px;
+	width:70px;
+	border-radius: 100px;
+	color: #fff;
+	font-size: 30px;
+	text-align: center;
+	line-height: 70px;
+	margin: -30px auto;
+}
+
+/* blog detail page start*/
+
+.blog_product{
+	border: 2px solid #ff8931;
+    border-radius: 10px;
+    padding:40px 50px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+}
+.blog_product:before{
+	position: absolute;
+    content: "\f10e";
+    top: auto;
+    left: auto;
+    right: 80px;
+    bottom: -70px;
+    font-family: fontawesome;
+    font-size: 50px;
+    z-index: -1;
+    opacity: 0.1;
+    font-size: 220px;
+}
+.blog_product p{
+	font-size: 18px;
+    font-weight: 600;
+    line-height: 32px !important;
+}
+.blog_product h5{
+	font-weight: 600;
+	color:#000;
+}
+.blog_discription{
+	display: flex;
+	margin-bottom: 50px;
+}
+.discription {
+    flex-shrink: 9;
+}
+.social_detail{
+	display: flex;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+.social_detail h6{
+	font-weight: 600;
+	margin-right: 20px;
+	text-transform: capitalize;
+	margin-bottom: 0px;
+}
+.social_detail .widget_social_share li a {
+	border-color:#333;
+	color:#333;
+}
+.pet_author{
+    padding: 10px 10px;
+    border: 1px solid #d7d7d7;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+}
+.pet_author figure{
+	border-radius: 100%;
+    height: 160px;
+    width: 490px;
+}
+.pet_author_text{
+    overflow: hidden;
+    padding: 15px 0px 15px 30px;
+}
+.pet_author_text h5{
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.pet_author_text p{
+    margin-bottom: 0px;
+}
+/*pet comments start*/
+.pet_comments {
+    margin-bottom: 40px;
+}
+.comment > li ul {
+    padding-left: 114px;
+}
+.sidebar_title {
+    position: relative;
+    margin-bottom: 30px;
+    line-height: 18px;
+    text-transform: capitalize;
+}
+.pet_comment_item {
+    position: relative;
+    padding: 40px 0px 34px;
+    border-bottom: 1px solid #e1e1e1;
+    background-color: #fdf9f9;
+    padding: 30px 30px;
+    margin-bottom: 20px;
+}
+.pet_comment_item figure {
+    width: auto;
+    border-radius: 100%;
+}
+.pet_comment_text {
+    overflow: hidden;
+    padding: 0px 0px 0px 20px;
+    position: relative;
+}
+.pet_comment_text h5 {
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+.pet_comment_text span {
+    display: inline-block;
+    margin-bottom: 12px;
+}
+.pet_comment_text p {
+    margin-bottom: 0px;
+}
+.pet_comment_text a {
+    position: absolute;
+    top: 5px;
+    right: 2px;
+}
+.pet_comment_text a i{
+	margin-right: 5px;
+}
+/*leave to comments*/
+.contact_form_column.blog-detail{
+	width:100%;
+}
+.blog-detail .contact_filed input{
+	border :1px solid #ddd;
+}
+
+
+/* pet page start */
+.pet_shop_wraper{
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+
+}
+.pet_shop_row{
+	display: flex;
+	flex-direction: row;
+    flex-wrap: wrap;
+}
+.pet_shop_column {
+    padding: 20px 20px 20px;
+    text-align: center;
+    background-color: #ebebeb;
+    margin: 0px 10px 30px;
+    width: 31%;
+    border-radius: 8px;
+}
+.pet_shop_column figure {
+    width: auto;
+    float: none;
+    padding: 40px 60px;
+    display: inline-flex;
+    background-color: #fff;
+}
+.pet_heart_icon{
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	height: 35px;
+	width:35px;
+	line-height: 35px;
+	border-radius: 100px;
+	color: #fff;
+}
+.pet_shop_text{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0px 0px;
+    align-items: flex-start;
+}
+.pet_shop_text h4{
+	font-weight: 600;
+	text-transform: capitalize;
+	margin-bottom: 4px;
+	font-size: 24px;
+}
+.pet_shop_text span{
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 15px;
+}
+.product_price{
+	display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.product_price h6{
+	font-weight: 700;
+	margin-bottom: 0px;
+}
+.product_price  > a{
+	display: inline-block;
+    height: 40px;
+    width: 40px;
+    border-radius: 100px;
+    line-height: 40px;
+    font-size: 18px;
+    background-color: #454037;
+}
+.loadmore_btn{
+	margin-top: 40px;
+	display: flex;
+	justify-content: center;
+    width: 100%;
+}
+.loadmore_btn a{
+	text-transform: capitalize;
+}
+.margin0{
+	margin-bottom: 0px;
+}
+ /*
+      ======================================================================================
+									OUR	pet DETAIL PAGE START
+      ======================================================================================
+}
+*/
+.pet_detail_row{
+	display: flex;
+}
+.pet_product_slider{
+	margin-bottom:20px;
+	border: 1px solid #eaeaea;
+	padding-bottom: 20px;
+	margin-right:40px;
+}
+.pet_product_detail{
+    position: relative;
+    width: 50%;
+}
+.pet_product_detail .bx-wrapper .bx-controls-direction a{
+	display:none;
+}
+.pet_product_detail  .bx-wrapper{
+	margin-bottom:0px;
+}
+.pet_product_detail .bxslider {
+	padding:0px 0px;
+	height:auto;
+}
+.pet_img_list a{
+	display:inline-block;
+	margin-right:8px;
+	border: 1px solid #eaeaea;
+	width: 17.1%;
+}
+.pet_img_list a.active{
+	background-color:#000;
+}
+.pet_img_list a:last-child{
+	margin-right:0px;
+}
+/*d-help-pet-product detail start*/
+div#bx-pager {
+    position: absolute;
+    bottom: -4px;
+}
+.pet_detail_text {
+    width: 50%;
+}
+.pet_detail_text h2{
+	margin-bottom:12px;
+	font-weight: 600;
+	text-transform: capitalize;
+}
+.pet_product_review{
+	margin-bottom:11px;
+}
+.pet_product_review .pet_product_rating{
+	margin-right:18px;
+	float: left;
+}
+.pet_product_review .pet_product_rating a{
+	margin:0px 0px;
+}
+.pet_product_price{
+	margin-bottom:20px;
+}
+.pet_product_price h4{
+	display:inline-block;
+	margin-right:15px;
+	margin-bottom:0px;
+}
+.pet_product_price h4 del{
+	font-size: 18px;
+	position: relative;
+	top: -2px;
+}
+.pet_product_price h4:last-child{
+	margin-right:0px;
+}
+.pet_detail_text > p{
+	margin-bottom:34px;
+}
+.pet_spinner_list .theme_btn{
+	padding: 13px 40px 13px;
+    font-weight: 600;
+    color: #fff;
+    text-transform: capitalize;
+}
+.pet_spinner_list .theme_btn:hover{
+	background-color:#333;
+}
+/*d-help-pet-spinner start*/
+.pet_spinner_list{
+	padding:35px 0px;
+	border-bottom:1px solid #eaeaea;
+	border-top:1px solid #eaeaea;
+}
+.pet_spinner_list .ui-spinner a.ui-spinner-button{
+	height:50px;
+	width:42px;
+}
+.pet_spinner_list .ui-spinner-input{
+	text-align:center;
+	margin:0px 0px;
+	padding:0px 0px;
+	color:#999999;
+}
+.pet_spinner_list .ui-widget.ui-widget-content {
+    border: 1px solid #c5c5c5;
+    width: 140px;
+	margin-right:18px;
+}
+.pet_spinner_list .ui-button.ui-spinner-up  {
+	left:0px;
+	border-right:1px solid #d4d4d4;
+	border-left:none;
+}
+.pet_spinner_list .ui-button-icon.ui-icon.ui-icon-triangle-1-n:before{
+    position:absolute;
+	content:"";
+	top:2px;
+	left:4px;
+	right:0px;
+	bottom:0px;
+	background-image:url("../images/plus.png");
+	background-repeat:no-repeat;
+}
+.pet_spinner_list .ui-button-icon.ui-icon.ui-icon-triangle-1-s:after{
+	background-image:url("../images/minuse.png");
+	right:0px;
+	left:6px;
+	position:absolute;
+	content:"";
+	top:8px;
+	bottom:0px;
+	font-size:16px;
+	background-repeat:no-repeat;
+}
+.pet_tags_icon{
+	padding:30px 0px 40px 0px;
+}
+.pet_tags{
+	margin-bottom:30px;
+}
+.pet_tags li{
+	text-transform:capitalize;
+	margin-bottom:5px;
+}
+.pet_tags li:last-child{
+	margin-bottom:0px;
+}
+.pet_tags li span{
+	font-weight:bold;
+	margin-right:5px;
+	text-transform:uppercase;
+}
+.pet_social_icon li{
+	float:left;
+	width:auto;
+	margin-right:5px;
+}
+.pet_social_icon li:last-child{
+	margin-right:0px;
+}
+.pet_social_icon li a{
+	display:inline-block;
+	height:50px;
+	width:50px;
+	text-align:center;
+	line-height:50px;
+	background-color:#f8f8f8;
+	font-size:16px;
+}
+.pet_social_icon li a.active,
+.pet_social_icon li a:hover{
+	color:#fff;
+}
+/*d-help-pet-tabs start*/
+.tab-content,
+.pet_tabs_list,
+.pet_tab_text,
+.pet_detail_tabs{
+	float:left;
+	width:100%;
+}
+.pet_detail_tabs{
+	background-color:#f8f8f8;
+	padding:80px 0px 72px;
+}
+.tabs.pet_tabs_list{
+	margin-bottom: 30px;
+	border-bottom: 1px solid #e9e9e9;
+	display: flex;
+}
+.tabs-main-wrapper ul.tabs{
+	margin-bottom:25px;
+	border-bottom:1px solid #e9e9e9;
+}
+.tabs.pet_tabs_list li a{
+	display:inline-block;
+	padding:15px 25px;
+	background-color:#eaeaea;
+	text-transform:capitalize;
+	font-weight: 600;
+	border-radius: 8px;
+}
+.tabs.pet_tabs_list li{
+	border:none;
+	border-radius:0px;
+	border:none;
+	margin-right: 5px;
+}
+.tabs.pet_tabs_list li.active{
+	color:#fff;
+}
+.tabs.pet_tabs_list li.active a{
+	color:#fff;
+	border-radius: 8px;
+}
+.pet_tab_text p{
+	color:#000;
+	margin-bottom: 30px;
+	line-height: 30px;
+}
+.pet_tab_text p:last-child{
+	margin-bottom: 0px;
+}
+a:focus, a:hover{
+	outline: none !important;
+}
+.pet_tab_review{
+	display: flex;
+	border: 1px solid #e5dfdf;
+	flex-wrap: wrap;
+	padding: 50px 50px;
+	margin-bottom: 20px;
+}
+.pet_tab_review > figure{
+	width: auto;
+}
+.pet_review_text{
+	padding-left: 20px;
+}
+.review_rating{
+	display: flex;
+	margin-bottom: 5px;
+}
+.review_rating li{
+	margin-right: 6px;
+}
+.pet_review_text h6{
+	margin-bottom: 5px;
+	font-weight: 500;
+}
+.pet_review_text span{
+	text-transform: capitalize;
+}
+.pet_tab_review > p{
+	flex-wrap: wrap;
+	display: flex;
+	width:100%;
+	flex-direction: column;
+	margin-top: 30px;
+}
+
+/*
+	=====================================
+		pet PRODUCT ITEM START
+	=====================================
+*/
+.pet_item_price_list,
+.pet_item_social,
+.pet_item_price,
+.pet_item_text,
+.pet_item_fig,
+.pet_product_item{
+	float:left;
+	width:100%;
+}
+.pet_product_item{
+	padding:72px 0px 80px;
+}
+.pet_item_fig figure{
+	border:1px solid #e1e1e1;
+}
+.pet_search{
+	position:absolute;
+	top:50%;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	text-align:center;
+	height:50px;
+	width:50px;
+	border:2px solid #fff;
+	border-radius:100%;
+	line-height:46px;
+	margin:-30px auto;
+	transform:scale(2.5);
+	-moz-transform:scale(2.5);
+	-webkit-transform:scale(2.5);
+	opacity:0;
+	background-color:#fff;
+	z-index: 2;
+}
+.pet_item_fig:hover .pet_search{
+	transform:scale(1);
+	-moz-transform:scale(1);
+	-webkit-transform:scale(1);
+	opacity:1;
+}
+.pet_item_text{
+	padding:16px 0px 0px 0px;
+}
+.pet_item_text h5{
+	margin:0px 0px 15px;
+	padding-bottom:15px;
+	display:block;
+	border-bottom:1px solid #e1e1e1;
+	text-transform:capitalize;
+	font-size: 20px;
+}
+.pet_item_icon li,
+.pet_item_rating li,
+.pet_item_price span{
+	float:left;
+	width:auto;
+}
+.pet_item_fig:hover .pet_item_price_list{
+	opacity:0;
+}
+.pet_item_price span{
+	font-size:18px;
+}
+.pet_item_rating{
+	float:right;
+	width:auto;
+	padding: 2px 0px;
+}
+.pet_item_icon{
+	float:left;
+	margin-bottom: 0px;
+	width:auto;
+}
+.pet_item_social {
+    margin-top:-30px;
+	opacity:0;
+	position:relative;
+	z-index:1;
+}
+.pet_item_fig:hover .pet_item_social{
+	margin-top:-30px;
+	opacity:1;
+}
+.pet_item_icon li{
+	margin-right:5px;
+}
+.pet_item_icon li a{
+	display:inline-block;
+	height:36px;
+	width:36px;
+	line-height:36px;
+	text-align:center;
+	border:1px solid #e1e1e1;
+	border-radius: 8px;
+}
+.pet_item_social > a:hover,
+.pet_item_icon li a:hover{
+	color:#fff;
+}
+.pet_item_social > a{
+	display:inline-block;
+	width:138px;
+	text-align:center;
+	text-transform:uppercase;
+	font-weight:600;
+	padding:7px 0px;
+	border:1px solid #e1e1e1;
+	border-radius: 8px;
+}
+
+/*
+      ======================================================================================
+									OUR	pet DETAIL PAGE END
+      ======================================================================================
+*/
+/*
+      ======================================================================================
+									pet	appointment start
+      ======================================================================================
+*/
+.pet_appointment_wrap .container {
+    width: 1400px;
+}
+.pet_appointment_row {
+    display: flex;
+    padding: 30px 30px;
+    background-color: #f6f5f5;
+    box-shadow: 0px 6px 12px -1px #ddd;
+}
+.appointment-main-title{
+	margin-bottom: 30px;
+	font-weight: 600;
+}
+.pet_appointment_row h4{
+	width:100%;
+	margin-bottom: 20px;
+	font-weight: 500;
+}
+.appiontment_list{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-right: 20px;
+}
+.pet_appointment_colum{
+	margin-right: 20px;
+	margin-bottom: 15px;
+	width: 47.5%;
+}
+.pet_appointment_colum.full-width{
+	width:100%;
+}
+.pet_appointment_colum h6{
+	margin-bottom: 15px;
+	font-weight: 500;
+	text-transform: capitalize;
+}
+.pet_appointment_colum select{
+	background-color: #fff;
+	border:none;
+	border-bottom: 1px solid #ddd;
+	text-transform: uppercase;
+}
+input#demo {
+    border: none;
+    box-shadow: 0px 0px 0px 0px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0px;
+}
+.calendar thead tr:nth-child(2) th {
+  padding: 2px 3px;
+}
+.calendar table > tbody > tr{
+	line-height: 30px;
+}
+.date:not(.disabled):active{
+	background-color: #ff8931 !important;
+}
+.calendar span {
+    padding: 2px 4px;
+}
+.pet_appointment_colum .calendar .selected {
+    background-color: #ff8931 !important;
+ }
+.datepicker {
+    width: 100%;
+    margin-top: 6px;
+}
+.datepicker .calendar{
+	width:100% !important;
+}
+.workin_hours {
+    padding: 20px 40px;
+    background-color: #fff;
+}
+.workin_hours span {
+	letter-spacing: 2px;
+	margin-bottom: 4px;
+	display: block;
+}
+.workin_hours h4{
+	font-weight: 500;
+	margin-bottom: 10px;
+}
+.workin_hours p{
+	margin-bottom: 25px;
+	line-height: 28px;
+}
+.workin_hours .pet_widget_link li a{
+	color:#333;
+}
+.workin_hours .pet_widget_link li{
+	display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.pet_appointment_colum .btn2{
+	padding: 16px 50px;
+	border-color:#999;
+	text-transform: capitalize;
+}
+/*fig over theam start*/
+.image-layer-affect{
+	position:relative;
+}
+.image-layer-affect img{
+	opacity: 0.95;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: scale3d(1.05,1.05,1);
+	transform: scale3d(1.05,1.05,1);
+}
+.image-layer-affect:before{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255,255,255,0.5);
+	content: '';
+	-webkit-transition: -webkit-transform 0.6s;
+	transition: transform 0.6s;
+	-webkit-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+	transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+}
+.image-layer-affect:hover img {
+	opacity: 0.4;
+	-webkit-transform: scale3d(1,1,1);
+	transform: scale3d(1,1,1);
+}
+.image-layer-affect:hover:before {
+	-webkit-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+	transform: scale3d(1.9,2.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+}
+.pet_service02_column:hover .image-layer-affect img,
+.pet_widget_post:hover .image-layer-affect img,
+.pet_price_table_column:hover .image-layer-affect img{
+	opacity: 0.4;
+	-webkit-transform: scale3d(1,1,1);
+	transform: scale3d(1,1,1);
+}
+.pet_service02_column:hover .image-layer-affect:before,
+.pet_widget_post:hover .image-layer-affect:before,
+.pet_price_table_column:hover .image-layer-affect:before{
+-webkit-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+	transform: scale3d(1.9,2.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+}
+/*fig over theam end*/
+.main-wrapper{
+	overflow: hidden;
+	position: relative;
+}

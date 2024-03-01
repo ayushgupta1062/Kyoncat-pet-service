@@ -1,0 +1,71 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}{{page_title|default:'Testimoinals'}}{% endblock %}
+{% block css %}{% endblock %}
+{% block content %}
+
+{% include 'portal/shared/left-menu.html' %}
+<main class="main-wrap">
+    {% include 'portal/shared/top-menu.html' %}
+    <section class="content-main">
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">Testimoinals</h2>                
+            </div>
+            <div>
+                <a href="{% url 'portal_testimoinals_add' %}" class="btn btn-primary"><i class="text-muted material-icons md-post_add"></i>Add</a>
+            </div>
+        </div>
+        <div class="card mb-4 ">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Content</th>
+                            <th>Status</th>
+                            <th class="text-end">Last Updated</th>
+                            <th class="text-end">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in model %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>
+                                {% if data.image_directory %}
+                                <img src="{{data.image_directory.image.url}}" class="img-sm img-thumbnail" alt="{{data.image_directory.name}}">
+                                {% elif data.image %}
+                                <img src="{{data.image.url}}" class="img-sm img-thumbnail" alt="{{data.name}}">
+                                {% endif %}
+                            </td>
+                            <td>{{data.name}}</td>
+                            <td>{{data.content|safe}}</td>
+                            <td>
+                                {% if data.is_active %}
+                                    <span class="badge badge-pill badge-soft-success">Active</span>
+                                {% else %}
+                                    <span class="badge badge-pill badge-soft-danger">Draft</span>
+                                {% endif  %}
+                            </td>
+                            <td class="text-end">{{data.modified_date}}</td>
+                            <td>
+                                <div class="col-action text-end">
+                                    <a href="{% url 'portal_testimoinals_edit' data.id %}" class="btn btn-sm font-sm rounded btn-brand"> <i class="material-icons md-edit"></i> Edit </a>
+                                    <a href="#" class="btn btn-sm font-sm btn-light rounded delete-data" data-id="{{data.id}}" data-label="{{data.name}}"> <i class="material-icons md-delete_forever"></i> Delete </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- card .// -->
+    </section>
+</main>
+{% endblock %}
+{% block js %}{% endblock %}

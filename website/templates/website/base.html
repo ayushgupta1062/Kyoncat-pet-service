@@ -1,0 +1,100 @@
+﻿{% load static website_tags %}
+{% getNavigation as navigation %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="keyword" content="{% block keyword %}{% endblock %}">
+
+    <!-- Slick Slider CSS -->
+    <link href="{% static 'website' %}/css/slick-theme.css" rel="stylesheet" />
+    <!-- Slick Slider CSS -->
+    <link href="{% static 'website' %}/css/animate.css" rel="stylesheet" />
+    <!-- Pretty Photo CSS -->
+    <link href="{% static 'website' %}/css/prettyPhoto.css" rel="stylesheet">
+    <!-- Slick Slider CSS -->
+    <link href="{% static 'website' %}/css/animation.css" rel="stylesheet" />
+    <!-- Slick Slider CSS -->
+    <link href="{% static 'website' %}/css/bootstrap.css" rel="stylesheet" />
+    <!-- Slick Slider CSS -->
+    <link href="{% static 'website' %}/css/demo.css" rel="stylesheet" />
+    <!-- ICONS CSS -->
+    <link href="{% static 'website' %}/css/font-awesome.css" rel="stylesheet">
+    <!--css/jquery.bxslider.css start-->
+    <link href="{% static 'website' %}/css/jquery.bxslider.css" rel="stylesheet">
+    <!-- Custom Main StyleSheet CSS -->
+    <link href="{% static 'website' %}/css/component.css" rel="stylesheet">
+    <!-- Typography CSS -->
+    <link href="{% static 'website' %}/css/typography.css" rel="stylesheet">
+    <!-- Slick Slider CSS -->
+    <link href="{% static 'website' %}/css/style-icon.css" rel="stylesheet" />
+    <!-- Custom Main StyleSheet CSS -->
+    <link href="{% static 'website' %}/css/style.css" rel="stylesheet">
+    <!-- Color CSS -->
+    <link href="{% static 'website' %}/css/color.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="{% static 'website' %}/css/responsive.css" rel="stylesheet">
+
+    {% block css%}{% endblock %}
+
+</head>
+
+<body class="">
+    <div class="main-wrapper">        
+        {% block content %}{% endblock %}
+    </div>
+    <!--pet widget end-->
+    <!--Jquery Library-->
+    <script src="{% static 'website' %}/js/jquery.js"></script>
+    <!--Bootstrap core JavaScript-->
+    <script src="{% static 'website' %}/js/bootstrap.js"></script>
+    <!--Slick Slider JavaScript-->
+    <script src="{% static 'website' %}/js/slick.min.js"></script>
+    <!--Pretty Photo JavaScript-->
+    <script src="{% static 'website' %}/js/jquery.prettyPhoto.js"></script>
+    <!--Pretty Photo JavaScript-->
+    <script src="{% static 'website' %}/js/demo5.js"></script>
+    <!--Pretty Photo JavaScript-->
+    <script src="{% static 'website' %}/js/modernizr.custom.js"></script>
+    <!--Pretty Photo JavaScript-->
+    <script src="{% static 'website' %}/js/jquery.dlmenu.js"></script>
+    <!--js/jquery.bxslider.min.js start-->
+    <script src="{% static 'website' %}/js/jquery.bxslider.min.js"></script>
+    <!--Pretty Photo JavaScript-->
+    <script src="{% static 'website' %}/js/downCount.js"></script>
+    <!--Counter up JavaScript-->
+    <script src="{% static 'website' %}/js/waypoints.js"></script>
+    <!--Custom JavaScript-->
+    <script src="{% static 'website' %}/js/custom.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var $body = $(document.body);
+            var _SCROLL_FIXED_CUTOFF = _SCROLL_FIXED_CUTOFF || ($(window).height() >= 825 ? 300 : 75),
+                _HEADER_HEIGHT = _HEADER_HEIGHT || 825;
+
+            $(window).scroll(function (e) {
+                if ($('.main_header[data-no-scroll]').length)
+                    return;
+                if (this.pageYOffset >= _SCROLL_FIXED_CUTOFF && !$body.hasClass('scrolled')) {
+                    $body.addClass('scrolled');
+                } else if (this.pageYOffset < _SCROLL_FIXED_CUTOFF && $body.hasClass('scrolled')) {
+                    $body.removeClass('scrolled');
+                }
+                if (this.pageYOffset >= _HEADER_HEIGHT) {
+                    _header_carousel_active = false;
+                } else {
+                    _header_carousel_active = true;
+                }
+            });
+        });
+    </script>
+    {% block js%}{% endblock%}
+</body>
+
+</html>

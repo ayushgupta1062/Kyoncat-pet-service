@@ -1,0 +1,73 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}{{page_title|default:'Edit Page'}}{% endblock %}
+{% block css %}{% endblock %}
+{% block content %}
+
+{% include 'portal/shared/left-menu.html' %}
+<main class="main-wrap">
+    {% include 'portal/shared/top-menu.html' %}
+    <form class="content-main pt-0" enctype='multipart/form-data' method="post" id="formProduct"> {% csrf_token %}
+        <input type="hidden" name="content" id="htmlContent" required>
+        <div class="container row pt-25" id="opt-header">
+            <div class="col-lg-8">
+                <div class="content-header">
+                    <h2 class="content-title">Updated Page</h2>
+                    <div>
+                        <button class="btn btn-light rounded font-sm mr-5 text-body hover-up" onclick="history.back()"> <i class="icon material-icons md-arrow_back mr-5"></i> Black</button>
+                        <button class="btn btn-md rounded font-sm hover-up"> <i class="icon material-icons md-save mr-5"></i> Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h6>1. General info</h6>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="mb-4">
+                                    <label class="form-label">Navigation <span class="text-danger">*</span></label>
+                                    <select class="form-select" placeholder="Select Status" name="navigation" required >
+                                      <option value="0">Home Page</option>
+                                      {% for data in navigation %}
+                                        <option value="{{data.id}}" {% if data.id == page.navigation.id %}selected{% endif %}>{{data.name}}</option>
+                                      {% endfor%}
+                                    </select>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Name <span class="text-danger">*</span></label>
+                                    <input type="text" name="name" value="{{page.name|default:''}}" required placeholder="Page Name" class="form-control slug-title">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Status <span class="text-danger">*</span></label>
+                                    <select class="form-select" placeholder="Select Status" name="is_status" required >
+                                        <option value="True" {% if page.is_active %}selected{% endif %}>Publish</option>
+                                        <option value="False" {% if not page.is_active %}selected{% endif %}>Draft</option>
+                                    </select>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Is Home Page Content <span class="text-danger">*</span></label>
+                                    <select class="form-select" placeholder="Select Status" name="is_home" required >
+                                        <option value="False" {% if not page.is_home %}selected{% endif %}>False</option>
+                                        <option value="True" {% if page.is_home %}selected{% endif %}>True</option>
+                                    </select>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Priority <span class="text-danger">*</span></label>
+                                    <input type="number" min="0" step="1" value="{{page.priority}}" name="priority" required placeholder="Priority" class="form-control">
+                                </div>
+                            </div> <!-- col.// -->
+                        </div> <!-- row.// -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- card .// -->
+    </form>
+</main>
+{% endblock %}
+{% block js %}{% endblock %}

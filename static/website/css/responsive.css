@@ -1,0 +1,1562 @@
+@media  (max-width: 1700px){
+	.top_banner .main_banner_row {
+	    padding: 150px 60px 0px 90px;
+	}
+}
+/*
+=================================================
+				UP FROM 1200PX
+=================================================
+*/ 
+@media (max-width: 1400px){
+	.pet_company_wrap:before {
+		top: -68px;
+	}
+	.top_banner .mian_banner_text {
+	    padding-top: 20px;
+	    z-index: 999;
+	}
+	.main_banner  .divider-img-500113{
+		width: 2000px;
+		height: 41px;
+		bottom: 21px;
+	}
+	.main_banner{
+		min-height: 680px;
+	}
+	.top_banner .main_banner_row {
+	  padding: 150px 251px 0px 130px;
+	}
+
+	.main_banner.responsive-banner {
+	  min-height: 859px;
+	}
+}
+@media (max-width: 1366px){
+	.banner_fig_slider a.fig03 {
+	    right: -110px;
+    	bottom: 22px;
+	}
+	.pet_appointment_wrap .container {
+	    width: 1220px;
+	}
+	.navigation{
+	    padding-left:0px;
+	}
+	.main_banner{
+		min-height: 810px;
+	}
+	.main_banner .divider-img-500113 {
+	    height: 51px;
+	    top: -73px;
+	    width: 2410px;
+	}
+	.main_banner .main_banner_row {
+	    padding: 150px 251px 110px 100px;
+	}
+	.top_banner{
+		min-height: 0px;
+	}
+	 .top_banner .mian_banner_text{
+	 	padding-top: 20px;
+	}
+	.divider-img-500113 {
+	    height: 140px;
+	    bottom: 0px;
+	    top: 140px;
+	}
+	.top_banner .main_banner_row {
+	    padding: 150px 251px 0px 80px;
+	}
+	.banner_fig_slider a.fig04 {
+	    bottom: 124px;
+	    right: -227px;
+	}
+	.main_banner:before{
+		bottom: 151px;
+    	top: -400px;
+    	right: -345px;
+	}
+	.navigation li {
+	  margin-right: 30px;
+	}
+	.main_top_bar .main_button {
+	  padding: 16px 30px;
+	}
+	.mian_banner_text {
+ 	   padding-top: 0px;
+	}
+	.main_banner_row{
+		padding: 150px 251px 0px 100px;
+	}
+	.banner_fig_slider a.fig02, .banner_fig_slider a.fig01 {
+	  	position: absolute;
+	    bottom: 170px;
+	    left: -207px;
+	}
+	.banner_fig_slider a.fig02 {
+	  bottom: 70px;
+    	left: -116px;
+	}
+	.pet_about_text h2{
+		font-size: 34px;
+	}
+	.pet_company_wrap:before {
+		top: -66px;
+	}
+	.mian_banner_text h1{
+		font-size: 80px;
+	}
+	.main_banner:after {
+		bottom: 66px;
+	}
+	.sub_banner_position_fig{
+		bottom: -77px;
+	}
+	.main_banner.responsive-banner {
+	  min-height: 729px;
+	}
+	.main_banner.responsive-banner .divider-img-500113{
+		top: 0px;
+	}
+	.main_banner.responsive-banner .main_banner_row {
+	  padding: 150px 251px 110px 200px;
+	}
+}
+/*
+=================================================
+			FROM 992PX TO 1199PX
+=================================================
+*/ 
+@media (min-width: 992px) and (max-width: 1199px){
+	.custom-container{
+		width:100%;
+	}
+	.pet_appointment_wrap .container {
+	    width: 100%;
+	}
+	.pet_appointment_row{
+		flex-direction: column;
+	}
+	.main_header.header02{
+		padding: 21px 0px 0px;
+	}
+	.header02 .main_top_bar{
+    	padding: 15px 13px;
+	}
+	.main_banner_row{
+		justify-content: center;
+	}
+	.main_banner .main_banner_row {
+	    padding: 150px 141px 110px 100px;
+	}
+	.pet_team_column{
+		width :30%;
+	}
+	.bar_menue {
+	    padding-right: 20px;
+	}
+	.main_btn {
+		padding: 14px 12px;
+	}
+	.navigation li {
+	    margin-right: 10px;
+	}
+	.main_banner:before{
+		background:none;
+	}
+	.pet_service_list ul li{
+		    margin-right: 20px;
+	}
+	.banner_small_text{
+		margin-bottom: 20px;
+	}
+	.banner_large_text{
+		margin-bottom: 30px;
+	}
+	.banner_fig_slider{
+		display: none;
+	}
+	.main_banner_row {
+	  padding:110px 0px 120px 0px;
+	}
+	.mian_banner_text h1{
+		line-height: 70px;
+		margin-bottom: 30px;
+		font-size: 80px;
+	}
+	.banner_video{
+		align-items: center;
+	}
+	.navigation{
+		padding-left: 20px;
+	}
+	.main_header{
+		padding: 50px 10px 0px;
+	}
+	.main_button {
+    	padding: 16px 20px;
+	}
+	.main_banner:after{
+		left: 0px;
+		border-radius: 0px;
+		transform: rotate(0);
+	}
+	.mian_banner_text {
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    padding-top: 40px;
+	}
+	.main_banner_row:after{
+		background-size: 88% 99%;
+	}
+	.main_banner{
+		background-color: #272522;
+	}
+	.pet_about_text h2{
+		font-size: 34px;
+	}
+	.pet_service02_column h5{
+		font-size: 22px;
+	}
+	.pet_gallery_fig{
+		flex-shrink: 2;
+	}
+	.pet_client_list {
+	    padding-left: 40px;
+	    padding-right: 8px;
+	}
+	.mian_heading h3{
+		font-size: 35px;
+	}
+	.pet_exercise_text {
+	    flex-shrink: 1;
+	}
+	.pet_company_wrap:before{
+		top: -48px;
+	}
+	.pet_widget:after{
+		background-image: none;
+	}
+	.pet_widget_column.widget_service{
+		width: 20%;
+	}
+	.pet_widget_column.widget_post{
+		width:30%;
+	}
+	/* home page two */
+	.pet_service02_column{
+		width: 30%;
+	}
+	.child_service_text h5{
+		font-size: 19px;
+	}
+	.child_service_row .slick-prev {
+	  left: 42%;
+	}
+	/* sab banner start*/
+	.sab-banner-wraper:before{
+		bottom: 33px;
+	}
+	.service03 .pet_service_list li a{
+		font-size: 14px; 
+	}
+	.sidebar_title{
+		font-size: 18px;
+	}
+	.sidebar_support_text h5, .sidebar_support_text h4{
+		font-size: 22px;
+	}
+	.sidebar_column{
+		padding: 25px 20px 30px;
+	}
+	/* blog page start */
+	.child_service_info li a {
+    	font-size: 10px;
+	}
+	/*shop page start*/
+	.pet_detail_text h2{
+		font-size: 34px;
+	}
+	.pet_img_list a {
+	    width: 23.1%;
+	    margin: 9px;
+	}
+	/*gallery page start*/
+	.gallery01 .project_fig {
+	    width: 46%;
+	}
+	.pet_counter_wrap .container {
+	    width: 100%;
+	}
+	.website-divider-container-500113{
+		z-index: 1;
+	}
+	.top_banner .mian_banner_text {
+	  padding-top: 70px;
+	  z-index: 999;
+	  padding-bottom: 80px;
+	}
+	.main_banner.top_banner  .divider-img-500113{
+		top: -60px;
+	}
+	.top_banner .mian_banner_text h1{
+		 margin-bottom: 10px;
+	}
+	.top_banner .mian_banner_text p{
+		   margin-bottom: 25px;
+	}
+	.pet_widget::before,
+	.pet_team_detail_row .pet_team_text:before{
+		background-image: none;
+	}
+	.pet_team_detail_text{
+		padding-left: 20px;
+	}
+	.pet_team_detail_wrap .pet_search_filed {
+ 		 width: 48.7%;
+	}
+	.pet_client_wrap:before {
+		background-image:none;
+	}
+
+
+
+}
+/*
+=================================================
+			FROM 0PX TO 979PX
+=================================================
+*/ 
+@media (max-width: 991px){
+	.custom-container{
+		width:100%;
+		display: block;
+	}
+	.pet_client_wrap:before {
+		background-image:none;
+	}
+	.pet_team_detail_row .pet_team_text:before{
+		background-image: none;
+	}
+	.pet_service_list ul li{
+		margin-bottom: 40px;
+	}
+	.mian_banner_text{
+		padding-top: 40px;
+	}
+	.fig05{
+		right: 210px;
+	}
+	.fig02{
+		left: 190px;
+	}
+	.main_banner:before{
+		background:none;
+	}
+	.pet_service_list ul li{
+		    margin-right: 20px;
+	}
+	.banner_small_text{
+		margin-bottom: 20px;
+	}
+	.banner_large_text{
+		margin-bottom: 30px;
+	}
+	.banner_fig_slider{
+		display: none;
+	}
+	.main_banner_row {
+	  padding:110px 0px 120px 0px;
+	}
+	.mian_banner_text h1{
+		line-height: 70px;
+		margin-bottom: 30px;
+		font-size: 80px;
+	}
+	.banner_video{
+		align-items: center;
+	}
+	.navigation{
+		padding-left: 20px;
+	}
+	.main_header{
+		padding: 50px 10px 0px;
+	}
+	.main_button {
+    	padding: 16px 20px;
+	}
+	.main_banner:after{
+		left: 0px;
+		border-radius: 0px;
+		transform: rotate(0);
+	}
+	.mian_banner_text {
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	}
+	.main_banner_row:after{
+		background-size: 88% 99%;
+	}
+	.main_banner{
+		background-color: #272522;
+	}
+	.pet_about_text h2{
+		font-size: 29px;
+	}
+	.pet_service02_column h5{
+		font-size: 22px;
+	}
+	.pet_gallery_fig{
+		flex-shrink: 2;
+	}
+	.pet_client_list {
+	    padding-left: 40px;
+	    padding-right: 8px;
+	}
+	.mian_heading h3{
+		font-size: 35px;
+	}
+	.pet_exercise_text {
+	    flex-shrink: 1;
+	}
+	.pet_company_wrap:before{
+		top:-33px;
+	}
+	.pet_widget:after{
+		background-image: none;
+	}
+	.pet_widget_column.widget_service{
+		width: 20%;
+	}
+	.pet_widget_column.widget_post{
+		width:30%;
+	}
+	.navigation{
+		display: none;
+	}
+	.main_header .dl-menuwrapper {
+	  display: block;
+	  left: 120px;
+	}
+	.main_header .dl-menuwrapper li a:hover{
+		background-color:#333;
+	}
+	.main_header  .dl-menuwrapper li a{
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	}
+	.pet_service_row{
+		justify-content: space-evenly;
+    	flex-wrap: wrap;
+	}
+	.pet_about_text{
+		flex-shrink: 2;
+	}
+	.pet_about_text p {
+	    margin-bottom: 20px;
+	    line-height: normal;
+	}
+	.pet_flip_row{
+		width: 45%;
+	}
+	.pet_gallery_fig {
+	    flex-shrink: 1;
+	}
+	.pet_client_list{
+		flex-shrink: 3;
+	}
+	.pet_clien_text{
+		top: 38px;
+		left: -9px;
+    	line-height: 30px;
+	}
+	.pet_price_text:before{
+		top: -50px;
+	}
+	.pet_price_text h5{
+		font-size: 20px;
+	}
+	.pet_price_list li a{
+		font-size: 13px;
+	}
+	.pet_price_text .btn2{
+		padding: 10px 20px;
+	}
+	.pet_service_column h6{
+		font-size: 16px;
+	}
+	.pet_exercise_list_text{
+		margin-bottom: 20px;
+	}
+	/*home page two*/
+	.pet_service02_column{
+		width: 30%;
+	}
+	.pet_gallery_wrap {
+	  padding-left: 20px;
+	  padding-right: 20px;
+	}
+	.pet_client03_slider.slick-vertical.slick-initialized.slick-slider.slick-dotted {
+	  display: none;
+	}
+	.pet_client_fig {
+	  flex-shrink: 5;
+	}
+	.child_service_row .slick-prev {
+	  left: 38%;
+	}
+	.pet_service02_column{
+		padding: 35px 20px;
+	}
+/* sab banner start*/
+	.sab-banner-wraper:before{
+		bottom: 0px;	
+	}
+	.pet_team_column {
+	    width: 30%;
+	}
+	/*team detail page strat*/
+	.pet_experience_detail .bar{
+		width: 80% !important;
+	}
+	/* 404 page start */
+	.Pet_404_heading{
+		right: 120px;
+		top: 13px;
+	}
+	.pet_exercise_row {
+	    flex-direction: row;
+	    align-items: center;
+	    flex-wrap: wrap;
+	}
+	.pet_exercise_fig {
+	    margin-bottom: 40px;
+	}
+	/* service detail start */
+	.pet_service_detail{
+	    display: flex;
+	    flex-wrap: wrap;
+	    flex-direction: column;
+	}
+	.pet_service_detail_row {
+	    width: 100%;
+	    margin-bottom: 50px;
+	}
+	.pet_sidebar_widget {
+	    width: 100%;
+	    padding-left: 10px;
+	}	
+	/* blog page start */
+	.blog-post .child_service_column {
+	    width: 50%;
+	}
+	.child_service_text h5{
+		font-size: 18px;
+	}
+	.blog-full .child_service_text h5{
+		line-height: 25px;
+		width:100%;
+	}
+	.blog-full .child_service_text p {
+	    line-height: 12px;
+	    margin-bottom: 30px;
+	    font-size: 12px;
+	}
+	.blog_post_detail .child_service_row{
+		flex-wrap: wrap;
+	}
+	.blog_post_detail .pet_blog_full_detail {
+	    width: 100%;
+	}
+	.blog_post_detail.blog-full .child_service_text p {
+	    line-height: normal;
+	    margin-bottom: 30px;
+	    font-size: 18px;
+	}
+	.blog_post_detail.blog-full .child_service_text {
+	    padding: 30px 0px 29px 0px;
+	}
+	/*shop page start*/
+	.pet_shop_column{
+		width: 47%;
+	}
+	.pet_product_detail {
+	    width: 100%;
+	    margin-bottom: 60px;
+	}
+	.pet_detail_row {
+	    flex-wrap: wrap;
+	}
+	div#bx-pager {
+	    position: relative;
+	    bottom: 0px;
+	}
+	.pet_img_list a img,
+	.pet_detail_text {
+	    width: 100%;
+	}
+	.pet_detail_text > p {
+	    margin-bottom: 34px;
+	    font-size: 18px;
+	    line-height: 30px;
+	}
+	/*gallery page*/
+	.project_fig {
+	    width: 47%;
+	}
+	.gallery01 .project_fig {
+	    width: 46%;
+	}
+	/*contact us page start*/
+	.contact_serviec .pet_service_column{
+		width: 50%;
+	}
+	.contact_row,
+	.pet_service_row.contact_serviec{
+		justify-content: space-evenly;
+    	flex-wrap: wrap;
+	}
+	.contact_form_column {
+	    margin-right: 0px;
+	    margin-bottom: 50px;
+	}
+	/**/
+	.website-divider-container-500113{
+		z-index: 1;
+	}
+	.top_banner .mian_banner_text {
+	  padding-top: 20px;
+	  z-index: 999;
+	  padding-bottom: 180px;
+	}
+	.service_grid .pet_service02_column figure::after {
+		display: none;
+	}
+	.pet_service_column{
+		width:32%;
+	}
+	.top_banner .main_banner_row {
+	    padding: 150px 131px 0px 80px;
+	    justify-content: center;
+	}
+	.main_banner.top_banner  .divider-img-500113{
+		top: auto;
+	}
+	.pet_appointment_wrap .container {
+	    width: 100%;
+	}
+	.pet_appointment_row{
+		flex-direction: column;
+	}
+	.main_widget_row .widtget-hours{
+		width: 100%;
+	}
+	.main_widget_row .pet_widget_link li{
+		font-size: 14px;
+	}
+	.main_banner.responsive-banner .main_banner_row {
+	  padding: 150px 61px 110px 70px;
+	}
+	.pet_widget_row{
+		flex-wrap: wrap;
+	}
+	.pet_widget_column.widget_post {
+	    width: 50%;
+	}
+	.pet_widget_column {
+	    width: 50%;
+	}
+	.main_top_bar .main_button{
+		margin-left: 20px;
+	}
+	.pet_service_column{
+		margin-bottom: 20px;
+	}
+	.pet_service_column figure{
+		margin-bottom: 5px;
+	}
+	.pet_widget:before {
+		background-image:none;
+	}
+	.main_header .dl-menuwrapper {
+	  box-shadow: 0px 2px 1px 3px;
+	}
+	.main_top_bar .dl-menuwrapper .dl-menu{
+		box-shadow: 0px 0px 3px 1px #666;
+	}
+	.pet_team_detail_row {
+	  display: flex;
+	  flex-wrap: wrap;
+	}
+	.pet_team_detail_fig figure,
+	.pet_team_detail_fig figure img{
+		width:100%;
+	}
+	.pet_team_detail_text {
+ 	 padding-left: 10px;
+	}
+	.pet_team_detail_fig {
+	  width: 100%;
+	}
+	.pet_team_detail_wrap .pet_search_filed {
+ 		 width: 48%;
+	}
+	.pet_team_detail_wrap .contact_form_column:last-child {
+ 	 width: 100%
+	}
+	.pet_counter_row{
+		padding: 70px 0px 100px;
+	}
+}
+/*
+=================================================
+			FROM 768PX TO 979PX
+=================================================
+*/
+@media (min-width: 768px) and (max-width: 979px) {
+	
+  
+}
+/*
+=================================================
+			FROM 0PX TO 767PX
+=================================================
+*/
+@media (max-width: 767px){
+	.top_sign{
+		display: none;
+	}
+	.blog_discription{
+		flex-wrap: wrap;
+	}
+	.pet_service_column{
+		margin-bottom: 20px;
+	}
+	.pet_service_column figure{
+		margin-bottom: 5px;
+	}
+	.main_header .dl-menuwrapper{
+		left: 0px;
+	}
+	.main_top_bar .main_button{
+		display: none;
+	}
+	.mian_banner_text {
+	  padding:70px 0px 0px;
+	  width: 100%;
+	  text-align: center;
+	}
+	.mian_banner_text h1{
+	  line-height: 60px;
+	  margin-bottom: 20px;
+	  font-size: 46px;
+	}
+	.mian_banner_text p {
+	  margin-bottom: 29px;
+	  font-size: 14px;
+	  line-height: 27px;
+	}
+	.main_top_bar .dl-menuwrapper .dl-menu{
+		right:0px;
+	}
+
+	/*home page two*/
+	.pet_service02_column{
+	  width: 100%;
+	}
+	.pet_service02_column figure img, .pet_service02_column figure{
+		width:100%;
+	}
+	.textimonial_row .pet_client_fig {
+	  padding-top: 70px;
+	}
+	.pet_service_list li:nth-child(2n) {
+	  margin-left: 0px;
+	}
+	.textimonial_row .pet_client03_slider {
+		display: none;
+	}
+	.pet_client02_row .slick-prev, .pet_client02_row .slick-next{
+		display: none !important;
+	}
+	.pet_about_text p{
+	  margin-bottom: 20px;
+	  line-height: 30px;
+	}
+	.pet_client02_column .pet_client_list{
+		margin-bottom: 7px;
+	}
+	.pet_about_text {
+	    padding: 0px 50px;
+	}
+	.pet_exercise_text {
+ 	 	 padding-left: 15px;
+	}
+	.pet_company_wrap{
+		display: inline-block;
+	}
+	.pet_client_row {
+	    display: inline-block;
+	}
+	/* about us page */
+	.accordion{
+		width:100%;
+	}
+	.pet_accordian_row{
+		flex-direction: column;
+	}
+	.pet_accordian_fig {
+	    padding-right: 0px;
+	    margin-bottom: 30px;
+	}
+	.accordion .accordion_tab{
+		font-size: 17px;
+	}
+	.accordion.active {
+	    height: auto;
+	}
+	.pet_team_column {
+	    width: 100%;
+	}
+	.pet_team_text:before{
+		background-size: 100%;
+	}
+	.sab-banner-wraper:before {
+	    bottom: -40px;
+	}
+	.mian_heading h3{
+		text-align: center;
+	}
+	.pet_counter_column {
+	    display: flex;
+	    width: 50%;
+	    align-items: center;
+	    flex-direction: column;
+	}
+	.pet_team_text::before {
+		background-image: none;
+	}
+	/* team detail page start */
+	.pet_team_detail_row {
+	    display: flex;
+	    flex-direction: column;
+	}
+	.pet_team_detail_text {
+	    padding-left: 30px;
+	}
+	.pet_team_detail_text{
+		padding-top: 50px;
+	}
+	.pet_team_detail_wrap .contact_form_column:last-child{
+		width: 90%;
+	}
+	.pet_team_detail_wrap .pet_search_filed {
+	    width: 100%;
+	    margin-bottom: 20px;
+	    margin-right: 0px;
+	}
+	.pet_team_experience_row {
+	    display: flex;
+	    padding-top: 100px;
+	    flex-direction: column;
+	}
+	.pet_experience_text {
+	    width: 100%;
+	    margin-bottom: 50px;
+	    text-align: center;
+	}
+	.pet_experience_detail {
+	    width: 100%;
+	    padding-left: 20px;
+	}
+	/*404 page start*/
+	.Pet_404_heading {
+	    right: 70px;
+	    top: -7px;
+	}
+	/*service page start*/
+	.service_grid .pet_service02_column figure:before{
+		background-size: contain;
+	}
+	.pet-pagination ul li a.previous-btn{
+		width: 92px;
+	}
+	/**/
+	.pet_exercise_wrap{
+		padding:80px 0px;
+	}
+	.pet_banifit_service {
+	    display: flex;
+	    margin-bottom: 20px;
+	    flex-wrap: nowrap;
+	    flex-direction: column;
+	}
+	.pet_banifit_service figure{
+		margin-bottom: 40px;
+	}
+	.sidebar_title{
+		font-size: 22px;
+	}
+	/* blog page start */
+	.blog-post .child_service_column {
+    	width: 100%;
+	}
+	.child_service_text h5 {
+ 	   font-size: 19px;
+	}
+	.child_service_info li {
+	  margin-right: 16px;
+	}
+	.blog-full .child_service_column {
+	    display: flex;
+	    width: 100%;
+	    flex-direction: row;
+	    flex-wrap: wrap;
+	}
+	.blog-full .child_service_text{
+		padding: 30px 0px 30px 20px;
+	}
+	.blog-full .child_service_text p {
+	    line-height: normal;
+	    font-size: 18px;
+	}
+	.child_service_info li a {
+	    font-size: 12px;
+	}
+	.blog-full .child_service_column > figure {
+   	 width: 1000%;
+	}
+	/*shop page start*/
+	.pet_shop_column figure,
+	.pet_shop_column{
+		width:100%;
+	}
+	/*shop page detail start*/
+	.pet_product_slider{
+		margin-right: 0px;
+	}
+	.pet_img_list a{
+		width: 17%;
+	}
+	.pet_shop_row .pet_shop_column{
+		margin-bottom: 30px !important;
+	}
+	.pet_detail_text h2{
+		font-size: 38px;
+	}
+	.project_fig {
+	    width: 44%;
+	}
+	.contact_form_column:last-child{
+		width: 100%;
+	}
+	.contact_serviec .pet_service_column p a{
+		font-size: 13px;
+	}
+	.pet_client_list .mian_heading{
+		width:100%;
+	}
+	.main_banner .main_banner_row {
+	    padding: 150px 0px 110px 0px;
+	}
+	.main_banner_row:before{
+		left: 0px;
+	}
+	.main_banner .divider-img-500113{
+		width: 1200px;
+	}
+	.pet_counter_wrap:after{
+		background-image: none;
+	}
+	.pet_counter_wrap:before{
+		background: -webkit-linear-gradient(left, rgba(668,331,410,-134) -6%, #ff8931 -9%);
+	}
+	.pet_counter_text{
+		text-align: center;
+	}
+	.pet_about_row{
+		flex-direction: column;
+	}
+	.main_widget_row{
+		flex-direction: column;
+	}
+	.main_widget_row .pet_widget_column{
+		width:100%;
+	}
+	.pet_appointment_wrap .container {
+	    width: 100%;
+	}
+	.pet_appointment_row{
+		flex-direction: column;
+	}
+	.pet_appointment_colum{
+		width:100%;
+	}
+	.main_banner .divider-img-500113{
+		bottom: 30px;
+	}
+	.pet_service_column figure::before {
+		background-image: none;
+	}
+	.top_banner .mian_banner_text{
+		padding-bottom: 100px;
+	}
+	.child_service_row .slick-next {
+	    right: 33%;
+	}
+	.pet_price_table_column{
+		margin-right: 0px;
+		margin-bottom: 50px;
+	}
+	.pet_price_table_row{
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.pet_price_text::before{
+		background-image: none;
+	}
+	.pet_team_detail_wrap {
+	  padding: 80px 0px 90px;
+	}
+	.comment > li ul {
+	  padding-left: 44px;
+	}	
+	.main_banner.responsive-banner .divider-img-500113 {
+	  top: -40px;
+	}		
+	.discription_fig {
+	  width: 100%;
+	}
+	.main_header .dl-menuwrapper li a{
+		text-transform: capitalize;
+	}
+	.pet_counter_text h3{
+		font-size: 30px;
+	}	
+	.pet_counter_text p{
+		font-size: 12px;
+	}
+	.main_banner_row::before{
+		top: 150px;
+	}				
+}
+
+/*
+=================================================
+			FROM 0PX TO 0PX
+=================================================
+*/
+@media (min-width: 360px) and (max-width: 640px) {
+	
+  .pet_team_text::before {
+		top: -62px;
+	}
+}
+/*
+=================================================
+			FROM 0PX TO 0PX
+=================================================
+*/
+@media (max-width: 481px) {
+	.pet_counter_row,
+	.pet_service_row{
+		flex-wrap: wrap;
+		margin-bottom: 20px;
+	}
+	.pet_flip_row {
+	    width: 100%;
+	}
+	.pet_exercise_row {
+	    flex-direction: column;
+	    align-items: center;
+	}
+	.pet_exercise_fig{
+		margin-bottom: 40px;
+	}
+	.pet_gallery_row{
+		flex-wrap: wrap;
+	}
+	.pet_gallery_wrap {
+	    padding-left: 30px;
+	    padding-right: 30px;
+	}
+	.pet_gallery_fig:last-child,
+	.pet_gallery_fig:first-child {
+	    flex-shrink: inherit;
+	    width: 100%;
+	}
+	.pet_gallery_fig{
+		display: inline-block;
+		 margin-right: 10px;
+	    float: left;
+	    padding-bottom: 30px;
+	    width: 100%;
+	}
+	.pet_gallery_fig figure{
+		margin: 10px 10px;
+	}
+	.pet_counter_column{
+		margin-bottom: 40px;
+	}
+	.pet_exercise_list_text {
+	    padding-left: 50px;
+	}
+	.pet_about_row,
+	.pet_price_table_row,
+	.pet_client_row {
+	    flex-wrap: wrap;
+	}
+	.pet_client_fig {
+	    margin-bottom: 50px;
+	}
+	.pet_client_wrap:before{
+		background-image: none;
+	}
+	.pet_price_table_column{
+		margin-bottom: 50px;
+	}
+	.pet_price_text:before {
+	    top: -93px;
+	}
+	.pet_company_wrap{
+		margin-top: 0px;
+	}
+	.pet_company_wrap:before {
+	    top: -24px;
+	}
+	.pet_widget_column.widget_post,
+	.pet_widget_column.widget_service{
+		width:100%;
+	}
+	.pet_widget_column.widget_post{
+    	margin-right: 40px;
+	}
+	.pet_widget_row{
+		display: inherit;
+	}
+	.pet_widget_column {
+	    width: 100%;
+	    float: left;
+	}
+	.pet_company_wrap:before {
+	    top: -14px;
+	}
+	/*about us page*/
+	.service03 .pet_exercise_text h3{
+		font-size: 30px;
+	}
+	.pet_team_detail_row .pet_team_text::before {
+	  top: -50px;
+	}
+	.pet_team_detail_row .pet_team_text{
+		padding: 7px 30px;
+	}
+	.main_header .dl-menuwrapper li a{
+		text-transform: capitalize;
+	}
+
+}
+/*
+=================================================
+			FROM 0PX TO 0PX
+=================================================
+*/
+@media (max-width: 480px) {
+	.sub_banner_position_fig{
+		bottom: -81px;
+	}
+	.sab-banner-text h2{
+		font-size: 32px;
+	}
+	.pet_team_text:before {
+	    top: -43px;
+	}
+	.pet_copyright_text{
+		text-align: center;
+	}
+	.pet_price_text::before {
+	  top: -61px;
+	}
+
+	/*404 page start*/
+	.Pet_404_heading {
+	    right: 10px;
+	    top: -2px;
+	    font-size: 30px;
+	}
+	.pet_404_text{
+		text-align: center;
+	}
+	.pet-pagination ul li:last-child,
+	.pet-pagination ul li:first-child{
+		display: flex;
+	    width: 100%;
+	    margin-bottom: 20px;
+	} 
+	.pet-pagination ul li:last-child{
+		margin-bottom: 0px;
+		margin-top: 20px;
+	}
+	.pet-pagination ul li .previous-btn{
+		width: 100% !important;
+	}
+	.pet_service02_column{
+		text-align: center;
+	}
+	/*blog page start*/
+	.child_service_text h5 {
+    	font-size: 16px;
+	}
+	.child_service_text{
+		align-items: flex-start;
+		padding: 35px 10px 30px;
+	}
+	.child_service_info li a {
+  	  font-size: 10px;
+	}
+	.blog_post_info .main_button {
+	    padding: 16px 13px;
+	    width: 100%;
+	    text-align: center;
+	}
+	.blog_post_detail .blog-full .child_service_text {
+	    padding: 30px 0px 14px 2px;
+	}
+	.sidebar_title {
+	    font-size: 18px;
+	}
+	/*shop detail page start*/
+	.tabs.pet_tabs_list{
+		flex-wrap: wrap;
+	}
+	.tabs.pet_tabs_list li{
+		margin-bottom: 15px;
+	}
+	.tabs.pet_tabs_list li a,
+	.tabs.pet_tabs_list li{
+		width: 100%;
+	}
+	.pet_shop_text h4{
+		font-size: 26px;
+	}
+	.pet_spinner_list .ui-widget.ui-widget-content {
+	    width: 100%;
+	    margin-right: 0px;
+	    margin-bottom: 30px;
+	}
+	.pet_social_icon li a{
+		height: 40px;
+    	width: 40px;
+    	font-size: 16px;
+	}
+	.pet_img_list a{
+		margin-right: 6px;
+	}
+	.pet_detail_text h2 {
+	    font-size: 25px;
+	}
+	.project_fig{
+		width:100%;
+	}
+	.gallery01 .project_fig {
+	    width: 100%;
+	}
+	.contact_serviec .pet_service_column {
+	    width: 100%;
+	}
+	.contact_filed {
+	    display: flex;
+	    flex-wrap: nowrap;
+	    flex-direction: column;
+	    margin-bottom: 0px;
+	}
+	.contact_filed input{
+		margin-bottom: 10px;
+	}
+	.child_service_row .slick-next {
+   		right: 31%;
+	}
+	.pet_counter_wrap::after {
+		background-image: none;
+	}
+	.pet_counter_wrap::before {
+		background: -webkit-linear-gradient(left, rgba(668,331,410,-134) -6%, #ff8931 -5%);
+	}
+	.pet_counter_text {
+	    padding-left: 10px;
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	}
+	.main_header.header02 {
+   	 padding: 20px 0px 0px;
+	}
+	.header02 .main_top_bar {
+	    padding: 7px 10px;
+	}
+	.workin_hours h4{
+		font-size: 24px;
+	}
+	.workin_hours .pet_widget_link li{
+		font-size: 12px;
+	}
+	.main_banner.responsive-banner .main_banner_row {
+	  padding: 150px 7px 110px 10px;
+	}
+	.main_banner.responsive-banner .divider-img-500113 {
+	  top: -40px;
+	  height: 33px;
+	}
+	.child_service_row .slick-next {
+	  right: 25%;
+	}
+	.child_service_row .slick-prev {
+	  left:32%;
+	}
+	.pet_service_column {
+	    width: 50%;
+	}
+	.pet_about_text {
+	    padding: 0px 20px;
+	}
+	.mian_heading h3{
+		font-size: 30px;
+	}
+	.pet_widget::before {
+		background-image: none;
+	}
+	.pet_counter_row{
+		padding: 60px 0px 90px;
+	}
+	.pet_service_column{
+		margin-bottom: 20px;
+	}
+	.pet_service_column figure{
+		margin-bottom: 5px;
+	}
+	.pet_service_detail_row.service03 .pet_exercise_text h4{
+		font-size: 25px;
+	}
+	.pet_comment_item figure {
+	  width: 100%;
+	  border-radius: 100%;
+	  margin-bottom: 25px;
+	}
+	.pet_comment_text{
+		padding: 0px 0px 0px 1px;
+	}
+	.comment > li ul {
+	  padding-left: 0px;
+	}
+	.sidebar_support_text{
+		margin-top: -140px;
+	}
+	.sidebar_support_text h5, .sidebar_support_text h4{
+		font-size: 23px;
+	}
+	.pet_client02_row .slick-slider {
+	  padding: 0px 0px;
+	}
+	.pet_appointment_row {
+		padding: 30px 15px;
+	}
+	.workin_hours {
+ 		padding: 20px 10px;
+	}
+	.pet_appointment_wrap {
+	  padding: 50px 0px 100px;
+	}
+	.banner_video .main_button {
+	  padding: 16px 11px;
+	}
+}
+
+
+@media (max-width: 320px){
+	.banner_text {
+	    padding: 30px 0px 110px 10px;
+	}
+	.main_header .dl-menuwrapper li a{
+		text-transform: capitalize;
+	}
+	.pet_service_list ul li:last-child {
+	    margin-right: 50px;
+	}
+	.banner_large_text {
+    	font-size: 36px;
+	}
+	.banner_small_text {
+    	padding-right: 20px;
+	}
+	.banner_large_text {
+ 	   font-size: 30px;
+	}
+	.fig06,
+	.fig03{
+		display: none;
+	}
+	.pet_testimonial_text p{
+		padding: 0px 70px;
+	}
+	.pet_widget_social{
+		margin-top: 50px;
+	}
+	.pet_copyright_text a {
+ 	   float: left;
+	}
+	.service_schedule .banner_text{
+	    padding: 110px 0px 110px 14px;
+	}
+	.pet_widget_social {
+	    float: left;
+	}
+	.mian_banner_text h2{
+		font-size: 52px;
+	}
+	.mian_banner_text h1 {
+	  line-height: 60px;
+	  margin-bottom: 10px;
+	  font-size: 40px;
+	}
+	.custom-container {
+	    width: 100%;
+	}
+	.container{
+	  	width: 100%;
+	}
+	.pet_exercise_text,
+	.pet_about_text{
+		padding-left: 0px;	
+	}
+	.pet_service_list li:nth-child(2n){
+		margin-left: 0px;
+	}
+	.pet_counter_column{
+		flex-direction: wrap;
+	}
+	.pet_exercise_text h3{
+		font-size: 40px;
+	}
+	.pet_exercise_list_text{
+		padding-left: 40px;
+	}
+	.mian_heading h3 {
+	  font-size: 23px;
+	}
+	.mian_heading{
+		margin-bottom: 60px;
+	}
+	.pet_clien_text{
+		font-size: 30px;
+	}
+	.main_button {
+	  padding: 16px 13px;
+	  font-size: 14px;
+	}
+	.pet_about_text h2 {
+	  font-size: 23px;
+	  margin-bottom: 18px;
+	}
+	.pet_price_text::before {
+	  top: -53px;
+	}
+	.pet_company_wrap::before {
+	  top: -16px;
+	}
+	.pet_widget_column.widget_post, 
+	.pet_widget_column.widget_service {
+	   width: 100%;
+		margin-left: 0px;
+	}
+	.child_service_text h5{
+		font-size: 17px;
+	}
+	.child_service_row .slick-next {
+	  right: 25%;
+	}
+	.child_service_row .slick-prev {
+	  left:32%;
+	}
+	.pet_gallery_wrap {
+	  padding-left: 20px;
+	  padding-right: 20px;
+	}
+	.pet_widget_column.widget_news{
+	  width: 100%;
+	}
+	/* about us page */
+	.sub_banner_position_fig{
+		bottom: -81px;
+	}
+	.sab-banner-text h2{
+		font-size: 32px;
+	}
+
+	.pet_team_text:before {
+	    top: -33px;
+	}
+	.pet_copyright{
+		width:100%;
+	}
+	.pet_counter_wrap::after {
+		background-image: none;
+	}
+	.pet_counter_wrap::before {
+		background: -webkit-linear-gradient(left, rgba(668,331,410,-134) -6%, #ff8931 -5%);
+	}
+	.divider-img-500113{
+		width: 780px;
+	}
+	.pet_service_column {
+	    width: 100%;
+	}
+	.pet_about_text {
+	    padding: 0px 10px;
+	}
+	.top_banner .mian_banner_text{
+		padding-bottom: 90px;
+	}
+	.textimonial_row .pet_client_fig h2{
+		font-size: 40px;
+	}
+	.textimonial_row .pet_client_fig{
+		padding-right: 20px;
+	}
+	.workin_hours{
+		padding: 20px 8px;
+	}
+	.pet_appointment_row{
+		padding: 30px 10px;
+	}
+	.workin_hours h4{
+		font-size: 24px;
+	}
+	.workin_hours .pet_widget_link li{
+		font-size: 12px;
+	}
+	.pet_counter_row{
+		padding: 70px 0px 110px;
+	}
+	.main_banner.responsive-banner .main_banner_row {
+	  padding: 150px 7px 110px 10px;
+	}
+	.pet_team_detail_row .pet_team_text:before{
+	  top: -50px;
+	}
+	.pet_client02_row .slick-slide{
+		width:auto !important;
+	} 
+	.main_banner.responsive-banner .divider-img-500113 {
+ 	   top: -22px;
+	}
+	.pet_counter_column{
+		width:100%;
+	}
+
+
+}
+	/*404 page start*/
+	
+

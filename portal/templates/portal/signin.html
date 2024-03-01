@@ -1,0 +1,41 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}{{page_title|default:'Sign In'}}{% endblock %}
+{% block css %}{% endblock %}
+{% block content %}
+<section class="content-main mt-80 mb-80">
+    <div class="card mx-auto card-login">
+        <div class="card-body">
+            <div class="text-center mb-3">
+                <a href="javascript:vodi(0);" class="brand-wrap ">
+                    <img src="{% static 'logo/logo.png' %}" class="logo w-50" alt="aebcbe">
+                </a>
+            </div>
+            <h4 class="card-title mb-4">Kyonkat Portal Login</h4>
+
+            <form method="post"> {% csrf_token %}
+                <div class="mb-3">
+                    <input class="form-control" name="username" required placeholder="Username or email" type="text" />
+                </div>
+                <!-- form-group// -->
+                <div class="mb-3">
+                    <input class="form-control" name="password" required placeholder="Password" type="password" />
+                </div>
+                <!-- form-group// -->
+                <div class="mb-3">
+                    <label class="form-check">
+                        <input type="checkbox" class="form-check-input" checked="" />
+                        <span class="form-check-label">Remember</span>
+                    </label>
+                </div>
+                <!-- form-group form-check .// -->
+                <div class="mb-4">
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                </div>
+                <!-- form-group// -->
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block js %}{% endblock %}

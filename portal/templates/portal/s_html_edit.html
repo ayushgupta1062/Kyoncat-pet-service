@@ -1,0 +1,81 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}{{page_title|default:'Edit Default Section'}}{% endblock %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'assets/js/vendors/codemirror/codemirror.min.css' %}"></link>
+<link rel="stylesheet" type="text/css" href="{% static 'assets/js/vendors/codemirror/theme/cobalt.min.css' %}"></link>
+{% endblock %}
+{% block content %}
+
+{% include 'portal/shared/left-menu.html' %}
+<main class="main-wrap">
+    {% include 'portal/shared/top-menu.html' %}
+    <form class="content-main pt-0" enctype='multipart/form-data' method="post" id="formProduct"> {% csrf_token %}
+        <div class="container row pt-25" id="opt-header">
+            <div class="col-lg-8">
+                <div class="content-header">
+                    <h2 class="content-title">Updated Default Section</h2>
+                    <div>
+                        <button class="btn btn-light rounded font-sm mr-5 text-body hover-up" onclick="history.back()"> <i class="icon material-icons md-arrow_back mr-5"></i> Black</button>
+                        <button class="btn btn-md rounded font-sm hover-up"> <i class="icon material-icons md-save mr-5"></i> Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h6>1. General info</h6>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="mb-4">
+                                    <label class="form-label">Page Section <span class="text-danger">*</span></label>
+                                    <select class="form-select" placeholder="Select Status" name="page" required >
+                                      {% for data in pages %}
+                                        <option value="{{data.id}}" {% if data.id == page.page.id %}selected{% endif %}>{{data.name}}</option>
+                                      {% endfor%}
+                                    </select>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Title <span class="text-danger">*</span></label>
+                                    <input type="text" name="title" value="{{page.title|default:''}}" required placeholder="Page Name" class="form-control slug-title">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Content</label>
+                                    <textarea name="content" id="content" placeholder="HTML Content" class="form-control">{{page.content|default:''}}</textarea>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Status <span class="text-danger">*</span></label>
+                                    <select class="form-select" placeholder="Select Status" name="is_status" required >
+                                        <option value="True" {% if page.is_active %}selected{% endif %}>Publish</option>
+                                        <option value="False" {% if not page.is_active %}selected{% endif %}>Draft</option>
+                                    </select>
+                                </div>
+                            </div> <!-- col.// -->
+                        </div> <!-- row.// -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- card .// -->
+    </form>
+</main>
+{% endblock %}
+{% block js %}
+<script language="javascript" type="text/javascript" src="{% static 'assets/js/vendors/codemirror/codemirror.min.js' %}"></script>
+<script language="javascript" type="text/javascript" src="{% static 'assets/js/vendors/codemirror/mode/xml.min.js' %}"></script>
+<script src="{% static 'assets/js/sticky.js' %}" type="text/javascript"></script>
+
+<script>
+  var editor = CodeMirror.fromTextArea(document.getElementById('content'), {
+    lineNumbers: true,
+    matchClosing: true,
+    htmlMode: true,
+    mode: 'text/html',
+    theme:'cobalt'
+}).setSize("100%", 500);
+</script>
+{% endblock %}

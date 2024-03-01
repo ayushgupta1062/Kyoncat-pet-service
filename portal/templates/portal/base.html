@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head lang="en">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>{% block title %}{% endblock %}</title>
+    
+    <meta name="description" content="" />
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+
+
+    <style>
+        :root {
+            --main-primary-color: #bc5000;
+            --main-primary-color-hover: #dc6e1c;
+            --main-primary-color-light: #ffdbc0;
+            --main-secondary-color: #bc5000;
+            --main-secondary-color-hover: #dc6e1c;
+        }
+    </style>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'logo/logo.png' %}" />
+    <!-- Template CSS -->
+    <link href="{% static 'assets/css/main.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/js/vendors/toastr/toastr.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/js/vendors/datatables/css/jquery.dataTables.min.css' %}" rel="stylesheet"
+        type="text/css" />
+    <link href="{% static 'assets/js/vendors/datatables/css/responsive.dataTables.min.css' %}" rel="stylesheet"
+        type="text/css" />
+
+    {% block css%}{% endblock%}
+</head>
+
+<body>
+    <main>
+
+        
+    <!--Preloader area start here-->
+    <div id="loader" class="loader primary-color">
+        <div class="loader-container">
+            <div class='loader-icon'></div>
+        </div>
+      </div>
+      <!--Preloader area End here-->
+        
+
+        {% block content%}{% endblock%}
+
+        <!-- Delete Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <form class="modal-content" method="post"> {% csrf_token %}
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Delete Record</h5>
+                        <button type="button" class="btn close" data-dismiss="modal" data-modal="deleteModal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="id" id="dataId">
+                        Are you sure to delete ths record! <span class="text-danger" id="dataLabel"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" data-modal="deleteModal">No</button>
+                        <button type="submit" name="formType" value="delete" class="btn btn-danger">Yes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </main>
+    <script src="{% static 'assets/js/vendors/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendors/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendors/jquery.fullscreen.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendors/select2.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendors/perfect-scrollbar.js' %}"></script>
+    <script src="{% static 'assets/js/vendors/toastr/toastr.js' %}"></script>
+    <script src="{% static 'assets/js/vendors/datatables/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendors/datatables/js/dataTables.responsive.min.js' %}"></script>
+    <!-- Main Script -->
+    <script src="{% static 'assets/js/main.js' %}" type="text/javascript"></script>
+    {% if messages %}
+    {% for message in messages %}
+    <script>
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+
+        toastr["{{ message.tags }}"]("{{ message }}")
+    </script>
+    {% endfor %}
+    {% endif %}
+    {% block js%}{% endblock%}
+</body>
+
+</html>

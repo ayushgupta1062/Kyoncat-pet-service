@@ -1,0 +1,37 @@
+{% load static %}
+<header class="main-header navbar">
+    <div class="col-search">
+        <form class="searchform d-none">
+            <div class="input-group">
+                <input list="search_terms" type="text" class="form-control" placeholder="Search term" />
+                <button class="btn btn-light bg" type="button"><i class="material-icons md-search"></i></button>
+            </div>
+            <datalist id="search_terms">
+                <option value="Products"></option>
+                <option value="New orders"></option>
+                <option value="Apple iphone"></option>
+                <option value="Ahmed Hassan"></option>
+            </datalist>
+        </form>
+    </div>
+    <div class="col-nav">
+        <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"><i
+                class="material-icons md-apps"></i></button>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link btn-icon" href="{% url 'w_index' %}" target="_blank"> <i class="material-icons md-public"></i> </a>
+            </li>
+            <li class="dropdown nav-item">
+                <a class="dropdown-toggle btn" data-bs-toggle="dropdown" href="#" id="dropdownAccount"
+                    aria-expanded="false">Welcome, {{request.user.username}}</a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
+                    <a class="dropdown-item" href="{% url 'portal_profile'%}"><i class="material-icons md-perm_identity"></i>Profile</a>
+                    <a class="dropdown-item" href="{% url 'portal_password' %}"><i class="material-icons md-vpn_key"></i>Password Update</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="{% url 'portal_signout' %}"><i
+                            class="material-icons md-exit_to_app"></i>Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>

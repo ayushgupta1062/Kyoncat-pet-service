@@ -1,0 +1,157 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}{{page_title|default:'Media Folder'}}{% endblock %}
+{% block css %}{% endblock %}
+{% block content %}
+
+{% include 'portal/shared/left-menu.html' %}
+<main class="main-wrap">
+    {% include 'portal/shared/top-menu.html' %}
+    <section class="content-main">
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">Media Folder</h2>
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary add-media"><i class="text-muted material-icons md-post_add"></i>Upload</button>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <header class="card-header">
+                <div class="row gx-3">
+                    <div class="col-lg-4 col-md-6 me-auto">
+                        <input type="text" id="search" placeholder="Search..." class="form-control">
+                    </div>
+                    <div class="col-lg-2 col-6 col-md-3">
+                        <select class="form-select" id="type">
+                            <option value="img-All">All</option>
+                            <option value="img-Client">Client Image</option>
+                            <option value="img-Gallery">Gallery Image</option>
+                            <option value="img-Media">Media Image</option>
+                        </select>
+                    </div>
+                </div>
+            </header>
+            <!-- card-header end// -->
+            <div class="card-body">
+                <div class="row gx-3 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-4">
+                    {% for data in model %}
+                    
+                    <div class="col img-All {% if data.is_client %}img-Client{% elif data.is_gallery %}img-Gallery{% else %}img-Media{% endif %} ">
+                        <div class="card card-product-grid">
+                            <a href="{{data.image.url}}" target="_blank" class="img-wrap"> 
+                                <img src="{{data.image.url}}" alt="{{data.name}}" style="height:10rem;">
+                            </a>
+                            <span style="position: absolute;padding: 0.2rem 1.5rem;font-weight: bold;background: var(--main-primary-color);color: #fff;">
+                                {% if data.is_client %}
+                                    Client
+                                {% elif data.is_gallery %}
+                                    Gallery
+                                {% else %}
+                                    Media
+                                {% endif %}
+                            </span>
+                            <div class="info-wrap">
+                                <a href="#" class="title text-truncate">{{data.name}}</a>
+                                <pre class="w-100 bg-dark text-light p-2 pb-3 my-2">{{data.image.url}}</pre>
+                                <a href="#" class="btn btn-sm font-sm btn-light rounded  delete-data" data-id="{{data.id}}" data-label="{{data.name}}"> <i class="material-icons md-delete_forever"></i> Delete </a>
+                            </div>
+                        </div>
+                        <!-- card-product  end// -->
+                    </div>
+                    <!-- col.// -->
+                    {% endfor %}
+                </div>
+                <!-- row.// -->
+            </div>
+            <!-- card-body end// -->
+        </div>
+
+        <!-- card .// -->
+    </section>
+
+    <!-- Button trigger modal -->
+  
+    
+
+</main>
+
+
+        <!-- Add Modal -->
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <form class="modal-content" method="post" enctype='multipart/form-data'> {% csrf_token %}
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabel">Upload Media</h5>
+                        <button type="button" class="btn close" data-dismiss="modal" data-modal="addModal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h6>1. Media</h6>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="mb-4">
+                                        <label class="form-label">Name <span class="text-danger">*</span></label>
+                                        <input type="text" name="name" required placeholder="Name" class="form-control">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Image <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="file" name="file" required>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Type <span class="text-danger">*</span></label>
+                                        <label class="mb-2 form-check form-check-inline">
+                                            <input class="form-check-input" checked="" name="type" value="1" type="radio">
+                                            <span class="form-check-label"> Media </span>
+                                        </label>
+                                        <label class="mb-2 form-check form-check-inline">
+                                            <input class="form-check-input" name="type" value="2" type="radio">
+                                            <span class="form-check-label"> Client Logo </span>
+                                        </label>
+                                        <label class="mb-2 form-check form-check-inline">
+                                            <input class="form-check-input" name="type" value="3" type="radio">
+                                            <span class="form-check-label"> Gallery </span>
+                                        </label>
+                                    </div>
+                                </div> <!-- col.// -->
+                            </div> <!-- .row end// -->
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" data-modal="addModal">Close</button>
+                        <button type="submit" name="formType" value="add" class="btn btn-danger">Upload</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+{% endblock %}
+{% block js %}
+<script>
+    
+    $('.add-media').on('click', function(){
+        $('#addModal').modal('show')
+    })
+    $('#type').on('change', function(){
+        $('.img-All').hide()
+        $('.'+$(this).val()).show()
+    })
+    $("#search").on("keyup", function() {
+        $('#type').val('img-All');
+        var value = $(this).val();
+        var value = $(this).val().toLowerCase();
+        $('.no-product').hide();
+        $(".img-All").filter(function() {
+          $(this).toggle($(this).find(".title").text().toLowerCase().indexOf(value) > -1)
+          if($(this).find(".title").text().toLowerCase().indexOf(value) > -1){
+          }
+        });
+        
+    });
+</script>
+{% endblock %}

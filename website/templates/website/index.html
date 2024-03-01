@@ -1,0 +1,140 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% block title %}{{page_title|default:'Home'}}{% endblock %}
+{% block keyword %}{{page_keywords|default:''}}{% endblock %}
+{% block description %}{{page_description|default:''}}{% endblock %}
+{% block css %}{% endblock %}
+{% block content %}
+
+    {% include 'website/header.html' %}
+
+    
+        <!-- main banner start -->
+        <div class="main_banner top_banner">
+            <div class="bg_layer">
+                <div class="custom-container-fluid">
+                    <div class="main_banner_row">
+                        <div class="mian_banner_text">
+                            <h2>Your Pet</h2>
+                            <h1>Our Priority</h1>
+                            <p>Grooming & Supply provides grooming services for all dog and<br>
+                                cat breeds. We are fully committed to the health.</p>                            
+                        </div>
+                        <div class="banner_fig_slider">
+                            <div>
+                                <div class="mian_banner_fig">
+                                    <figure>
+                                        <img src="{% static 'website' %}/images/banner-fig01.png">
+                                    </figure>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="mian_banner_fig">
+                                    <figure>
+                                        <img src="{% static 'website' %}/images/banner-fig.png">
+                                    </figure>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="mian_banner_fig">
+                                    <figure>
+                                        <img src="{% static 'website' %}/images/banner-fig01.png">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="divider_id" class="website-divider-container-500113">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="divider-img-500113" viewBox="0 0 1080 137"
+                        preserveAspectRatio="none">
+                        <path
+                            d="M 0,137 V 59.03716 c 158.97703,52.21241 257.17659,0.48065 375.35967,2.17167 118.18308,1.69101 168.54911,29.1665 243.12679,30.10771 C 693.06415,92.25775 855.93515,29.278599 1080,73.61449 V 137 Z"
+                            style="opacity:0.85"></path>
+                    </svg>
+
+                </div>
+            </div>
+        </div>
+        <!-- main banner end-->
+
+        
+    {% for page_content in content %}
+    {% for data in page_content.sectiondefault_set.all %}
+        {% if data.is_active and data.is_valid %}
+        {% if data.is_html %} 
+            {{data.content|safe}}
+        {% else %}
+            {% if data.image_position == 0 %}            
+            <!-- pet about wrap start -->
+            <section class="pet_about_wrap">
+                <div class="custom-container">
+                    <div class="pet_about_row">
+                        <div class="pet_about_text">
+                            <h3>{{data.sub_title}}</h3>
+                            <h2>{{data.title|safe}}</h2>
+                            {{data.content|safe}}
+                        </div>
+                    </div>
+                </div>
+            </section> 
+            <!-- pet about wrap end -->      
+            {% endif %}
+            {% if data.image_position == 1 %}            
+            <!-- pet about wrap start -->
+            <section class="pet_about_wrap">
+                <div class="custom-container">
+                    <div class="pet_about_row">
+                    <div class="pet_about_fig">
+                            <figure>
+                                {% if data.image_directory %}
+                                <img src="{{data.image_directory.image.url}}" alt="{{data.title}}">
+                                {% elif data.image %}
+                                <img src="{{data.image.url}}" alt="{{data.title}}">
+                                {% endif %}
+                            </figure>  
+                        </div>
+                        <div class="pet_about_text">
+                            <h3>{{data.sub_title}}</h3>
+                            <h2>{{data.title}}</h2>
+                            {{data.content|safe}}
+                        </div>
+                    </div>
+                </div>
+            </section> 
+            <!-- pet about wrap end -->       
+            {% endif %}
+            {% if data.image_position == 2 %}
+            <!-- pet about wrap start -->
+            <section class="pet_about_wrap">
+                <div class="custom-container">
+                    <div class="pet_about_row">
+                        <div class="pet_about_text">
+                            <h3>{{data.sub_title}}</h3>
+                            <h2>{{data.title}}</h2>
+                            {{data.content|safe}}
+                        </div>
+                        <div class="pet_about_fig">
+                            <figure>
+                                {% if data.image_directory %}
+                                <img src="{{data.image_directory.image.url}}" alt="{{data.title}}">
+                                {% elif data.image %}
+                                <img src="{{data.image.url}}" alt="{{data.title}}">
+                                {% endif %}
+                            </figure>  
+                        </div>
+                    </div>
+                </div>
+            </section> 
+            <!-- pet about wrap end -->  
+            {% endif %}
+        {% endif %}
+        {% endif %}
+    {% endfor %}
+    {% endfor %}
+
+    {% include 'website/footer.html' %}
+
+{% endblock %}
+{% block js %}{% endblock %}

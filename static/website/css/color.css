@@ -1,0 +1,123 @@
+.bdr-clr{
+	border-color: #272522;
+}
+.btn-clr{
+	color: #272522;
+}
+
+/*
+	  ============================================================
+		   Font Color
+	  ============================================================
+*/
+.review_rating li a,
+.main_widget_contact a:hover,
+.flus_icon,
+.navigation li .sub-menu li a:hover,
+.gallery_icon li a,
+.product_price > a,
+.pet_product_review .pet_product_rating a,
+.service_grid  .pet_service02_column a:hover,
+.pet_service_detail_row.service03 .pet_exercise_text  h4,
+.textarea .search_icon,
+.search-filed .search_icon,
+.mian_banner_text h2{
+	color:#ff8931;
+}
+
+/*
+	  ============================================================
+		   Background Color
+	  ============================================================
+*/
+.contact_form_column.blog-detail button.btn2:hover,
+.contact_form_column.blog-detail .hover-affect::before,
+.pet_copyright,
+.navigation li .sub-menu li a:before,
+.header02 .main_top_bar,
+.main_top_bar .main_button:hover,
+.pet_team_detail_wrap,
+.pet_experience_detail .bar,
+.pet_heart_icon,
+.pet_social_icon li a.active, .pet_social_icon li a:hover,
+.pet_spinner_list .theme_btn,
+.tabs.pet_tabs_list li.active a,
+.main_header .dl-menuwrapper button,
+.main_header .dl-menuwrapper .dl-menu.dl-menuopen,
+.play-icon,
+.pet_about02_left_column .pet_about_text,
+.pet_flip_back a:hover,
+.sidebar_widget_search li a:hover,
+.sidebar_support_text .main_button,
+.paly_btn,
+button.btn2,
+.sab-banner-wraper,
+.pet-pagination ul li a:hover,
+.image-layer-affect,
+.image-layer-affect:hover:before,
+.pet_company_wrap,
+.pet_client_wrap,
+.main_banner:before{
+	background-color:#ff8931;
+}
+/*
+	  ============================================================
+		   Border Color
+	  ============================================================
+*/
+.pet_appointment_row,
+.workin_hours,
+.main_header.fixed .main_top_bar .main_button:hover,
+.main_header.fixed .main_top_bar .main_button:hover,
+.blog_product,
+.accordion .accordion_content .accordion_item p,
+.pet_flip_back a:hover,
+.sidebar_support_text .main_button,
+.paly_btn:before,
+button.btn2,
+.pet-pagination ul li a:hover,
+.widget_social_share li a:hover,
+.main_button:hover,
+.pet_price_table_column:hover .pet_price_text .btn2,
+.pet_price_table_column:hover .pet_price_text:after,
+.city_payment_btn a:hover{
+	border-color:#ff8931;
+}
+
+/*
+	  ============================================================
+		   Trandition Color
+	  ============================================================
+*/
+.service_grid .pet_service02_column,
+.service_grid02 .pet_service02_column,
+.main_widget_contact a,
+.pet_service_column figure img,
+.flus_icon,
+.pet_service02_row.service_grid .pet_service02_column,
+.gallery_icon,
+.pet_social_icon li a,
+.tabs.pet_tabs_list li.active a,
+.main_header .dl-menuwrapper li a,
+.pet_flip_back a,
+.navigation li .sub-menu li a,
+.sidebar_widget_search li a,
+.service03  .pet_service_list li a,
+.contact_serviec .pet_service_column:before,
+.pet-pagination ul li a,
+.image-layer-affect:before,
+.widget_social_share li a,
+.pet_service02_column a,
+.main_button,
+.hover-affect:before,
+.pet_price_text .btn2,
+.pet_price_text:after,
+.pet_service_column figure .hover_img,
+.pet_service_column figure:before,
+.banner_fig_slider a.active{
+	-webkit-transition:all 0.5s ease-in-out;
+	-moz-transition:all 0.5s ease-in-out;
+	-ms-transition:all 0.5s ease-in-out;
+	-o-transition:all 0.5s ease-in-out;
+	transition:all 0.5s ease-in-out;
+}

@@ -1,0 +1,22 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}{{page_title|default:'Dashboard'}}{% endblock %}
+{% block css %}{% endblock %}
+{% block content %}
+
+{% include 'portal/shared/left-menu.html' %}
+<main class="main-wrap">
+    {% include 'portal/shared/top-menu.html' %}
+    <section class="content-main">
+        <div class="content-header">
+            <div class="row">
+                <h2 class="content-title card-title">Statistics</h2>                
+            </div>
+        </div>
+
+        <!-- card .// -->
+    </section>
+</main>
+{% endblock %}
+{% block js %}
+{% endblock %}
