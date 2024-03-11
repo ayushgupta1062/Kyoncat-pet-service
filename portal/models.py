@@ -13,10 +13,8 @@ class NAVIGATIONTYPE(IntEnum):
 class MENUTYPE(IntEnum):
     PAGE                = 0
     BLOG                = 1
-    BLOG_DETAILS        = 2
-    SERVICES            = 3
-    SERVICES_DETAILS    = 4
-    GALLERY             = 5
+    SERVICES            = 2
+    GALLERY             = 3
 
     @classmethod
     def choices(cls):
@@ -68,7 +66,10 @@ class Pages(AuditFields):
     page_section    = models.PositiveSmallIntegerField(choices=PAGESECTION.choices(), default=PAGESECTION.DEFAULT)
     priority        = models.PositiveSmallIntegerField(default=0)
     name            = models.CharField(max_length=355, blank=False, null=False)
-    is_home         = models.BooleanField(default=True)
+    is_home         = models.BooleanField(default=False)
+    is_service      = models.BooleanField(default=False)
+    is_client       = models.BooleanField(default=False)
+    is_testimoinals = models.BooleanField(default=False)    
     is_active       = models.BooleanField(default=True)
     
     class Meta:
@@ -148,3 +149,47 @@ class Testimoinals(AuditFields):
     def __str__(self):
         return str(self.title)
 
+class Features(AuditFields):
+    name        = models.CharField(max_length=355, blank=False, null=False)
+    
+    class Meta:
+        db_table = 'features'
+        verbose_name = 'Features'
+        verbose_name_plural = 'Features'
+    
+    def __str__(self):
+        return str(self.name)
+
+class Packages(AuditFields):
+    features    = models.ManyToManyField(Features)
+    name        = models.CharField(max_length=355, blank=False, null=False)
+    priorty     = models.IntegerField(default=0, blank=False, null=False)
+    price        = models.DecimalField(default=0, max_digits=10, decimal_places=2, blank=True, null=True)
+
+    class Meta:
+        db_table = 'packages'
+        verbose_name = 'Packages'
+        verbose_name_plural = 'Packages'
+    
+    def __str__(self):
+        return str(self.name)
+
+    def get_features_ids_set(self):
+        return self.features.filter(is_valid=True).values_list('id', flat=True)
+
+class Services(AuditFields):
+    navigation      = models.ForeignKey(Navigation, on_delete=models.DO_NOTHING, blank=True, null=True)
+    image_directory = models.ForeignKey(ImageDirectory, on_delete=models.DO_NOTHING, blank=True, null=True)
+    title           = models.CharField(max_length=355, blank=False, null=False)
+    content         = models.TextField(blank=False, null=False)
+    image           = models.ImageField(blank=True, null=True)
+    is_home         = models.BooleanField(default=True)
+    packages        = models.ManyToManyField(Packages)
+    
+    class Meta:
+        db_table = 'services'
+        verbose_name = 'Services'
+        verbose_name_plural = 'Services'
+    
+    def __str__(self):
+        return str(self.title)

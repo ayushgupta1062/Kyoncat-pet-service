@@ -1,0 +1,189 @@
+{% extends 'portal/base.html' %}
+{% load static portal_tags %}
+{% block title %}{{page_title|default:'Packages'}}{% endblock %}
+{% block css %}{% endblock %}
+{% block content %}
+
+{% include 'portal/shared/left-menu.html' %}
+<main class="main-wrap">
+    {% include 'portal/shared/top-menu.html' %}
+    <section class="content-main">
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">Packages</h2>                
+            </div>
+            <div>
+                <a href="#" class="btn btn-primary add-modal"><i class="text-muted material-icons md-post_add"></i>Add</a>
+            </div>
+        </div>
+        <div class="card mb-4 ">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>priorty</th>
+                            <th>Price</th>
+                            <th>Features</th>
+                            <th class="text-end">Last Updated</th>
+                            <th class="text-end">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in model %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{data.name}}</td>
+                            <td>{{data.priorty}}</td>
+                            <td>{{data.price}}</td>
+                            <td>{{data.features.all|query_filter:'{"is_valid":True}'|join:", " }}</td>
+                            <td class="text-end">{{data.modified_date}}</td>
+                            <td>
+                                <div class="col-action text-end">
+                                    <a href="#" class="btn btn-sm font-sm rounded btn-brand edit-modal" data-id="{{data.id}}" data-label="{{data.name}}" data-price="{{data.price}}" data-priorty="{{data.priorty}}" data-features="{{data.get_features_ids_set|join:","}}"> <i class="material-icons md-edit"></i> Edit </a>
+                                    <a href="#" class="btn btn-sm font-sm btn-light rounded delete-data" data-id="{{data.id}}" data-label="{{data.name}}"> <i class="material-icons md-delete_forever"></i> Delete </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- card .// -->
+    </section>
+</main>
+
+
+        <!-- Add Modal -->
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <form class="modal-content" method="post"> {% csrf_token %}
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabel">Add Packages</h5>
+                        <button type="button" class="btn close" data-dismiss="modal" data-modal="addModal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mb-4">
+                                        <label class="form-label">Name <span class="text-danger">*</span></label>
+                                        <input type="text" name="name" required placeholder="Name" class="form-control">
+                                    </div>
+                                </div> <!-- col.// -->
+                                <div class="col-md-12">
+                                    <div class="mb-4">
+                                        <label class="form-label">Price <span class="text-danger">*</span></label>
+                                        <input type="number" name="price" required placeholder="Price" class="form-control">
+                                    </div>
+                                </div> <!-- col.// -->
+                                <div class="col-md-12">
+                                    <div class="mb-4">
+                                        <label class="form-label">Priorty <span class="text-danger">*</span></label>
+                                        <input type="number" name="priorty" required placeholder="Priorty" class="form-control">
+                                    </div>
+                                </div> <!-- col.// -->
+                                <!-- form-group// -->
+                                <div class="mb-3">
+                                    <label class="form-label">Features <span class="text-danger">*</span></label>
+                                    {% for data in features %}
+                                    <label class="form-check">
+                                        <input type="checkbox" class="form-check-input" value="{{data.id}}" name="features" />
+                                        <span class="form-check-label">{{data.name}}</span>
+                                    </label>
+                                    {% endfor %}
+                                </div>
+                                <!-- form-group form-check .// -->
+                            </div> <!-- row.// -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" data-modal="addModal">Close</button>
+                        <button type="submit" name="formType" value="add" class="btn btn-danger">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Update Modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <form class="modal-content" method="post"> {% csrf_token %}
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Update Packages</h5>
+                        <button type="button" class="btn close" data-dismiss="modal" data-modal="editModal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <div class="row">
+                                <input type='hidden' id="editId" name="id">
+                                <div class="col-md-12">
+                                    <div class="mb-4">
+                                        <label class="form-label">Name <span class="text-danger">*</span></label>
+                                        <input type="text" name="name" id="editName" required placeholder="Name" class="form-control">
+                                    </div>
+                                </div> <!-- col.// -->
+                                <div class="col-md-12">
+                                    <div class="mb-4">
+                                        <label class="form-label">Price <span class="text-danger">*</span></label>
+                                        <input type="number" id="editPrice" name="price" required placeholder="Price" class="form-control">
+                                    </div>
+                                </div> <!-- col.// -->
+                                <div class="col-md-12">
+                                    <div class="mb-4">
+                                        <label class="form-label">Priorty <span class="text-danger">*</span></label>
+                                        <input type="number" id="editPriorty" name="priorty" required placeholder="Priorty" class="form-control">
+                                    </div>
+                                </div> <!-- col.// -->
+                                <!-- form-group// -->
+                                <div class="mb-3">
+                                    <label class="form-label">Features <span class="text-danger">*</span></label>
+                                    {% for data in features %}
+                                    <label class="form-check">
+                                        <input type="checkbox" class="form-check-input" value="{{data.id}}" name="features" id="features{{data.id}}" />
+                                        <span class="form-check-label">{{data.name}}</span>
+                                    </label>
+                                    {% endfor %}
+                                </div>
+                                <!-- form-group form-check .// -->
+                            </div> <!-- row.// -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" data-modal="editModal">Close</button>
+                        <button type="submit" name="formType" value="update" class="btn btn-danger">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+{% endblock %}
+{% block js %}
+<script>
+    $('.add-modal').on('click',function(){
+        $('#addModal').modal('show');
+    })
+
+    $(document).on('click', '.edit-modal', function(){
+        $('#editId').val($(this).attr("data-id"));
+        $('#editName').val($(this).attr("data-label"));
+        $('#editPrice').val($(this).attr("data-price"));
+        $('#editPriorty').val($(this).attr("data-priorty"));
+        var features = $(this).attr("data-features").split(',');
+        for(i = 0; i < features.length; i++){
+            $('#features'+features[i]).prop('checked',true)
+        }
+        $('#editModal').modal('show')
+    })
+
+</script>
+{% endblock %}

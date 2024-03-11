@@ -755,7 +755,7 @@ div#bx-pager {
 	left: 0px;
 	right:0px;
 	bottom: 0px;
-	background-image: url("images/service-bg-paw.png");
+	background-image: url("../images/service-bg-paw.png");
 	background-repeat: no-repeat;
 	padding:0px 0px;
 	opacity: 0.1;
@@ -895,7 +895,7 @@ div#bx-pager {
 .pet_counter_wrap{
 	position: relative;
 	background-repeat: no-repeat;
-	background-image: url("images/counter_fig01.png");
+	background-image: url("../images/counter_fig01.png");
 	background-position: left;
 	padding:0px 0px;
 	margin-top: -7px;
@@ -916,7 +916,7 @@ div#bx-pager {
 .pet_counter_wrap:after{
 	position: absolute;
 	content: "";
-	background-image: url("images/counter_fig.png");
+	background-image: url("../images/counter_fig.png");
 	background-repeat: no-repeat;
 	background-position: right, bottom;
 	top: 14px;
@@ -935,7 +935,7 @@ div#bx-pager {
 .pet_counter_bg:after{
 	position: absolute;
 	content: "";
-	background-image: url("images/counter--bg01.png");
+	background-image: url("../images/counter--bg01.png");
 	background-repeat: no-repeat;
 	background-position:top;
 	top: 0px;
@@ -1207,7 +1207,7 @@ div#bx-pager {
 .pet_client_wrap:before{
 	position: absolute;
 	content: "";
-	background-image: url("images/client-bg-fig.png");
+	background-image: url("../images/client-bg-fig.png");
 	background-repeat: no-repeat;
 	background-position:left bottom;
 	background-size: 23%;
@@ -1342,7 +1342,7 @@ section.pet_price_table_wrap {
 .pet_price_text:before{
 	position: absolute;
 	content: "";
-	background-image: url("images/price-table-layer-fig.png");
+	background-image: url("../images/price-table-layer-fig.png");
 	background-repeat: no-repeat;
 	background-position:top;
 	top: -62px;
@@ -1466,7 +1466,7 @@ section.pet_price_table_wrap {
 .pet_widget:before{
 	position: absolute;
 	content: "";
-	background-image: url("images/layer-widget.png");
+	background-image: url("../images/layer-widget.png");
 	background-repeat: no-repeat;
 	background-position:left top;
 	top: 0px;
@@ -1478,7 +1478,7 @@ section.pet_price_table_wrap {
 .pet_widget:after{
 	position: absolute;
 	content: "";
-	background-image: url("images/widget-layer-bottom.png");
+	background-image: url("../images/widget-layer-bottom.png");
 	background-repeat: no-repeat;
 	background-position:right bottom ;
 	top: 0px;
@@ -1741,7 +1741,7 @@ section.pet_price_table_wrap {
 	left: 0px;
 	right:0px;
 	bottom: 0px;
-	background-image: url("images/service-fig-layer.png");
+	background-image: url("../images/service-fig-layer.png");
 	background-position: bottom;
 	background-repeat: no-repeat;
 }
@@ -1752,7 +1752,7 @@ section.pet_price_table_wrap {
 	left: 0px;
 	right:-18px;
 	bottom: 16px;
-	background-image: url("images/service-fig-layer2.png");
+	background-image: url("../images/service-fig-layer2.png");
 	background-position: bottom;
 	background-repeat: no-repeat;
 }

@@ -217,6 +217,9 @@ def pageAdd(request):
       pages.navigation_id = request.POST['navigation']    
     pages.is_active = request.POST['is_status']
     pages.is_home = request.POST['is_home']
+    pages.is_service = request.POST['is_service']
+    pages.is_client = request.POST['is_client']
+    pages.is_testimoinals = request.POST['is_testimoinals']
     pages.priority = request.POST['priority']
     pages.created_by = request.user
     pages.modified_date = request.user
@@ -243,6 +246,9 @@ def pageEdit(request, id):
       page.navigation_id = request.POST['navigation']      
     page.is_active = request.POST['is_status']
     page.is_home = request.POST['is_home']
+    page.is_service = request.POST['is_service']
+    page.is_client = request.POST['is_client']
+    page.is_testimoinals = request.POST['is_testimoinals']
     page.priority = request.POST['priority']
     page.modified_date = request.user
     page.save()

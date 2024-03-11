@@ -1,0 +1,103 @@
+{% extends 'portal/base.html' %}
+{% load static portal_tags %}
+{% block title %}{{page_title|default:'Edit Services'}}{% endblock %}
+{% block css %}{% endblock %}
+{% block content %}
+
+{% include 'portal/shared/left-menu.html' %}
+<main class="main-wrap">
+    {% include 'portal/shared/top-menu.html' %}
+    <form class="content-main pt-0" enctype='multipart/form-data' method="post" id="formProduct"> {% csrf_token %}
+        
+        <div class="container row pt-25" id="opt-header">
+            <div class="col-lg-8">
+                <div class="content-header">
+                    <h2 class="content-title">Updated Services</h2>
+                    <div>
+                        <button class="btn btn-light rounded font-sm mr-5 text-body hover-up" onclick="history.back()"> <i class="icon material-icons md-arrow_back mr-5"></i> Black</button>
+                        <button class="btn btn-md rounded font-sm hover-up"> <i class="icon material-icons md-save mr-5"></i> Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h6>1. General info</h6>
+                            </div>
+                            <div class="col-md-9">
+                              <div class="mb-4">
+                                  <label class="form-label">Navigation <span class="text-danger">*</span></label>
+                                  <select class="form-select" placeholder="Select Status" name="navigation" required >
+                                    {% for data in navigation %}
+                                      <option value="{{data.id}}" {% if data.id == page.navigation.id%}selected{% endif %}>{{data.name}}</option>
+                                    {% endfor%}
+                                  </select>
+                              </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Name <span class="text-danger">*</span></label>
+                                    <input type="text" name="title" value="{{page.title|default:''}}" required placeholder="Page Name" class="form-control slug-title">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Content</label>
+                                    <textarea id="content" name="content" class="form-control">{{page.content|safe|default:''}}</textarea>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Show Home Page <span class="text-danger">*</span></label>
+                                    <select class="form-select" placeholder="Select Status" name="is_home" required >
+                                        <option value="True" {% if page.is_home %}selected{% endif %}>True</option>
+                                        <option value="False" {% if not page.is_home %}selected{% endif %}>False</option>
+                                    </select>
+                                </div>
+                                <!-- form-group// -->
+                                <div class="mb-3">
+                                    <label class="form-label">Packages <span class="text-danger">*</span></label>
+                                    {% for data in packages %}
+                                    <label class="form-check">
+                                        <input type="checkbox" class="form-check-input" value="{{data.id}}" name="packages" {% isInQuerySet data.id page.packages.all 'checked' %} />
+                                        <span class="form-check-label">{{data.name}}</span>
+                                    </label>
+                                    {% endfor %}
+                                </div>
+                                <!-- form-group form-check .// -->
+                            </div> <!-- col.// -->
+                        </div> <!-- row.// -->
+                        <hr class="mb-4 mt-0">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h6>2. Media</h6>
+                            </div>
+                            <div class="col-md-9">
+                              <div class="mb-4 custom_select">
+                                  {% if page.image_directory %}
+                                  <p><img src="{{page.image_directory.image.url}}" class="img-sm img-thumbnail" alt="{{page.image_directory.name}}"></p>
+                                  {% endif %}
+                                  <label class="form-label">Media</label>
+                                  <select class="form-select select-nice" placeholder="Select Media" name="media">
+                                    <option value="">Select Media</option>
+                                    {% for data in media %}
+                                      <option value="{{data.id}}" {% if data.id == page.image_directory.id %}selected{% endif %} >{{data.name}}</option>
+                                    {% endfor%}
+                                  </select>
+                              </div>
+                                <div class="mb-4">
+                                  {% if page.image %}
+                                  <p><img src="{{page.image.url}}" class="img-sm img-thumbnail" alt="{{page.title}}"></p>
+                                  {% endif %}
+                                    <label class="form-label">Image</label>
+                                    <input class="form-control" type="file" name="file" >
+                                </div>
+                            </div> <!-- col.// -->
+                        </div> <!-- .row end// -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- card .// -->
+    </form>
+</main>
+{% endblock %}
+{% block js %}{% endblock %}

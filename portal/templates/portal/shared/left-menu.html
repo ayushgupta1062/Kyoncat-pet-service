@@ -23,7 +23,18 @@
                     <i class="icon material-icons md-create_new_folder"></i>
                     <span class="text">Media Folder</span>
                 </a>
-            </li>            
+            </li>
+            <li class="menu-item has-submenu {% if nav == 'services'%}active{% endif %}">
+                <a class="menu-link" href="javascript:void(0)">
+                    <i class="icon material-icons md-store"></i>
+                    <span class="text">Services</span>
+                </a>
+                <div class="submenu">
+                    <a class="{% if sub_nav == 'features' %}active{% endif %}" href="{% url 'portal_features' %}">Features</a>
+                    <a class="{% if sub_nav == 'packages' %}active{% endif %}" href="{% url 'portal_packages' %}">Packages</a>
+                    <a class="{% if sub_nav == 'services' %}active{% endif %}" href="{% url 'portal_services' %}">Service</a>
+                </div>
+            </li>    
             <li class="menu-item has-submenu {% if nav == 'store'%}active{% endif %}">
                 <a class="menu-link" href="javascript:void(0)">
                     <i class="icon material-icons md-store"></i>

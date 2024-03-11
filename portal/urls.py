@@ -1,5 +1,5 @@
 from django.urls import path, include
-from . import views
+from . import views, services_views
 
 urlpatterns = [
     path('', views.signin, name="portal_signin"),
@@ -33,5 +33,10 @@ urlpatterns = [
     path('testimoinals/add/', views.testimoinalsAdd, name="portal_testimoinals_add"),
     path('testimoinals/<id>/edit/', views.testimoinalsEdit, name="portal_testimoinals_edit"),
 
+    path('services/', services_views.services, name="portal_services"),
+    path('services/add/', services_views.servicesAdd, name="portal_services_add"),
+    path('services/<id>/edit/', services_views.servicesEdit, name="portal_services_edit"),
+    path('services/features/', services_views.features, name="portal_features"),
+    path('services/packages/', services_views.packages, name="portal_packages"),
 
 ]

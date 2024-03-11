@@ -61,77 +61,115 @@
 
         
     {% for page_content in content %}
-    {% for data in page_content.sectiondefault_set.all %}
-        {% if data.is_active and data.is_valid %}
-        {% if data.is_html %} 
-            {{data.content|safe}}
-        {% else %}
-            {% if data.image_position == 0 %}            
-            <!-- pet about wrap start -->
-            <section class="pet_about_wrap">
-                <div class="custom-container">
-                    <div class="pet_about_row">
-                        <div class="pet_about_text">
-                            <h3>{{data.sub_title}}</h3>
-                            <h2>{{data.title|safe}}</h2>
-                            {{data.content|safe}}
+    {% if page_content.is_service %}
+        
+        <!--child service  wrap start-->
+        <section class="child_service_wrap">
+            <div class="container">
+              <div class="mian_heading text-center">
+                <h2>Our Services</h2>
+                <h3>We are best in</h3>
+              </div> 
+              <div class="child_service_row">
+                <div class="child_service_slider"> 
+                  {% for data in service %}
+                  <div> 
+                    <a href="{% url 'w_page' data.navigation.url %}" class="child_service_column">
+                      <figure class="image-layer-affect">
+                        {% if data.image_directory %}
+                        <img src="{{data.image_directory.image.url}}" alt="{{data.image_directory.name}}">
+                        {% elif data.image %}
+                        <img src="{{data.image.url}}" alt="{{data.title}}">
+                        {% endif %}
+                      </figure>
+                      <div class="child_service_text">
+                          <h5>{{data.title}}</h5>
+                          <p>{{data.content}}</p>
+                      </div>
+                    </a>
+                  </div>
+                  {% endfor %}
+                </div> 
+              </div>  
+            </div>  
+          </section>    
+          <!--pet price table wraper end-->
+  
+  
+    {% else %}
+        {% for data in page_content.sectiondefault_set.all %}
+        
+            {% if data.is_active and data.is_valid %}
+            {% if data.is_html %} 
+                {{data.content|safe}}
+            {% else %}
+                {% if data.image_position == 0 %}            
+                <!-- pet about wrap start -->
+                <section class="pet_about_wrap">
+                    <div class="custom-container">
+                        <div class="pet_about_row">
+                            <div class="pet_about_text">
+                                <h3>{{data.sub_title}}</h3>
+                                <h2>{{data.title|safe}}</h2>
+                                {{data.content|safe}}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section> 
-            <!-- pet about wrap end -->      
-            {% endif %}
-            {% if data.image_position == 1 %}            
-            <!-- pet about wrap start -->
-            <section class="pet_about_wrap">
-                <div class="custom-container">
-                    <div class="pet_about_row">
-                    <div class="pet_about_fig">
-                            <figure>
-                                {% if data.image_directory %}
-                                <img src="{{data.image_directory.image.url}}" alt="{{data.title}}">
-                                {% elif data.image %}
-                                <img src="{{data.image.url}}" alt="{{data.title}}">
-                                {% endif %}
-                            </figure>  
-                        </div>
-                        <div class="pet_about_text">
-                            <h3>{{data.sub_title}}</h3>
-                            <h2>{{data.title}}</h2>
-                            {{data.content|safe}}
-                        </div>
-                    </div>
-                </div>
-            </section> 
-            <!-- pet about wrap end -->       
-            {% endif %}
-            {% if data.image_position == 2 %}
-            <!-- pet about wrap start -->
-            <section class="pet_about_wrap">
-                <div class="custom-container">
-                    <div class="pet_about_row">
-                        <div class="pet_about_text">
-                            <h3>{{data.sub_title}}</h3>
-                            <h2>{{data.title}}</h2>
-                            {{data.content|safe}}
-                        </div>
+                </section> 
+                <!-- pet about wrap end -->      
+                {% endif %}
+                {% if data.image_position == 1 %}            
+                <!-- pet about wrap start -->
+                <section class="pet_about_wrap">
+                    <div class="custom-container">
+                        <div class="pet_about_row">
                         <div class="pet_about_fig">
-                            <figure>
-                                {% if data.image_directory %}
-                                <img src="{{data.image_directory.image.url}}" alt="{{data.title}}">
-                                {% elif data.image %}
-                                <img src="{{data.image.url}}" alt="{{data.title}}">
-                                {% endif %}
-                            </figure>  
+                                <figure>
+                                    {% if data.image_directory %}
+                                    <img src="{{data.image_directory.image.url}}" alt="{{data.title}}">
+                                    {% elif data.image %}
+                                    <img src="{{data.image.url}}" alt="{{data.title}}">
+                                    {% endif %}
+                                </figure>  
+                            </div>
+                            <div class="pet_about_text">
+                                <h3>{{data.sub_title}}</h3>
+                                <h2>{{data.title}}</h2>
+                                {{data.content|safe}}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section> 
-            <!-- pet about wrap end -->  
+                </section> 
+                <!-- pet about wrap end -->       
+                {% endif %}
+                {% if data.image_position == 2 %}
+                <!-- pet about wrap start -->
+                <section class="pet_about_wrap">
+                    <div class="custom-container">
+                        <div class="pet_about_row">
+                            <div class="pet_about_text">
+                                <h3>{{data.sub_title}}</h3>
+                                <h2>{{data.title}}</h2>
+                                {{data.content|safe}}
+                            </div>
+                            <div class="pet_about_fig">
+                                <figure>
+                                    {% if data.image_directory %}
+                                    <img src="{{data.image_directory.image.url}}" alt="{{data.title}}">
+                                    {% elif data.image %}
+                                    <img src="{{data.image.url}}" alt="{{data.title}}">
+                                    {% endif %}
+                                </figure>  
+                            </div>
+                        </div>
+                    </div>
+                </section> 
+                <!-- pet about wrap end -->  
+                {% endif %}
             {% endif %}
-        {% endif %}
-        {% endif %}
-    {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
     {% endfor %}
 
     {% include 'website/footer.html' %}
