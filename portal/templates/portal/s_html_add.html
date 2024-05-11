@@ -73,8 +73,9 @@
   var editor = CodeMirror.fromTextArea(document.getElementById('content'), {
     lineNumbers: true,
     matchClosing: true,
-    htmlMode: true,
-    mode: 'text/html',
+    mode: 'application/ld+json',
+    lint: true,
+    autoCloseBrackets: true,
     theme:'cobalt'
 }).setSize("100%", 500);
 </script>

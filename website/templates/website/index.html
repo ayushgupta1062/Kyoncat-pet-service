@@ -60,43 +60,7 @@
         <!-- main banner end-->
 
         
-    {% for page_content in content %}
-    {% if page_content.is_service %}
-        
-        <!--child service  wrap start-->
-        <section class="child_service_wrap">
-            <div class="container">
-              <div class="mian_heading text-center">
-                <h2>Our Services</h2>
-                <h3>We are best in</h3>
-              </div> 
-              <div class="child_service_row">
-                <div class="child_service_slider"> 
-                  {% for data in service %}
-                  <div> 
-                    <a href="{% url 'w_page' data.navigation.url %}" class="child_service_column">
-                      <figure class="image-layer-affect">
-                        {% if data.image_directory %}
-                        <img src="{{data.image_directory.image.url}}" alt="{{data.image_directory.name}}">
-                        {% elif data.image %}
-                        <img src="{{data.image.url}}" alt="{{data.title}}">
-                        {% endif %}
-                      </figure>
-                      <div class="child_service_text">
-                          <h5>{{data.title}}</h5>
-                          <p>{{data.content}}</p>
-                      </div>
-                    </a>
-                  </div>
-                  {% endfor %}
-                </div> 
-              </div>  
-            </div>  
-          </section>    
-          <!--pet price table wraper end-->
-  
-  
-    {% else %}
+    {% for page_content in content %}    
         {% for data in page_content.sectiondefault_set.all %}
         
             {% if data.is_active and data.is_valid %}
@@ -169,7 +133,6 @@
             {% endif %}
             {% endif %}
         {% endfor %}
-    {% endif %}
     {% endfor %}
 
     {% include 'website/footer.html' %}
