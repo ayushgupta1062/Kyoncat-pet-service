@@ -35,3 +35,10 @@ def page(request, url):
     context = {'page': page, 'content':content, 'service': service, 'packages':packages}
     return render(request, 'website/service.html', context)
   
+
+def contact(request):
+  return render(request, 'website/contact.html')
+  
+def booking(request):
+  return render(request, 'website/booking.html')
+  
