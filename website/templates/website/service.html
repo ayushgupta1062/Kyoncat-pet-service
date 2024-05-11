@@ -3,10 +3,29 @@
 {% block title %}{{page.meta_title|default:''}}{% endblock %}
 {% block keyword %}{{page.meta_keywords|default:''}}{% endblock %}
 {% block description %}{{page.meta_description|default:''}}{% endblock %}
-{% block css %}{% endblock %}
+{% block css %}
+<style>
+    .swiper-container {
+        width: 100vw;
+        height: 100vh;
+        max-width: 300px;
+        margin: 0 auto;
+        
+        .swiper-wrapper {          
+            .swiper-slide {            
+                video {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+</style>
+{% endblock %}
 {% block content %}
 
     {% include 'website/header.html' %}
+
 
      <!--sab banner wraper start-->
      <div class="sab-banner-wraper">
@@ -28,6 +47,26 @@
         </div>    
       </div>
       <!--sab banner wraper end-->
+
+
+      
+<!-- Server Video Slider
+      <div class="swiper-container ">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+            <video src="https://kuddle.pet/videos/kuddle-grooming-instagram-1.mp4" muted></video>
+            </div>
+            <div class="swiper-slide">
+            <video src="https://kuddle.pet/videos/kuddle-grooming-instagram-1.mp4" preload="none" muted></video>
+            </div>
+            <div class="swiper-slide">
+            <video src="https://kuddle.pet/videos/kuddle-grooming-instagram-1.mp4" preload="none" muted></video>
+            </div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+-->      
 
          
     {% for page_content in content %}
@@ -146,4 +185,42 @@
     {% include 'website/footer.html' %}
 
 {% endblock %}
-{% block js %}{% endblock %}
+{% block js %}
+<script>
+    var mySwiper = new Swiper ('.swiper-container', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: false,
+      
+        // Navigation arrows
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        
+        on: {
+          transitionStart: function(){
+            
+            var videos = document.querySelectorAll('video');
+      
+            Array.prototype.forEach.call(videos, function(video){
+              video.pause();
+            });
+          },
+          
+          transitionEnd: function(){
+            
+            var activeIndex = this.activeIndex;
+            var activeSlide = document.getElementsByClassName('swiper-slide')[activeIndex];
+            var activeSlideVideo = activeSlide.getElementsByTagName('video')[0];
+            activeSlideVideo.play();
+          
+          },
+        
+        }
+      })
+      
+      
+      
+</script>
+{% endblock %}
