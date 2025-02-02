@@ -1,8 +1,8 @@
 {% extends 'website/base.html' %}
 {% load static %}
-{% block title %}{{page.meta_title|default:''}}{% endblock %}
-{% block keyword %}{{page.meta_keywords|default:''}}{% endblock %}
-{% block description %}{{page.meta_description|default:''}}{% endblock %}
+{% block title %}Make an Appointment{% endblock %}
+{% block keyword %}{% endblock %}
+{% block description %}{% endblock %}
 {% block css %}{% endblock %}
 {% block content %}
 
@@ -30,30 +30,30 @@
     <div class="pet_appointment_row">
       <div class="appiontment_list">
         <div class="pet_appointment_colum full-width" style="display: flex;">
-        <div class="pet_appointment_colum">
-          <h6>Available Services</h6>
-          <div class="">
-            <select class="small">
-              <option value="1">Services</option>
-            </select>
+          <div class="pet_appointment_colum">
+            <h6>Available Services</h6>
+            <div class="">
+              <select class="small">
+                {% for data in service %}
+                <optgroup label="{{data.title}}">
+                  {% for package in data.packages.all %}
+                  <option value="{{package.id}}" {% if request.GET.id|add:'0' == package.id|add:'0' %}selected{% endif %}>{{package.name}}</option>
+                  {% endfor %}
+                </optgroup>
+                {% endfor %}
+              </select>
+            </div>
           </div>
-        </div>
-        <div class="pet_appointment_colum">
-          <h6>Packages</h6>
-          <div class="">
-            <select class="small">
-              <option value="1">Packages</option> 
-            </select>
-          </div>
-        </div>
+          
         </div>
         <h4>Time</h4>
         
         <div class="pet_appointment_colum full-width">
           <h6>I am available on</h6>
           <div class="">
-            <div class="datepicker" style="display:inline-block;position:relative;"><input class="form-control"
-                id="demo" placeholder="2023-06-20" type="text">
+            <div class="datepicker" style="display:inline-block;position:relative;">
+              <input class="form-control"
+                id="demo" placeholder="2023-06-20" type="date">
               <table class="calendar"
                 style="position: absolute; left: 0px; display: none; box-shadow: rgba(0, 0, 0, 0.14) 0px 4px 6px 1px; width: 230px;">
                 <thead>

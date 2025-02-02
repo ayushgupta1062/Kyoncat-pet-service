@@ -40,5 +40,7 @@ def contact(request):
   return render(request, 'website/contact.html')
   
 def booking(request):
-  return render(request, 'website/booking.html')
+  service = Services.objects.filter(is_valid = True).all()
+  context={'service':service}
+  return render(request, 'website/booking.html', context)
   

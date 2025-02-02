@@ -33,8 +33,8 @@ sudo nano /etc/systemd/system/kyonkat.service
 [Service]
     User=ubuntu
     Group=www-data
-    WorkingDirectory=/home/ubuntu/kyonkat/kyonkat
-    ExecStart=/home/ubuntu/kyonkat/kyonkat_env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/ubuntu/kyonkat/kyonkat/kyonkat.sock kyonkat.wsgi:application
+    WorkingDirectory=/home/ubuntu/kyonkat
+    ExecStart=/home/ubuntu/kyonkat/env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/ubuntu/kyonkat/kyonkat.sock kyonkat.wsgi:application
 
 [Install]
     WantedBy=multi-user.target
@@ -57,15 +57,15 @@ server {
     location = /favicon.ico { access_log off; log_not_found off; }
     
     location /static/ {
-        root /home/ubuntu/kyonkat/kyonkat;
+        root /home/ubuntu/kyonkat;
     }
     location /media/ {
-        root /home/ubuntu/kyonkat/kyonkat;
+        root /home/ubuntu/kyonkat;
     }
 
     location / {
         include proxy_params;
-        proxy_pass http://unix:/home/ubuntu/kyonkat/kyonkat/kyonkat.sock;
+        proxy_pass http://unix:/home/ubuntu/kyonkat/kyonkat.sock;
     }
 }
 

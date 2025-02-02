@@ -152,7 +152,7 @@
                     {% endif %}
                     {% endfor %}
                   </ul>
-                  <a href="{% url 'w_booking' %}" class="main_button hover-affect">Book</a>
+                  <a href="{% url 'w_booking' %}?id={{data.id}}" class="main_button hover-affect">Book</a>
                 </div>
 
                 {% endfor %}
