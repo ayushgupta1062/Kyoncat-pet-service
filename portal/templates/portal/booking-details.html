@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-6">Booking ID:</div><div class="col-6 fw-bold">{{booking.id}}</div>
+    <div class="col-6">Service:</div><div class="col-6 fw-bold">{{booking.service}}</div>
+    <div class="col-6">Date / Time:</div><div class="col-6 fw-bold">{{booking.date}} - {{booking.time}}</div>
+    <div class="col-12 text-primary fw-bold"><hr>Pet Details</div>
+    <div class="col-6">Pet Type:</div><div class="col-6 fw-bold">{{booking.pet_type}}</div>
+    <div class="col-6">Pet Bread:</div><div class="col-6 fw-bold">{{booking.breed}}</div>
+    <div class="col-6">Pet Age:</div><div class="col-6 fw-bold">{{booking.pet_age}}</div>
+    <div class="col-6">Aggressive:</div><div class="col-6 fw-bold">{{booking.aggressive}}</div>
+    <div class="col-6">Vaccinations:</div><div class="col-6 fw-bold">{{booking.vaccinations}}</div>
+    <div class="col-12 text-primary fw-bold"><hr>Customer Details</div>
+    <div class="col-6">Name:</div><div class="col-6 fw-bold">{{booking.name}}</div>
+    <div class="col-6">Mobile:</div><div class="col-6 fw-bold">{{booking.mobile}}</div>
+    <div class="col-6">Address:</div><div class="col-6 fw-bold">{{booking.address|safe}}</div>
+    <div class="col-6">Location:</div><div class="col-6 fw-bold">{{booking.location_link|safe}}</div>
+</div>

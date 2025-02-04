@@ -7,8 +7,9 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.core.files import File
 from django.http.response import HttpResponse
+from django.db.models import Count, Q
 from datetime import date, datetime, timedelta
-from portal.models import MENUTYPE, NAVIGATIONTYPE, POSITION, Blog, ImageDirectory, Navigation, Pages, SectionDefault, Testimoinals
+from portal.models import MENUTYPE, NAVIGATIONTYPE, POSITION, Blog, Booking, Config, ImageDirectory, Navigation, Pages, SectionDefault, Testimoinals
 import csv
 # Create your views here.
 
@@ -86,10 +87,52 @@ def password(request):
 
 @user_passes_test(isLogin, login_url='portal_signin')
 def dashboard(request):
+  today = date.today()
+  week = today - timedelta(days=7)
+  analytic = Booking.objects.filter(created_date__date__gte = week, created_date__date__lte = today, is_valid = True).values('created_date__date').annotate(total=Count('id')).order_by('created_date__date')
+  
+  label = []
+  value = []
+  for data in analytic:
+    label.append(data['created_date__date'].strftime('%Y-%m-%d'))
+    value.append(str(data['total']))
+  
+  count = {
+    'total_booking' : Booking.objects.filter(is_valid = True).count(),
+    'today_booking' : Booking.objects.filter(created_date__date = today, is_valid = True).count(),
+    'today_service' : Booking.objects.filter(date = today, is_valid = True).count()
+  }
+
+  chart = {}
+  if label:
+    chart = {
+      'label': ','.join(label),
+      'value': ','.join(value)
+    }
   context = {
-    "nav": "dashboard"
+    "nav": "dashboard",
+    "chart": chart,
+    "count": count
   }
   return render(request, 'portal/dashboard.html', context)
+
+@user_passes_test(isLogin, login_url='portal_signin')
+def bookings(request):
+  booking = Booking.objects.filter(is_valid=True).all().order_by('-id')
+  context = {
+    "nav": "booking",
+    "bookings":booking
+  }
+  return render(request, 'portal/booking.html', context)
+
+@user_passes_test(isLogin, login_url='portal_signin')
+def bookingDetails(request):
+  booking = Booking.objects.filter(id = request.GET['id'], is_valid=True).first()
+  context = {
+    "nav": "booking",
+    "booking":booking
+  }
+  return render(request, 'portal/booking-details.html', context)
 
 @user_passes_test(isLogin, login_url='portal_signin')
 def navigation(request):
@@ -518,7 +561,7 @@ def blogAdd(request):
     messages.success(request, 'Added Successfully.')
     return HttpResponseRedirect(reverse('portal_blog_add'))
   
-  pages = Navigation.objects.filter(menu = MENUTYPE.BLOG_DETAILS, is_valid = True).all()  
+  pages = Navigation.objects.filter(menu = MENUTYPE.BLOG, is_valid = True).all()  
   media = ImageDirectory.objects.filter(is_valid = True).all()
   context = {
     "nav": "store",
@@ -550,7 +593,7 @@ def blogEdit(request, id):
     messages.success(request, 'Updated Successfully.')
     return HttpResponseRedirect(reverse('portal_blog'))
 
-  pages = Navigation.objects.filter(menu = MENUTYPE.BLOG_DETAILS, is_valid = True).all()  
+  pages = Navigation.objects.filter(menu = MENUTYPE.BLOG, is_valid = True).all()  
   media = ImageDirectory.objects.filter(is_valid = True).all()
   context = {
     "nav": "store",
@@ -637,3 +680,60 @@ def testimoinalsEdit(request, id):
     "position": POSITION.choices()
   }
   return render(request, 'portal/testimoinals_edit.html', context)
+
+
+@user_passes_test(isLogin, login_url='portal_signin')
+def config(request):
+  pages = Config.objects.filter(is_valid = True).first()
+  if request.POST:
+    if not pages:
+      pages = Config()
+      
+    pages.banner_title = request.POST['banner_title']
+    pages.banner_sub_title = request.POST['banner_sub_title']
+    pages.banner_content = request.POST['banner_content']
+    pages.use_layout_two = request.POST['use_layout_two']
+
+    pages.fb_link = request.POST['fb_link']
+    pages.x_link = request.POST['x_link']
+    pages.linkedin_link = request.POST['linkedin_link']
+    pages.youtube_link = request.POST['youtube_link']
+    pages.instagram_link = request.POST['instagram_link']
+    pages.whatsapp_link = request.POST['whatsapp_link']
+
+    pages.name = request.POST['name']
+    pages.about_us = request.POST['about_us']
+    pages.email = request.POST['email']
+    pages.mobile = request.POST['mobile']
+    pages.address = request.POST['address']
+    pages.opening_hours = request.POST['opening_hours']
+
+    pages.email_to = request.POST['email_to']
+    pages.email_cc = request.POST['email_cc']
+    pages.smtp_name = request.POST['smtp_name']
+    pages.smtp_host = request.POST['smtp_host']
+    pages.smtp_port = request.POST['smtp_port']
+    pages.smtp_username = request.POST['smtp_username']
+    pages.smtp_password = request.POST['smtp_password']
+    
+    pages.created_by = request.user
+    pages.modified_date = request.user
+    pages.save()
+
+    banner_image_one = File(request.FILES.get('banner_image_one', None))
+    if banner_image_one:
+      pages.banner_image_one.save(str(banner_image_one), banner_image_one, save=True)
+
+    banner_image_two = File(request.FILES.get('banner_image_two', None))
+    if banner_image_two:
+      pages.banner_image_two.save(str(banner_image_two), banner_image_two, save=True)
+      
+    messages.success(request, 'Updated Successfully.')
+    return HttpResponseRedirect(reverse('portal_config'))
+    
+  context = {
+    "nav": "store",
+    "sub_nav": "config",
+    "pages": pages
+  }
+  return render(request, 'portal/config.html', context)

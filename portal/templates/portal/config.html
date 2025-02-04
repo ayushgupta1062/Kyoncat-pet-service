@@ -1,0 +1,243 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}Config{% endblock %}
+{% block css %}
+<link href="{% static 'assets/js/vendors/quill/quill.snow.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'assets/js/vendors/quill/editor.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'assets/js/vendors/quill/typography.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block content %}
+
+{% include 'portal/shared/left-menu.html' %}
+<main class="main-wrap">
+    {% include 'portal/shared/top-menu.html' %}
+    <form class="content-main pt-0" enctype='multipart/form-data' method="post" id="formProduct"> {% csrf_token %}
+        <input type="hidden" name="content" id="htmlContent" required>
+        <div class="container row pt-25" id="opt-header">
+            <div class="col-lg-8">
+                <div class="content-header">
+                    <h2 class="content-title">Config</h2>
+                    <div>
+                        <button class="btn btn-light rounded font-sm mr-5 text-body hover-up" onclick="history.back()"> <i class="icon material-icons md-arrow_back mr-5"></i> Black</button>
+                        <button class="btn btn-md rounded font-sm hover-up"> <i class="icon material-icons md-save mr-5"></i> Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h6>1. Banner info</h6>
+                            </div>
+                            <div class="col-md-9">
+                              
+                                <div class="mb-4">
+                                    <label class="form-label">Title <span class="text-danger">*</span></label>
+                                    <input type="text" name="banner_title" value="{{pages.banner_title}}" required placeholder="Title" class="form-control">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Sub Title</label>
+                                    <input type="text" name="banner_sub_title" value="{{pages.banner_sub_title}}" placeholder="Sub Title" class="form-control">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Content</label>
+                                    <textarea type="text" name="banner_content" placeholder="Content" class="form-control">{{pages.banner_content|safe}}</textarea>
+                                </div>
+                                <div class="mb-4">
+                                  {% if pages.banner_image_one %}
+                                    <img src="{{pages.banner_image_one.url}}" class="w-25 form-control img-thumbnail">
+                                  {% endif %}
+                                    <label class="form-label">Banner Image 1</label>
+                                    <input class="form-control" type="file" name="banner_image_one" >
+                                </div>
+                                <div class="mb-4">
+                                  {% if pages.banner_image_two %}
+                                    <img src="{{pages.banner_image_two.url}}" class="w-25 form-control img-thumbnail">
+                                  {% endif %}
+                                    <label class="form-label">Banner Image 2</label>
+                                    <input class="form-control" type="file" name="banner_image_two" >
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Use Layout Two <span class="text-danger">*</span></label>
+                                    <select class="form-select" placeholder="Select Layout" name="use_layout_two" required >
+                                        <option value="True" {% if pages.use_layout_two %}selected{% endif %}>Yes</option>
+                                        <option value="False" {% if not pages.use_layout_two %}selected{% endif %}>No</option>
+                                    </select>
+                                </div>
+                            </div> <!-- col.// -->
+                        </div> <!-- row.// -->
+                        <hr class="mb-4 mt-0">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h6>2. About Company</h6>
+                            </div>
+                            <div class="col-md-9">
+                              <div class="mb-4">
+                                  <label class="form-label">Name</label>
+                                  <input type="text" name="name" value="{{pages.name}}" placeholder="Name" class="form-control">
+                              </div>
+                              <div class="mb-4">
+                                  <label class="form-label">About Us</label>
+                                  <textarea type="text" name="about_us" placeholder="About Us" class="form-control">{{pages.about_us|safe}}</textarea>
+                              </div>
+                              <div class="mb-4">
+                                  <label class="form-label">Email</label>
+                                  <textarea type="text" name="email" placeholder="Email" class="form-control">{{pages.email|safe}}</textarea>
+                              </div>
+                              <div class="mb-4">
+                                  <label class="form-label">Mobile</label>
+                                  <textarea type="text" name="mobile" placeholder="Mobile" class="form-control">{{pages.mobile|safe}}</textarea>
+                              </div>
+                              <div class="mb-4">
+                                  <label class="form-label">Address</label>
+                                  <textarea type="text" name="address" placeholder="Address" class="form-control">{{pages.address|safe}}</textarea>
+                              </div>
+                              <div class="mb-4">
+                                  <label class="form-label">Opening Hours</label>
+                                  <textarea type="text" name="opening_hours" placeholder="Opening Hours" class="form-control">{{pages.opening_hours|safe}}</textarea>
+                              </div>
+                            </div> <!-- col.// -->
+                        </div> <!-- .row end// -->
+                        <hr class="mb-4 mt-0">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h6>3. Social Media</h6>
+                            </div>
+                            <div class="col-md-9">
+                              <div class="mb-4">
+                                  <label class="form-label">FB Link</label>
+                                  <input type="text" name="fb_link" value="{{pages.fb_link}}" placeholder="FB Link" class="form-control">
+                              </div>
+                              <div class="mb-4">
+                                  <label class="form-label">X Link</label>
+                                  <input type="text" name="x_link" value="{{pages.x_link}}" placeholder="X Link" class="form-control">
+                              </div>
+                              <div class="mb-4">
+                                  <label class="form-label">Linkedin Link</label>
+                                  <input type="text" name="linkedin_link" value="{{pages.linkedin_link}}" placeholder="Linkedin Link" class="form-control">
+                              </div>
+                              <div class="mb-4">
+                                  <label class="form-label">Youtube Link</label>
+                                  <input type="text" name="youtube_link" value="{{pages.youtube_link}}" placeholder="Youtube Link" class="form-control">
+                              </div>
+                              <div class="mb-4">
+                                  <label class="form-label">Instagram Link</label>
+                                  <input type="text" name="instagram_link" value="{{pages.instagram_link}}" placeholder="Instagram Link" class="form-control">
+                              </div>
+                              <div class="mb-4">
+                                  <label class="form-label">Whatsapp Link</label>
+                                  <input type="text" name="whatsapp_link" value="{{pages.whatsapp_link}}" placeholder="Whatsapp Link" class="form-control">
+                              </div>
+                              
+                            </div> <!-- col.// -->
+                        </div> <!-- .row end// -->
+                        <hr class="mb-4 mt-0">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h6>4. SMTP</h6>
+                            </div>
+                            <div class="col-md-9">
+                              <div class="mb-4">
+                                  <label class="form-label">Email To</label>
+                                  <input type="text" name="email_to" value="{{pages.email_to}}" placeholder="Email To" class="form-control">
+                              </div>
+                              <div class="mb-4">
+                                  <label class="form-label">Email CC</label>
+                                  <input type="text" name="email_cc" value="{{pages.email_cc}}" placeholder="Email CC" class="form-control">
+                              </div>
+                              <div class="mb-4">
+                                  <label class="form-label">SMTP Name</label>
+                                  <input type="text" name="smtp_name" value="{{pages.smtp_name}}" placeholder="SMTP Name" class="form-control">
+                              </div>
+                              <div class="mb-4">
+                                  <label class="form-label">SMTP Host</label>
+                                  <input type="text" name="smtp_host" value="{{pages.smtp_host}}" placeholder="SMTP Host" class="form-control">
+                              </div>
+                              <div class="mb-4">
+                                  <label class="form-label">SMTP Port</label>
+                                  <input type="text" name="smtp_port" value="{{pages.smtp_port}}" placeholder="SMTP Port" class="form-control">
+                              </div>
+                              <div class="mb-4">
+                                  <label class="form-label">SMTP Username</label>
+                                  <input type="text" name="smtp_username" value="{{pages.smtp_username}}" placeholder="SMTP Username" class="form-control">
+                              </div>
+                              <div class="mb-4">
+                                  <label class="form-label">SMTP Password</label>
+                                  <input type="text" name="smtp_password" value="{{pages.smtp_password}}" placeholder="SMTP Password" class="form-control">
+                              </div>
+                              
+                            </div> <!-- col.// -->
+                        </div> <!-- .row end// -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- card .// -->
+    </form>
+</main>
+{% endblock %}
+{% block js %}
+<script src="{% static 'assets/js/vendors/quill/katex.js' %}"></script>
+<script src="{% static 'assets/js/vendors/quill/quill.js' %}"></script>
+<script src="{% static 'assets/js/vendors/quill/image-resize.min.js' %}"></script>
+<script src="{% static 'assets/js/sticky.js' %}" type="text/javascript"></script>
+<script>
+    var quill = new Quill('#editor', {
+        debug: 'info',
+        bounds: "#editor",
+        placeholder: "Type Something...",
+        modules: {
+          formula: !0,
+          toolbar: [
+            [{
+              font: []
+            }, { 'header': [1, 2, 3, 4, 5, 6, false] }],
+            ["bold", "italic", "underline", "strike"],
+            [{
+              color: []
+            }, {
+              background: []
+            }],
+            [{
+              script: "super"
+            }, {
+              script: "sub"
+            }],
+            [{
+              header: "1"
+            }, {
+              header: "2"
+            }, "blockquote", "code-block"],
+            [{
+              list: "ordered"
+            }, {
+              list: "bullet"
+            }, {
+              indent: "-1"
+            }, {
+              indent: "+1"
+            }],
+            ["direction", {
+              align: []
+            }],
+            ["link", "image", "video", "formula"],
+            ["clean"]
+          ],
+          imageResize: {
+            displaySize: true
+          }
+          
+        },
+        theme: "snow"
+      });
+      var form = document.querySelector("#formProduct");
+      var hiddenInput = document.querySelector('#htmlContent');
+      
+      form.addEventListener('submit', function (e) {
+        hiddenInput.value = quill.root.innerHTML;
+      });
+</script>
+{% endblock %}

@@ -8,57 +8,75 @@
 
     {% include 'website/header.html' %}
 
-    
+
+        {% if config.use_layout_two %}
         <!-- main banner start -->
-        <div class="main_banner top_banner">
-            <div class="bg_layer">
-                <div class="custom-container-fluid">
-                    <div class="main_banner_row">
-                        <div class="mian_banner_text">
-                            <h2>Your Pet</h2>
-                            <h1>Our Priority</h1>
-                            <p>Grooming & Supply provides grooming services for all dog and<br>
-                                cat breeds. We are fully committed to the health.</p>                            
-                        </div>
-                        <div class="banner_fig_slider">
-                            <div>
-                                <div class="mian_banner_fig">
-                                    <figure>
-                                        <img src="{% static 'website' %}/images/banner-fig01.png">
-                                    </figure>
-                                </div>
+        <div class="main_banner responsive-banner" style="background-image: url({{config.banner_image_one.url}});">
+            <div class="bg-overlay">
+              <div class="custom-container-fluid">
+                  <div class="main_banner_row">
+                      <div class="mian_banner_text">
+                        <h2>{{config.banner_sub_title}}</h2>
+                        <h1>{{config.banner_title}}</h1>
+                        <p>{{config.banner_content|safe}}</p>                        
+                      </div>
+                  </div>        
+              </div>
+                <div id="divider_id" class="website-divider-container-500113">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="divider-img-500113" viewBox="0 0 1080 137" preserveAspectRatio="none">
+                    <path d="M 0,137 V 59.03716 c 158.97703,52.21241 257.17659,0.48065 375.35967,2.17167 118.18308,1.69101 168.54911,29.1665 243.12679,30.10771 C 693.06415,92.25775 855.93515,29.278599 1080,73.61449 V 137 Z" style="opacity:0.85"></path>
+                    </svg>     
+                </div>
+             </div> 
+          </div>
+          <!-- main banner end-->
+        {% else %}
+            <!-- main banner start -->
+            <div class="main_banner top_banner">
+                <div class="bg_layer">
+                    <div class="custom-container-fluid">
+                        <div class="main_banner_row">
+                            <div class="mian_banner_text">
+                                <h2>{{config.banner_sub_title}}</h2>
+                                <h1>{{config.banner_title}}</h1>
+                                <p>{{config.banner_content|safe}}</p>
                             </div>
-                            <div>
-                                <div class="mian_banner_fig">
-                                    <figure>
-                                        <img src="{% static 'website' %}/images/banner-fig.png">
-                                    </figure>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="mian_banner_fig">
-                                    <figure>
-                                        <img src="{% static 'website' %}/images/banner-fig01.png">
-                                    </figure>
-                                </div>
+                            <div class="banner_fig_slider">
+                                {% if config.banner_image_one %}
+                                    <div>
+                                        <div class="mian_banner_fig">
+                                            <figure>
+                                                <img src="{{config.banner_image_one.url}}">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if config.banner_image_two %}
+                                    <div>
+                                        <div class="mian_banner_fig">
+                                            <figure>
+                                                <img src="{{config.banner_image_two.url}}">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
-                </div>
-                <div id="divider_id" class="website-divider-container-500113">
+                    <div id="divider_id" class="website-divider-container-500113">
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="divider-img-500113" viewBox="0 0 1080 137"
-                        preserveAspectRatio="none">
-                        <path
-                            d="M 0,137 V 59.03716 c 158.97703,52.21241 257.17659,0.48065 375.35967,2.17167 118.18308,1.69101 168.54911,29.1665 243.12679,30.10771 C 693.06415,92.25775 855.93515,29.278599 1080,73.61449 V 137 Z"
-                            style="opacity:0.85"></path>
-                    </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="divider-img-500113" viewBox="0 0 1080 137"
+                            preserveAspectRatio="none">
+                            <path
+                                d="M 0,137 V 59.03716 c 158.97703,52.21241 257.17659,0.48065 375.35967,2.17167 118.18308,1.69101 168.54911,29.1665 243.12679,30.10771 C 693.06415,92.25775 855.93515,29.278599 1080,73.61449 V 137 Z"
+                                style="opacity:0.85"></path>
+                        </svg>
 
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- main banner end-->
-
+            <!-- main banner end-->
+        {% endif %}
         
     {% for page_content in content %}    
         {% for data in page_content.sectiondefault_set.all %}

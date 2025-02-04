@@ -1,0 +1,105 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}Booking{% endblock %}
+{% block css %}{% endblock %}
+{% block content %}
+
+{% include 'portal/shared/left-menu.html' %}
+<main class="main-wrap">
+    {% include 'portal/shared/top-menu.html' %}
+    <section class="content-main">
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">Booking</h2>                
+            </div>
+            <div>
+                
+            </div>
+        </div>
+        <div class="card mb-4 ">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Booking Id</th>
+                            <th>Name</th>
+                            <th>Mobile</th>
+                            <th>Service</th>
+                            <th>Pet Type</th>
+                            <th>Breed</th>
+                            <th>Date / Time</th>
+                            <th>Booking date</th>
+                            <th class="text-end">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in bookings %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{data.id}}</td>
+                            <td>{{data.name}}</td>
+                            <td>{{data.mobile}}</td>
+                            <td>{{data.service}}</td>
+                            <td>{{data.pet_type}}</td>
+                            <td>{{data.breed}}</td>
+                            <td>{{data.date}} - {{data.time}}</td>
+                            <td class="text-end">{{data.created_date}}</td>
+                            <td>
+                                <div class="col-action text-end">
+                                    <button type="button" data-id="{{data.id}}" class="btn btn-sm font-sm rounded btn-brand view-booking"> <i class="material-icons md-fullscreen"></i> View </button>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- card .// -->
+    </section>
+</main>
+
+<!-- Modal -->
+<div class="modal fade" id="viewBooking" tabindex="-1" role="dialog" aria-labelledby="viewBookingLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-primary" id="viewBookingLabel">Booking Details</h5>
+          <a href="javascript:void(0);" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </a>
+        </div>
+        <div class="modal-body modal-booking-view">
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary close" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+{% block js %}
+<script>
+$(document).on('click', '.view-booking', function(){
+    let bookingId = $(this).data('id');
+    $.ajax({
+        url: `{% url 'portal_booking_details' %}?id=${bookingId}`,
+        type: 'GET',
+        success: function(response) {
+            $('.modal-booking-view').html(response)
+            $('#viewBooking').modal('show');
+        },
+        error: function(error) {
+            console.log('Error fetching booking data:', error);
+        }
+    });
+});
+$('.close').on('click', function(){
+    $('#viewBooking').modal('hide');
+})
+</script>
+{% endblock %}

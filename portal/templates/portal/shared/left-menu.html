@@ -18,6 +18,12 @@
                     <span class="text">Statistics</span>
                 </a>
             </li>
+            <li class="menu-item {% if nav == 'booking' %}active{% endif %}">
+                <a class="menu-link" href="{% url 'portal_bookings' %}">
+                    <i class="icon material-icons md-list_alt"></i>
+                    <span class="text">Bookings</span>
+                </a>
+            </li>
             <li class="menu-item {% if nav == 'media' %}active{% endif %}">
                 <a class="menu-link" href="{% url 'portal_media_folder' %}">
                     <i class="icon material-icons md-create_new_folder"></i>
@@ -47,6 +53,7 @@
                     <a class="{% if sub_nav == 'sHtml' %}active{% endif %}" href="{% url 'portal_s_html' %}">HTML Sections</a>
                     <a class="{% if sub_nav == 'blog' %}active{% endif %}" href="{% url 'portal_blog' %}">Blog</a>
                     <a class="{% if sub_nav == 'testimoinals' %}active{% endif %}" href="{% url 'portal_testimoinals' %}">Testimoinals</a>
+                    <a class="{% if sub_nav == 'config' %}active{% endif %}" href="{% url 'portal_config' %}">Config</a>
                 </div>
             </li>
             <li class="menu-item">

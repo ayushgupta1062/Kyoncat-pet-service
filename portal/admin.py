@@ -74,3 +74,36 @@ class TestimoinalsAdmin(admin.ModelAdmin):
         obj.modified_by = request.user
         obj.save()
 
+
+@admin.register(models.Config)
+class ConfigAdmin(admin.ModelAdmin):
+    list_display = ['name', 'is_valid']
+    search_fields = ['name']
+    actions = [enableValidFlag, disableValidFlag]
+    
+    def get_readonly_fields(self, request, obj=None):
+        return  ['created_by', 'created_date', 'modified_by', 'modified_date']
+       
+    def save_model(self, request, obj, form, change):
+        if not obj.created_date:
+            obj.created_by = request.user
+        obj.modified_by = request.user
+        obj.save()
+
+
+@admin.register(models.Booking)
+class BookingAdmin(admin.ModelAdmin):
+    list_display = ['name', 'mobile', 'service', 'date', 'time', 'is_valid']
+    search_fields = ['name']
+    actions = [enableValidFlag, disableValidFlag]
+    date_hierarchy = 'created_date'
+    
+    def get_readonly_fields(self, request, obj=None):
+        return  ['created_by', 'created_date', 'modified_by', 'modified_date']
+       
+    def save_model(self, request, obj, form, change):
+        if not obj.created_date:
+            obj.created_by = request.user
+        obj.modified_by = request.user
+        obj.save()
+

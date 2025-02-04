@@ -193,3 +193,65 @@ class Services(AuditFields):
     
     def __str__(self):
         return str(self.title)
+    
+class Config(AuditFields):
+    banner_title        = models.CharField(max_length=355, blank=False, null=False)
+    banner_sub_title    = models.CharField(max_length=355, blank=False, null=False)
+    banner_content      = models.TextField(blank=False, null=False)
+    banner_image_one    = models.ImageField(blank=True, null=True)
+    banner_image_two    = models.ImageField(blank=True, null=True)
+    use_layout_two      = models.BooleanField(default=False)
+    
+    fb_link         = models.CharField(max_length=355, blank=False, null=False)
+    x_link          = models.CharField(max_length=355, blank=False, null=False)
+    linkedin_link   = models.CharField(max_length=355, blank=False, null=False)
+    youtube_link    = models.CharField(max_length=355, blank=False, null=False)
+    instagram_link  = models.CharField(max_length=355, blank=False, null=False)
+    whatsapp_link   = models.CharField(max_length=355, blank=False, null=False)
+
+    name        = models.TextField(blank=False, null=False)
+    about_us    = models.TextField(blank=False, null=False)
+    email       = models.TextField(blank=False, null=False)
+    mobile      = models.TextField(blank=False, null=False)
+    address     = models.TextField(blank=False, null=False)
+    opening_hours     = models.TextField(blank=False, null=False)
+    
+    email_to        = models.CharField(max_length=355, blank=True, null=True)
+    email_cc        = models.CharField(max_length=355, blank=True, null=True)
+    smtp_name        = models.CharField(max_length=50)
+    smtp_host        = models.CharField(max_length=20)
+    smtp_port        = models.CharField(max_length=20)
+    smtp_username    = models.CharField(max_length=200)
+    smtp_password    = models.CharField(max_length=200)
+
+    class Meta:
+        db_table = 'config'
+        verbose_name = 'Config'
+        verbose_name_plural = 'Config'
+    
+    def __str__(self):
+        return str(self.id)
+    
+    
+class Booking(AuditFields):
+    name        = models.CharField(max_length=100, blank=False, null=False)
+    email       = models.CharField(max_length=50, blank=True, null=True)
+    mobile      = models.CharField(max_length=50, blank=False, null=False)
+    service     = models.CharField(max_length=250, blank=False, null=False)
+    pet_type    = models.CharField(max_length=50, blank=False, null=False)
+    breed       = models.CharField(max_length=50, blank=False, null=False)
+    pet_age     = models.CharField(max_length=50, blank=False, null=False)
+    aggressive  = models.CharField(max_length=50, blank=False, null=False)
+    vaccinations    = models.CharField(max_length=50, blank=False, null=False)
+    date    = models.DateField(blank=False, null=False)
+    time    = models.CharField(max_length=50, blank=False, null=False)
+    address     = models.TextField(blank=False, null=False)
+    location_link    = models.TextField(blank=False, null=False)
+    
+    class Meta:
+        db_table = 'booking'
+        verbose_name = 'Booking'
+        verbose_name_plural = 'Bookings'
+    
+    def __str__(self):
+        return str(self.name)

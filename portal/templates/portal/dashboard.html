@@ -14,9 +14,153 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-xl-8 col-lg-12">
+                <div class="card mb-4">
+                    <article class="card-body">
+                        <h5 class="card-title">One week statistics</h5>
+                        <canvas id="myChart" height="120px"></canvas>
+                    </article>
+                </div>                
+            </div>
+            <div class="col-xl-4 col-lg-12">
+                <div class="col-lg-12">
+                    <div class="card card-body mb-4">
+                        <article class="icontext">
+                            <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-monetization_on"></i></span>
+                            <div class="text">
+                                <h6 class="mb-1 card-title">Today Service</h6>
+                                <span>{{count.today_service}}</span>
+                                <span class="text-sm"></span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="card card-body mb-4">
+                        <article class="icontext">
+                            <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-monetization_on"></i></span>
+                            <div class="text">
+                                <h6 class="mb-1 card-title">Today Booking</h6>
+                                <span>{{count.today_booking}}</span>
+                                <span class="text-sm"></span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="card card-body mb-4">
+                        <article class="icontext">
+                            <span class="icon icon-sm rounded-circle bg-light"><i class="text-secondary material-icons md-monetization_on"></i></span>
+                            <div class="text">
+                                <h6 class="mb-1 card-title">Total Booking</h6>
+                                <span>{{count.total_booking}}</span>
+                                <span class="text-sm"></span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
         <!-- card .// -->
     </section>
 </main>
+<input type="hidden" id="label" value="{{chart.label}}">
+<input type="hidden" id="value" value="{{chart.value}}">
 {% endblock %}
 {% block js %}
+<script src="{% static 'assets/js/vendors/chart.js' %}"></script>
+<script>
+    (function ($) {
+        "use strict";
+    
+        /*Sale statistics Chart*/
+        if ($('#myChart').length) {
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+                
+                // The data for our dataset
+                data: {
+                    labels: $('#label').val().split(','),
+                    datasets: [
+                        {
+                            label: 'Bookings',
+                            tension: 0.3,
+                            fill: true,
+                            backgroundColor: 'rgba(380, 200, 230, 0.2)',
+                            borderColor: 'rgb(380, 200, 230)',
+                            data: $('#value').val().split(',')
+                        }
+    
+                    ]
+                },
+                options: {
+                    plugins: {
+                    legend: {
+                        labels: {
+                        usePointStyle: true,
+                        },
+                    }
+                    }
+                }
+            });
+        } //End if
+    
+        /*Sale statistics Chart*/
+        if ($('#myChart2').length) {
+            var ctx = document.getElementById("myChart2");
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                labels: ["900", "1200", "1400", "1600"],
+                datasets: [
+                    {
+                        label: "US",
+                        backgroundColor: "#5897fb",
+                        barThickness:10,
+                        data: [233,321,783,900]
+                    }, 
+                    {
+                        label: "Europe",
+                        backgroundColor: "#7bcf86",
+                        barThickness:10,
+                        data: [408,547,675,734]
+                    },
+                    {
+                        label: "Asian",
+                        backgroundColor: "#ff9076",
+                        barThickness:10,
+                        data: [208,447,575,634]
+                    },
+                    {
+                        label: "Africa",
+                        backgroundColor: "#d595e5",
+                        barThickness:10,
+                        data: [123,345,122,302]
+                    },
+                ]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            labels: {
+                            usePointStyle: true,
+                            },
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        } //end if
+        
+    })(jQuery);
+</script>
 {% endblock %}

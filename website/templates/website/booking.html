@@ -27,173 +27,133 @@
 <section class="pet_appointment_wrap">
   <div class="container">
     <h4 class="appointment-main-title">Make an Appointment</h4>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="bg-info panel-heading">
+          {{message}}
+        </div>
+        <hr>    
+      {% endfor %}
+    {% endif %}
+
     <div class="pet_appointment_row">
-      <div class="appiontment_list">
+      <form method="POST" class="appiontment_list" style="width: 60%;"> {% csrf_token %}
         <div class="pet_appointment_colum full-width" style="display: flex;">
           <div class="pet_appointment_colum">
-            <h6>Available Services</h6>
+            <h6>Available Services *</h6>
             <div class="">
-              <select class="small">
+              <select class="small" required name="service">
                 {% for data in service %}
                 <optgroup label="{{data.title}}">
                   {% for package in data.packages.all %}
-                  <option value="{{package.id}}" {% if request.GET.id|add:'0' == package.id|add:'0' %}selected{% endif %}>{{package.name}}</option>
+                  <option value="{{data.title}} - {{package.name}}" {% if request.GET.id|add:'0' == package.id|add:'0' %}selected{% endif %}>{{package.name}}</option>
                   {% endfor %}
                 </optgroup>
                 {% endfor %}
               </select>
             </div>
           </div>
-          
-        </div>
-        <h4>Time</h4>
-        
-        <div class="pet_appointment_colum full-width">
-          <h6>I am available on</h6>
-          <div class="">
-            <div class="datepicker" style="display:inline-block;position:relative;">
-              <input class="form-control"
-                id="demo" placeholder="2023-06-20" type="date">
-              <table class="calendar"
-                style="position: absolute; left: 0px; display: none; box-shadow: rgba(0, 0, 0, 0.14) 0px 4px 6px 1px; width: 230px;">
-                <thead>
-                  <tr>
-                    <th id="prev">‹</th>
-                    <th colspan="5" id="currM">May 2024</th>
-                    <th id="next">›</th>
-                  </tr>
-                  <tr>
-                    <th>S</th>
-                    <th>M</th>
-                    <th>T</th>
-                    <th>W</th>
-                    <th>T</th>
-                    <th>F</th>
-                    <th>S</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="pMDate"><span>28</span></td>
-                    <td class="pMDate"><span>29</span></td>
-                    <td class="pMDate"><span>30</span></td>
-                    <td class="date"><span>1</span></td>
-                    <td class="date"><span>2</span></td>
-                    <td class="date"><span>3</span></td>
-                    <td class="date"><span>4</span></td>
-                  </tr>
-                  <tr>
-                    <td class="date"><span>5</span></td>
-                    <td class="date"><span>6</span></td>
-                    <td class="date"><span>7</span></td>
-                    <td class="date"><span>8</span></td>
-                    <td class="date"><span>9</span></td>
-                    <td class="date"><span>10</span></td>
-                    <td id="currDay" class="selected date"><span>11</span></td>
-                  </tr>
-                  <tr>
-                    <td class="date"><span>12</span></td>
-                    <td class="date"><span>13</span></td>
-                    <td class="date"><span>14</span></td>
-                    <td class="date"><span>15</span></td>
-                    <td class="date"><span>16</span></td>
-                    <td class="date"><span>17</span></td>
-                    <td class="date"><span>18</span></td>
-                  </tr>
-                  <tr>
-                    <td class="date"><span>19</span></td>
-                    <td class="date"><span>20</span></td>
-                    <td class="date"><span>21</span></td>
-                    <td class="date"><span>22</span></td>
-                    <td class="date"><span>23</span></td>
-                    <td class="date"><span>24</span></td>
-                    <td class="date"><span>25</span></td>
-                  </tr>
-                  <tr>
-                    <td class="date"><span>26</span></td>
-                    <td class="date"><span>27</span></td>
-                    <td class="date"><span>28</span></td>
-                    <td class="date"><span>29</span></td>
-                    <td class="date"><span>30</span></td>
-                    <td class="date"><span>31</span></td>
-                    <td class="nMDate"><span>1</span></td>
-                  </tr>
-                  <tr>
-                    <td class="nMDate"><span>2</span></td>
-                    <td class="nMDate"><span>3</span></td>
-                    <td class="nMDate"><span>4</span></td>
-                    <td class="nMDate"><span>5</span></td>
-                    <td class="nMDate"><span>6</span></td>
-                    <td class="nMDate"><span>7</span></td>
-                    <td class="nMDate"><span>8</span></td>
-                  </tr>
-                  <tr>
-                    <td colspan="7" id="today">Today: Saturday, May 11, 2024</td>
-                  </tr>
-                </tbody>
-              </table>
+          <div class="pet_appointment_colum">
+            <h6>Date *</h6>
+            <div class="">
+              <input class="form-control" id="date" name="date" required type="date">
             </div>
           </div>
+          <div class="pet_appointment_colum">
+            <h6>Time *</h6>
+            <div class="">
+              <input class="form-control" id="time" name="time" required type="time">
+            </div>
+          </div>          
         </div>
+        <h4>Pet Details</h4>
+        
         <div class="pet_appointment_colum full-width" style="display: flex;">
-        <div class="pet_appointment_colum">
-          <h6> Start </h6>
-          <div class="">
-            <select class="small">
-              <option data-display="English">8:00 AM </option>
-              <option value="1">8:00 AM</option>
-              <option value="2">6:00 AM</option>
-              <option value="4">7:00 AM</option>
-              <option value="4">9:00 AM</option>
-              <option value="4">11:00 AM</option>
-              <option value="4">10:00 AM</option>
-              <option value="4">8:00 AM</option>
-              <option value="4">6:00 AM</option>
-              <option value="4">10:00 AM</option>
-              <option value="4">9:00 AM</option>
-              <option value="4">4:00 AM</option>
-              <option value="4">8:00 AM</option>
-            </select>
+          <div class="pet_appointment_colum">
+            <h6>Pet Type *</h6>
+            <div class="">
+              <select class="small" required name="pet_type">
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <div class="pet_appointment_colum">
-          <h6> end </h6>
-          <div class="">
-            <select class="small">
-              <option data-display="English">8:00 AM </option>
-              <option value="1">8:00 AM</option>
-              <option value="2">6:00 AM</option>
-              <option value="4">7:00 AM</option>
-              <option value="4">9:00 AM</option>
-              <option value="4">11:00 AM</option>
-              <option value="4">10:00 AM</option>
-              <option value="4">8:00 AM</option>
-              <option value="4">6:00 AM</option>
-              <option value="4">10:00 AM</option>
-              <option value="4">9:00 AM</option>
-              <option value="4">4:00 AM</option>
-              <option value="4">8:00 AM</option>
-            </select>
+          <div class="pet_appointment_colum">
+            <h6>Breed *</h6>
+            <div class="">
+              <input class="form-control" id="breed" name="breed" required type="text">
+            </div>
           </div>
+          <div class="pet_appointment_colum">
+            <h6>Pet age *</h6>
+            <div class="">
+              <input class="form-control" id="pet_age" name="pet_age" required type="text">
+            </div>
+          </div>                   
         </div>
+        
+        <div class="pet_appointment_colum full-width" style="display: flex;">
+          <div class="pet_appointment_colum">
+            <h6>Aggressive *</h6>
+            <div class="">
+              <select class="small" required name="aggressive">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+          </div>
+          <div class="pet_appointment_colum">
+            <h6>Vaccinations *</h6>
+            <div class="">
+              <select class="small" required name="vaccinations">
+                <option value="Completed">Completed</option>
+                <option value="Pending">pending</option>
+              </select>
+            </div>
+          </div>   
         </div>
+
+        
+        <h4>Personal Details</h4>
+        
+        <div class="pet_appointment_colum full-width" style="display: flex;">
+          <div class="pet_appointment_colum">
+            <h6>Name *</h6>
+            <div class="">
+              <input class="form-control" id="name" name="name" required type="text">
+            </div>
+          </div>
+          <div class="pet_appointment_colum">
+            <h6>Mobile Number *</h6>
+            <div class="">
+              <input class="form-control" id="mobile" name="mobile" required type="number">
+            </div>
+          </div>                   
+        </div>
+        
+        <div class="pet_appointment_colum full-width" style="display: flex;">
+          <div class="pet_appointment_colum">
+            <h6>Address *</h6>
+            <div class="">
+              <textarea class="form-control" id="address" name="address" required ></textarea>
+            </div>
+          </div>
+          <div class="pet_appointment_colum">
+            <h6>Location Link</h6>
+            <div class="">
+              <textarea class="form-control" id="location_link" name="location_link" ></textarea>
+            </div>
+          </div>                   
+        </div>
+
         <div class="pet_appointment_colum">
-          <a class="main_button btn2 bdr-clr hover-affect" href="#">Book</a>
+          <button type="submit" class="main_button btn2 bdr-clr hover-affect">Book</button>
         </div>
-      </div>
-      <div class="workin_hours">
+      </form>
+      <div class="workin_hours" style="width: 40%;">
         <span>Timings</span>
         <h4>WORKING HOURS</h4>
-        <p>Curabitur et fius nunc. Aliquam erat volutpat ac pulvinar sapien.volutpaipsum vunibus.</p>
-        <ul class="pet_widget_link">
-          <li><a href="#">Monday </a><span>09:00 am - 06:00 pm</span></li>
-          <li><a href="#">Tuesday </a><span>09:00 am - 06:00 pm</span></li>
-          <li><a href="#">Wednesday</a><span>09:00 am - 06:00 pm</span></li>
-          <li><a href="#">Wednesday</a><span>09:00 am - 06:00 pm</span></li>
-          <li><a href="#">Friday</a><span>09:00 am - 06:00 pm</span></li>
-          <li><a href="#">Saturday</a><span>09:00 am - 06:00 pm</span></li>
-          <li><a href="#">Sunday</a><span>09:00 am - 06:00 pm</span></li>
-        </ul>
+        {{config.opening_hours|safe}}
       </div>
     </div>
   </div>
