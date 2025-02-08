@@ -50,6 +50,7 @@ def booking(request):
     booking = Booking()
     booking.name = request.POST['name']
     booking.mobile = request.POST['mobile']
+    booking.email = request.POST['email']
     booking.service = request.POST['service']
     booking.pet_type = request.POST['pet_type']
     booking.breed = request.POST['breed']
