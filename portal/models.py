@@ -1,5 +1,6 @@
 from django.db import models
 from kyonkat.models import AuditFields, MetaFields
+from django.contrib.auth.models import User
 from enum import IntEnum
 
 class NAVIGATIONTYPE(IntEnum):
@@ -234,6 +235,7 @@ class Config(AuditFields):
     
     
 class Booking(AuditFields):
+    user        = models.ForeignKey(User, on_delete=models.DO_NOTHING, blank=True, null=True)
     name        = models.CharField(max_length=100, blank=False, null=False)
     email       = models.CharField(max_length=50, blank=True, null=True)
     mobile      = models.CharField(max_length=50, blank=False, null=False)

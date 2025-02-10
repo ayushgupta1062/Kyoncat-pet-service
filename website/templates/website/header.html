@@ -31,6 +31,16 @@
                     {% endif %}
                 {% endfor %}
                 <li><a href="{% url 'w_contact' %}">Contact Us</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="#">Account<i class="fa fa-caret-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="{% url 'w_dashboard' %}">My Bookings</a></li>
+                        <li><a href="{% url 'w_signout' %}">Logout</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li><a href="{% url 'w_signin' %}">Login</a></li>
+                {% endif %}
             </ul>
             <!--DL Menu Start-->
             <div id="kode-responsive-navigation" class="dl-menuwrapper">
@@ -58,6 +68,12 @@
                         {% endif %}
                     {% endfor %}
                     <li><a href="{% url 'w_contact' %}">Contact Us</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'w_dashboard' %}">My Bookings</a></li>
+                            <li><a href="{% url 'w_signout' %}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'w_signin' %}">Login</a></li>
+                    {% endif %}
                 </ul>
             </div>
             <!--DL Menu END-->
@@ -99,6 +115,16 @@
                     {% endif %}
                 {% endfor %}
                 <li><a href="{% url 'w_contact' %}">Contact Us</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="#">Account<i class="fa fa-caret-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="{% url 'w_dashboard' %}">My Bookings</a></li>
+                        <li><a href="{% url 'w_signout' %}">Logout</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li><a href="{% url 'w_signin' %}">Login</a></li>
+                {% endif %}
             </ul>
             <!--DL Menu Start-->
             <div id="responsive-navigation" class="dl-menuwrapper">
@@ -126,6 +152,16 @@
                         {% endif %}
                     {% endfor %}
                     <li><a href="{% url 'w_contact' %}">Contact Us</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="#">Account<i class="fa fa-caret-down"></i></a>
+                        <ul class="sub-menu">
+                            <li><a href="{% url 'w_dashboard' %}">My Bookings</a></li>
+                            <li><a href="{% url 'w_signout' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li><a href="{% url 'w_signin' %}">Login</a></li>
+                    {% endif %}
                 </ul>
             </div>
             <!--DL Menu END-->

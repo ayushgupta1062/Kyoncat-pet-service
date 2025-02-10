@@ -21,7 +21,7 @@ def get_current_week_days():
     return zip(week_days, week_day_names)
 
 
-def sendEmail(subject, body, filepath = None):
+def sendEmail(subject, body, to = None, filepath = None):
     try:
         config = Config.objects.filter(is_valid = True).first()
         settings.EMAIL_HOST = config.smtp_host
@@ -30,8 +30,13 @@ def sendEmail(subject, body, filepath = None):
         if config.smtp_host != 'smtp-relay.gmail.com':
             settings.EMAIL_HOST_PASSWORD = config.smtp_password
         settings.EMAIL_USE_TLS = True
+
+        if to:
+            to = to.split(',')
+        else:
+            to = config.email_to.split(',')
         
-        email = EmailMessage(subject, body,from_email='{} <{}>'.format(config.name,config.smtp_username),to=config.email_to.split(','),cc=config.email_to.split(','))
+        email = EmailMessage(subject, body,from_email='{} <{}>'.format(config.name,config.smtp_username),to=to,cc=config.email_to.split(','))
         email.encoding = "utf-8"
         email.content_subtype = "html"
 

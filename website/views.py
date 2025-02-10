@@ -5,7 +5,10 @@ from django.contrib import messages
 from django.template.loader import get_template
 from django.core.mail import EmailMessage
 from kyonkat import helper
+from django.contrib.auth.models import User
 from portal.models import MENUTYPE, Booking, Config, Navigation, Packages, Pages, Services
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import user_passes_test
 
 # Create your views here.
 def index(request):   
@@ -44,10 +47,77 @@ def contact(request):
   context={'config':config}
   return render(request, 'website/contact.html', context)
   
+def signin(request):
+  config = Config.objects.filter(is_valid = True).first()
+  context={'config':config}
+  return render(request, 'website/signin.html', context)
+
+def otp(request):
+  config = Config.objects.filter(is_valid = True).first()
+  
+  if request.POST:
+    username = request.POST['email']
+    password = request.POST['otp']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+      login(request, user)
+      return HttpResponseRedirect(reverse('w_dashboard'))
+    else:
+      context={'config':config, 'email': username, 'error':'Invalid OTP'}
+      return render(request, 'website/otp.html', context)
+  
+  if request.GET.get('email'):
+    email = request.GET.get('email')
+    password = User.objects.make_random_password()
+    user = User.objects.filter(username = email).first()
+    if user:
+      user.set_password(password)
+      user.save()
+    else:
+      user = User.objects.create_user(email, "", password)
+    print(password)
+    
+    try:
+      template = get_template('website/email/otp.html')
+      context = {'password':password, 'email': email}
+      html = template.render(context)
+      result = helper.sendEmail('OTP for Kyonkat Groomers', html, email)
+      
+    except Exception as e:
+      print(str(e))
+      pass
+
+    context={'config':config, 'email': email}
+    return render(request, 'website/otp.html', context)
+
+def signout(request):
+  logout(request)
+  return HttpResponseRedirect(reverse('w_index'))
+
+def isLogin(user):
+  try:
+    return user.is_authenticated
+  except:
+    return False
+  
+@user_passes_test(isLogin, login_url='w_index')
+def dashboard(request):
+  booking = Booking.objects.filter(user = request.user, is_valid = True).all().order_by('-id')
+  config = Config.objects.filter(is_valid = True).first()
+  context={'config':config, 'bookings':booking}
+  return render(request, 'website/dashboard.html', context)
+  
 def booking(request):
   config = Config.objects.filter(is_valid = True).first()
   if request.POST:
+    email = request.POST['email']
+    password = User.objects.make_random_password()
+    user = User.objects.filter(username = email).first()
+    if not user:
+      user = User.objects.create_user(email, "", password)
+
     booking = Booking()
+    booking.user = user
     booking.name = request.POST['name']
     booking.mobile = request.POST['mobile']
     booking.email = request.POST['email']

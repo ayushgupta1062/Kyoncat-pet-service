@@ -125,7 +125,7 @@ def bookings(request):
   }
   return render(request, 'portal/booking.html', context)
 
-@user_passes_test(isLogin, login_url='portal_signin')
+# @user_passes_test(isLogin, login_url='portal_signin')
 def bookingDetails(request):
   booking = Booking.objects.filter(id = request.GET['id'], is_valid=True).first()
   context = {
