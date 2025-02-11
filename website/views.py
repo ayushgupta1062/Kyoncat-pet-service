@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls.base import reverse
@@ -43,6 +44,21 @@ def page(request, url):
     return render(request, 'website/service.html', context)
   
 def contact(request):
+  if request.POST:
+    try:
+      template = get_template('website/email/contact.html')
+      context = {'name':request.POST['name'],'email':request.POST['email'],'mobile':request.POST['mobile'],'subject':request.POST['subject'],'message':request.POST['message']}
+      html = template.render(context)
+      result = helper.sendEmail('New contact us form submitted', html)
+      print(result)
+    except Exception as e:
+      print(str(e))
+      pass
+
+    messages.success(request, 'Thank you for your feedback, our team will contact you soon.')
+
+    return HttpResponseRedirect(reverse('w_contact'))
+  
   config = Config.objects.filter(is_valid = True).first()
   context={'config':config}
   return render(request, 'website/contact.html', context)
@@ -68,7 +84,7 @@ def otp(request):
   
   if request.GET.get('email'):
     email = request.GET.get('email')
-    password = User.objects.make_random_password()
+    password = str(random.randint(100000, 999999))
     user = User.objects.filter(username = email).first()
     if user:
       user.set_password(password)
@@ -111,7 +127,7 @@ def booking(request):
   config = Config.objects.filter(is_valid = True).first()
   if request.POST:
     email = request.POST['email']
-    password = User.objects.make_random_password()
+    password = str(random.randint(100000, 999999))
     user = User.objects.filter(username = email).first()
     if not user:
       user = User.objects.create_user(email, "", password)

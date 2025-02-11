@@ -61,17 +61,28 @@
         <h3 class="">Feel free to contact</h3>
       </div>
       <div class="contact_row">
-        <div class="contact_form_column">
+        
+        <form method="POST" class="contact_form_column"> {% csrf_token %}
+          {% if messages %}
+            {% for message in messages %}
+            <div class="contact_filed full_width">
+              <div class="bg-info panel-heading">
+                {{message}}
+              </div>
+            </div> 
+            {% endfor %}
+          {% endif %}
           <div class="contact_filed">
-            <input type="type" name="text" placeholder="Name">
-            <input type="type" name="text" placeholder="Email">
+            <input required type="type" name="name" placeholder="Name">
+            <input required type="type" name="email" placeholder="Email">
           </div>
-          <div class="contact_filed full_width">
-            <input type="type" name="text" placeholder="Subject">
+          <div class="contact_filed">
+            <input required type="number" name="mobile" placeholder="Mobile Number">
+            <input required type="type" name="subject" placeholder="Subject">
           </div>
-          <textarea>Message</textarea>
-          <button class="main_button btn2 bdr-clr hover-affect">Send Message</button>
-        </div>
+          <textarea required name="message" placeholder="Message"></textarea>
+          <button type="submit" class="main_button btn2 bdr-clr hover-affect">Send Message</button>
+        </form>
         <div class="contact_form_column">
           <iframe
             src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Residing at No.443, 1st Stage, 5th Block, 5th Main Road, H.B.R,Layout, Bengaluru-560 043&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
