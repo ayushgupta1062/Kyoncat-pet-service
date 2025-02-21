@@ -59,7 +59,7 @@
     {% for data in page_content.sectiondefault_set.all %}
         {% if data.is_active and data.is_valid %}
         {% if data.is_html %} 
-            {{data.content|safe}}
+            
         {% else %}
             {% if data.image_position == 0 %}            
             <!-- pet about wrap start -->
@@ -165,6 +165,22 @@
           </div>
        </section>      
        <!-- pet service warp end -->
+
+       
+
+         
+    {% for page_content in content %}
+    {% for data in page_content.sectiondefault_set.all %}
+        {% if data.is_active and data.is_valid %}
+        {% if data.is_html %} 
+            {{data.content|safe}}
+        {% else %}
+            
+        {% endif %}
+        {% endif %}
+    {% endfor %}
+    {% endfor %}
+
 
       <!-- pet counter wrap start -->
     
