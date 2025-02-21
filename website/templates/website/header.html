@@ -6,7 +6,11 @@
         <!-- main top bar start -->
         <div class="main_top_bar">
             <h1>
+                {% if config.white_logo %}
+                <figure><img src="{{config.white_logo.url}}" style="width:130px"></figure>
+                {% else %}
                 <figure><img src="{% static 'logo/logo-white.svg' %}" style="width:130px"></figure>
+                {% endif %}
             </h1>
             <ul class="navigation">
                 <li><a href="{% url 'w_index' %}">Home</a></li>
@@ -90,7 +94,11 @@
         <!-- main top bar start -->
         <div class="main_top_bar">
             <h1>
+                {% if config.color_logo %}
+                <figure><img src="{{config.color_logo.url}}" style="width:130px"></figure>
+                {% else %}
                 <figure><img src="{% static 'logo/logo-black.svg' %}" style="width:130px"></figure>
+                {% endif  %}
             </h1>
             <ul class="navigation">
                 <li><a href="{% url 'w_index' %}">Home</a></li>

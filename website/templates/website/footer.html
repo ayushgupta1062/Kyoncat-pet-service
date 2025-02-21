@@ -27,7 +27,11 @@
           </div>
 
           <div class="pet_widget_column">
+            {% if config.white_logo %}
+            <figure><img src="{{config.white_logo.url}}" style="width:150px"></figure>
+            {% else %}
             <figure><img src="{% static 'logo/logo-white.svg' %}" style="width:150px"></figure>
+            {% endif %}
             <p>{{config.about_us|safe}}</p>
             <ul class="widget_social_share">
                 
@@ -67,3 +71,9 @@
         </div>
     </div>
 </div>
+
+{% if config.whatsapp_number %}
+<a target="_blank" href="https://wa.me/{{config.whatsapp_number}}" style="position: fixed;bottom: 2rem;z-index: 99999;left: 2rem;">
+  <i class="fa fa-whatsapp" style="background: green;padding: 3px 6px;border-radius: 2rem;font-size: 40px;color: white;"></i>
+</a>
+{% endif %}

@@ -76,6 +76,21 @@
                             </div>
                             <div class="col-md-9">
                               <div class="mb-4">
+                                {% if pages.white_logo %}
+                                  <img src="{{pages.white_logo.url}}" class="w-25 form-control img-thumbnail">
+                                {% endif %}
+                                  <label class="form-label">White Logo</label>
+                                  <input class="form-control" type="file" name="white_logo" >
+                              </div>
+                              <div class="mb-4">
+                                {% if pages.color_logo %}
+                                  <img src="{{pages.color_logo.url}}" class="w-25 form-control img-thumbnail">
+                                {% endif %}
+                                  <label class="form-label">Color Logo</label>
+                                  <input class="form-control" type="file" name="color_logo" >
+                              </div>
+
+                              <div class="mb-4">
                                   <label class="form-label">Name</label>
                                   <input type="text" name="name" value="{{pages.name}}" placeholder="Name" class="form-control">
                               </div>
@@ -98,6 +113,10 @@
                               <div class="mb-4">
                                   <label class="form-label">Opening Hours</label>
                                   <textarea type="text" name="opening_hours" placeholder="Opening Hours" class="form-control">{{pages.opening_hours|safe}}</textarea>
+                              </div>
+                              <div class="mb-4">
+                                  <label class="form-label">Whatsapp Number</label>
+                                  <input type="number" name="whatsapp_number" value="{{pages.whatsapp_number}}" placeholder="Whatsapp Number" class="form-control">
                               </div>
                             </div> <!-- col.// -->
                         </div> <!-- .row end// -->
@@ -130,6 +149,10 @@
                               <div class="mb-4">
                                   <label class="form-label">Whatsapp Link</label>
                                   <input type="text" name="whatsapp_link" value="{{pages.whatsapp_link}}" placeholder="Whatsapp Link" class="form-control">
+                              </div>
+                              <div class="mb-4">
+                                  <label class="form-label">Custom Script</label>
+                                  <textarea type="text" name="footer_script" placeholder="Custom Script" class="form-control">{{pages.footer_script|safe}}</textarea>
                               </div>
                               
                             </div> <!-- col.// -->

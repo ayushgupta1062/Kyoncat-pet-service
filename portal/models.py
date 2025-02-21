@@ -210,12 +210,19 @@ class Config(AuditFields):
     instagram_link  = models.CharField(max_length=355, blank=False, null=False)
     whatsapp_link   = models.CharField(max_length=355, blank=False, null=False)
 
+    whatsapp_number   = models.CharField(max_length=25, blank=True, null=True)
+
+    white_logo   = models.ImageField(blank=True, null=True)
+    color_logo   = models.ImageField(blank=True, null=True)
+
     name        = models.TextField(blank=False, null=False)
     about_us    = models.TextField(blank=False, null=False)
     email       = models.TextField(blank=False, null=False)
     mobile      = models.TextField(blank=False, null=False)
     address     = models.TextField(blank=False, null=False)
     opening_hours     = models.TextField(blank=False, null=False)
+
+    footer_script     = models.TextField(blank=True, null=True)
     
     email_to        = models.CharField(max_length=355, blank=True, null=True)
     email_cc        = models.CharField(max_length=355, blank=True, null=True)

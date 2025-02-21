@@ -707,6 +707,8 @@ def config(request):
     pages.mobile = request.POST['mobile']
     pages.address = request.POST['address']
     pages.opening_hours = request.POST['opening_hours']
+    pages.whatsapp_number = request.POST['whatsapp_number']
+    pages.footer_script = request.POST['footer_script']
 
     pages.email_to = request.POST['email_to']
     pages.email_cc = request.POST['email_cc']
@@ -728,6 +730,14 @@ def config(request):
     if banner_image_two:
       pages.banner_image_two.save(str(banner_image_two), banner_image_two, save=True)
       
+    white_logo = File(request.FILES.get('white_logo', None))
+    if white_logo:
+      pages.white_logo.save(str(white_logo), white_logo, save=True)
+
+    color_logo = File(request.FILES.get('color_logo', None))
+    if color_logo:
+      pages.color_logo.save(str(color_logo), color_logo, save=True)
+
     messages.success(request, 'Updated Successfully.')
     return HttpResponseRedirect(reverse('portal_config'))
     
