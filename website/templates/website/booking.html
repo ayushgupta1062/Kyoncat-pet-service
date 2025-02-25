@@ -40,7 +40,7 @@
       <form method="POST" class="col-lg-8"> {% csrf_token %}
         <div class="row">
           <div class="col-md-6 col-lg-4">
-            <h6>Available Services *</h6>
+            <h6>Available Services<span class="text-danger">*</span></h6>
             <div class="">
               <select class="small" required name="service">
                 {% for data in service %}
@@ -54,15 +54,15 @@
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <h6>Date *</h6>
+            <h6>Date<span class="text-danger">*</span></h6>
             <div class="">
-              <input class="form-control" id="date" name="date" required type="date">
+              <input class="form-control" id="date" name="date" required type="text">
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <h6>Time *</h6>
+            <h6>Time<span class="text-danger">*</span></h6>
             <div class="">
-              <input class="form-control" id="time" name="time" required type="time">
+              <input class="form-control" id="time" name="time" required type="text">
             </div>
           </div>          
         </div>
@@ -71,7 +71,7 @@
         
         <div class="row">
           <div class="col-md-6 col-lg-4">
-            <h6>Pet Type *</h6>
+            <h6>Pet Type<span class="text-danger">*</span></h6>
             <div class="">
               <select class="small" required name="pet_type">
                 <option value="Dog">Dog</option>
@@ -80,13 +80,13 @@
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <h6>Breed *</h6>
+            <h6>Breed<span class="text-danger">*</span></h6>
             <div class="">
               <input class="form-control" id="breed" name="breed" required type="text">
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <h6>Pet age *</h6>
+            <h6>Pet age<span class="text-danger">*</span></h6>
             <div class="">
               <input class="form-control" id="pet_age" name="pet_age" required type="text">
             </div>
@@ -96,7 +96,7 @@
         
         <div class="row">
           <div class="col-md-6 col-lg-6">
-            <h6>Aggressive *</h6>
+            <h6>Aggressive<span class="text-danger">*</span></h6>
             <div class="">
               <select class="small" required name="aggressive">
                 <option value="Yes">Yes</option>
@@ -105,7 +105,7 @@
             </div>
           </div>
           <div class="col-md-6 col-lg-6">
-            <h6>Vaccinations *</h6>
+            <h6>Vaccinations<span class="text-danger">*</span></h6>
             <div class="">
               <select class="small" required name="vaccinations">
                 <option value="Completed">Completed</option>
@@ -120,19 +120,19 @@
         
         <div class="row">
           <div class="col-md-6 col-lg-4">
-            <h6>Name *</h6>
+            <h6>Name<span class="text-danger">*</span></h6>
             <div class="">
               <input class="form-control" id="name" name="name" required type="text">
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <h6>Mobile Number *</h6>
+            <h6>Mobile Number<span class="text-danger">*</span></h6>
             <div class="">
               <input class="form-control" id="mobile" name="mobile" required type="number">
             </div>
           </div>      
           <div class="col-md-6 col-lg-4">
-            <h6>Email *</h6>
+            <h6>Email<span class="text-danger">*</span></h6>
             <div class="">
               <input class="form-control" id="email" name="email" value="{{request.user.username|default:''}}" required type="email">
             </div>
@@ -142,7 +142,7 @@
         
         <div class="row">
           <div class="col-md-6 col-lg-6">
-            <h6>Address *</h6>
+            <h6>Address<span class="text-danger">*</span></h6>
             <div class="">
               <textarea class="form-control" id="address" name="address" required ></textarea>
             </div>

@@ -38,7 +38,9 @@ def page(request, url):
   if page.menu == MENUTYPE.SERVICES:
     content = Pages.objects.filter(navigation = page, is_active = True, is_valid = True).all().order_by('priority')
     service = Services.objects.filter(navigation = page, is_valid = True).first()
-    packages = service.packages.filter(is_valid = True).all().order_by('priorty')
+    packages = None
+    if service:
+      packages = service.packages.filter(is_valid = True).all().order_by('priorty')
 
     context = {'page': page, 'content':content, 'service': service, 'packages':packages, 'config':config}
     return render(request, 'website/service.html', context)
