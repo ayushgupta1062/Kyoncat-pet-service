@@ -1,0 +1,97 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}Career{% endblock %}
+{% block css %}{% endblock %}
+{% block content %}
+
+{% include 'portal/shared/left-menu.html' %}
+<main class="main-wrap">
+    {% include 'portal/shared/top-menu.html' %}
+    <section class="content-main">
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">Career</h2>
+            </div>
+            <div>
+                
+            </div>
+        </div>
+        <div class="card mb-4 ">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Mobile</th>
+                            <th>Job Role</th>
+                            <th>Job Type</th>
+                            <th>Experience</th>
+                            <th>Company</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in careers %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{data.name}}</td>
+                            <td>{{data.mobile}}</td>
+                            <td>{{data.job_role}}</td>
+                            <td>{{data.job_type}}</td>
+                            <td>{{data.experience}}</td>
+                            <td>{{data.company}}</td>
+                            <td>{{data.created_date}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- card .// -->
+    </section>
+</main>
+
+<!-- Modal -->
+<div class="modal fade" id="viewBooking" tabindex="-1" role="dialog" aria-labelledby="viewBookingLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-primary" id="viewBookingLabel">Booking Details</h5>
+          <a href="javascript:void(0);" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </a>
+        </div>
+        <div class="modal-body modal-booking-view">
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary close" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+{% block js %}
+<script>
+$(document).on('click', '.view-booking', function(){
+    let bookingId = $(this).data('id');
+    $.ajax({
+        url: `{% url 'portal_booking_details' %}?id=${bookingId}`,
+        type: 'GET',
+        success: function(response) {
+            $('.modal-booking-view').html(response)
+            $('#viewBooking').modal('show');
+        },
+        error: function(error) {
+            console.log('Error fetching booking data:', error);
+        }
+    });
+});
+$('.close').on('click', function(){
+    $('#viewBooking').modal('hide');
+})
+</script>
+{% endblock %}

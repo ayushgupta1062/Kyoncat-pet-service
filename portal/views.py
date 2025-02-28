@@ -9,7 +9,7 @@ from django.core.files import File
 from django.http.response import HttpResponse
 from django.db.models import Count, Q
 from datetime import date, datetime, timedelta
-from portal.models import MENUTYPE, NAVIGATIONTYPE, POSITION, Blog, Booking, Config, ImageDirectory, Navigation, Pages, SectionDefault, Testimoinals
+from portal.models import MENUTYPE, NAVIGATIONTYPE, POSITION, Blog, Booking, Career, Config, ImageDirectory, Navigation, Pages, SectionDefault, Testimoinals
 import csv
 # Create your views here.
 
@@ -124,6 +124,16 @@ def bookings(request):
     "bookings":booking
   }
   return render(request, 'portal/booking.html', context)
+
+
+@user_passes_test(isLogin, login_url='portal_signin')
+def career(request):
+  career = Career.objects.filter(is_valid=True).all().order_by('-id')
+  context = {
+    "nav": "career",
+    "careers":career
+  }
+  return render(request, 'portal/career.html', context)
 
 # @user_passes_test(isLogin, login_url='portal_signin')
 def bookingDetails(request):

@@ -7,7 +7,7 @@ from django.template.loader import get_template
 from django.core.mail import EmailMessage
 from kyonkat import helper
 from django.contrib.auth.models import User
-from portal.models import MENUTYPE, Booking, Config, Navigation, Packages, Pages, Services
+from portal.models import MENUTYPE, Booking, Career, Config, Navigation, Packages, Pages, Services
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import user_passes_test
 
@@ -167,4 +167,24 @@ def booking(request):
   service = Services.objects.filter(is_valid = True).all()
   context={'service':service, 'config':config}
   return render(request, 'website/booking.html', context)
+  
+  
+def career(request):
+  config = Config.objects.filter(is_valid = True).first()
+  if request.POST:
+
+    career = Career()
+    career.name = request.POST['name']
+    career.mobile = request.POST['mobile']
+    career.job_type = request.POST['job_type']
+    career.job_role = request.POST['job_role']
+    career.experience = request.POST['experience']
+    career.company = request.POST['company']
+    career.save()
+    
+    messages.success(request, 'Thank you for your request.')
+    return HttpResponseRedirect(reverse('w_career'))
+
+  context={'config':config}
+  return render(request, 'website/career.html', context)
   

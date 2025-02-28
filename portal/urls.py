@@ -8,6 +8,7 @@ urlpatterns = [
     path('password/', views.password, name="portal_password"),
     path('dashboard/', views.dashboard, name="portal_dashboard"),
     path('bookings/', views.bookings, name="portal_bookings"),
+    path('career/', views.career, name="portal_career"),
     path('booking-details/', views.bookingDetails, name="portal_booking_details"),
     path('navigation/', views.navigation, name="portal_navigation"),
     path('navigation/add/', views.navigationAdd, name="portal_navigation_add"),

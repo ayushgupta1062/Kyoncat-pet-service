@@ -264,3 +264,20 @@ class Booking(AuditFields):
     
     def __str__(self):
         return str(self.name)
+
+        
+class Career(AuditFields):
+    name        = models.CharField(max_length=100, blank=False, null=False)
+    mobile      = models.CharField(max_length=50, blank=False, null=False)
+    job_role    = models.CharField(max_length=250, blank=False, null=False)
+    job_type    = models.CharField(max_length=50, blank=False, null=False)
+    experience  = models.CharField(max_length=50, blank=False, null=False)
+    company     = models.CharField(max_length=50, blank=False, null=False)
+    
+    class Meta:
+        db_table = 'career'
+        verbose_name = 'Career'
+        verbose_name_plural = 'Career'
+    
+    def __str__(self):
+        return str(self.name)
