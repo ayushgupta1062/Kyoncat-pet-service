@@ -44,11 +44,15 @@
             <div class="">
               <select class="small" required name="service">
                 {% for data in service %}
+                {% if data.packages.all %}
                 <optgroup label="{{data.title}}">
                   {% for package in data.packages.all %}
-                  <option value="{{data.title}} - {{package.name}}" {% if request.GET.id|add:'0' == package.id|add:'0' %}selected{% endif %}>{{package.name}}</option>
+                  <option value="{{data.title}} - {{package.name}}" {% if request.GET.id|add:'0' == package.id|add:'0' %}selected{% endif %}>{{data.title}} - {{package.name}}</option>
                   {% endfor %}
                 </optgroup>
+                {% else %}                
+                <option value="{{data.title}}">{{data.title}}</option>
+                {% endif %}
                 {% endfor %}
               </select>
             </div>
