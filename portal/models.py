@@ -164,6 +164,7 @@ class Features(AuditFields):
 class Packages(AuditFields):
     features    = models.ManyToManyField(Features)
     name        = models.CharField(max_length=355, blank=False, null=False)
+    discount    = models.CharField(max_length=355, blank=True, null=True)
     priorty     = models.IntegerField(default=0, blank=False, null=False)
     price        = models.DecimalField(default=0, max_digits=10, decimal_places=2, blank=True, null=True)
 

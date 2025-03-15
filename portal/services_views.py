@@ -57,6 +57,7 @@ def packages(request):
       packages.name = request.POST['name']
       packages.priorty = request.POST['priorty']
       packages.price = request.POST['price']
+      packages.discount = request.POST['discount']
       packages.created_by = request.user
       packages.modified_date = request.user
       packages.save()    
@@ -71,6 +72,7 @@ def packages(request):
       packages.name = request.POST['name']
       packages.priorty = request.POST['priorty']
       packages.price = request.POST['price']
+      packages.discount = request.POST['discount']
       packages.modified_date = request.user
       packages.save()
       features = request.POST.getlist('features')

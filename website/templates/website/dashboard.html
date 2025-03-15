@@ -25,8 +25,8 @@
       </div>
       
       <div class="card mb-4 ">
-        <div class="card-body" style="overflow: scroll;">
-            <table class="table table-hover">
+        <div class="card-body" >
+            <table class="table table-hover hidden-xs hidden-sm">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -67,6 +67,65 @@
                     {% endfor %}
                 </tbody>
             </table>
+
+            <div class="pet_accordian_row hidden-lg hidden-md">
+                    
+              <div class="pet_accordion_column">
+                {% if not bookings %}
+                  <div class="text-center">
+                    <h4 style="color: #333;">
+                      No Booking found
+                    </h4>
+                  </div>
+                {% endif %}
+                {% for data in bookings %}
+                 <div class="accordion">
+                    <div class="accordion_tab" style="color: #333;">
+                      Booking Id: #{{data.id}}
+                    </div>
+                    <div class="accordion_content">
+                      <div class="accordion_item">
+                        <table>
+                          <tr>
+                            <td>Name</td>
+                            <td>{{data.name}}</td>
+                          </tr>
+                          <tr>
+                            <td>Mobile</td>
+                            <td>{{data.mobile}}</td>
+                          </tr>
+                          <tr>
+                            <td>Service</td>
+                            <td>{{data.service}}</td>
+                          </tr>
+                          <tr>
+                            <td>Pet Type</td>
+                            <td>{{data.pet_type}}</td>  
+                          </tr>
+                          <tr>
+                            <td>Breed</td>
+                            <td>{{data.breed}}</td> 
+                          </tr>
+                          <tr>
+                            <td>Date / Time</td>
+                            <td>{{data.date}} - {{data.time}}</td>  
+                          </tr>
+                          <tr>
+                            <td>Booking date</td>
+                            <td>{{data.created_date}}</td> 
+                          </tr>
+                          <tr>
+                            <td colspan="2"><button type="button" data-id="{{data.id}}" class="btn btn-sm font-sm rounded btn-brand view-booking"> <i class="material-icons md-fullscreen"></i> View </button>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}                
+                
+              </div>
+            </div>
+
         </div>
     </div>
 

@@ -41,7 +41,7 @@
                             <td class="text-end">{{data.modified_date}}</td>
                             <td>
                                 <div class="col-action text-end">
-                                    <a href="#" class="btn btn-sm font-sm rounded btn-brand edit-modal" data-id="{{data.id}}" data-label="{{data.name}}" data-price="{{data.price}}" data-priorty="{{data.priorty}}" data-features="{{data.get_features_ids_set|join:","}}"> <i class="material-icons md-edit"></i> Edit </a>
+                                    <a href="#" class="btn btn-sm font-sm rounded btn-brand edit-modal" data-id="{{data.id}}" data-label="{{data.name}}" data-price="{{data.price}}" data-discount="{{data.discount}}" data-priorty="{{data.priorty}}" data-features="{{data.get_features_ids_set|join:","}}"> <i class="material-icons md-edit"></i> Edit </a>
                                     <a href="#" class="btn btn-sm font-sm btn-light rounded delete-data" data-id="{{data.id}}" data-label="{{data.name}}"> <i class="material-icons md-delete_forever"></i> Delete </a>
                                 </div>
                             </td>
@@ -81,6 +81,12 @@
                                     <div class="mb-4">
                                         <label class="form-label">Price <span class="text-danger">*</span></label>
                                         <input type="number" name="price" required placeholder="Price" class="form-control">
+                                    </div>
+                                </div> <!-- col.// -->
+                                <div class="col-md-12">
+                                    <div class="mb-4">
+                                        <label class="form-label">Discount </label>
+                                        <input type="text" name="discount" placeholder="Discount" class="form-control">
                                     </div>
                                 </div> <!-- col.// -->
                                 <div class="col-md-12">
@@ -140,6 +146,12 @@
                                 </div> <!-- col.// -->
                                 <div class="col-md-12">
                                     <div class="mb-4">
+                                        <label class="form-label">Discount </label>
+                                        <input type="text"  id="editDiscount" name="discount" placeholder="Discount" class="form-control">
+                                    </div>
+                                </div> <!-- col.// -->
+                                <div class="col-md-12">
+                                    <div class="mb-4">
                                         <label class="form-label">Priorty <span class="text-danger">*</span></label>
                                         <input type="number" id="editPriorty" name="priorty" required placeholder="Priorty" class="form-control">
                                     </div>
@@ -177,6 +189,7 @@
         $('#editId').val($(this).attr("data-id"));
         $('#editName').val($(this).attr("data-label"));
         $('#editPrice').val($(this).attr("data-price"));
+        $('#editDiscount').val($(this).attr("data-discount"));
         $('#editPriorty').val($(this).attr("data-priorty"));
         var features = $(this).attr("data-features").split(',');
         for(i = 0; i < features.length; i++){

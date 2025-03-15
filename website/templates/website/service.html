@@ -145,6 +145,9 @@
                   <figure class=""></figure>
                   <h5>{{data.name}}</h5>
                   <p class="service-price" style="font-weight: bold;color: #ff8931;font-size: 16px;">₹{{data.price}}</p>
+                  {% if data.discount %}
+                  <p class="discount-msg" style="font-weight: bold;color:rgb(255, 49, 49);font-size: 16px;">{{data.discount}}</p>
+                  {% endif %}
                   <p></p>
                   <ul class="pet_price_list">
                     {% for data in data.features.all %}
