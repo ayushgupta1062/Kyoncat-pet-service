@@ -79,8 +79,8 @@
                   </div>
                 {% endif %}
                 {% for data in bookings %}
-                 <div class="accordion">
-                    <div class="accordion_tab" style="color: #333;">
+                 <div class="accordion {% if forloop.counter == 1 %}active{% endif %}">
+                    <div class="accordion_tab {% if forloop.counter == 1 %}active{% endif %}" style="color: #333;">
                       Booking Id: #{{data.id}}
                     </div>
                     <div class="accordion_content">
@@ -99,20 +99,12 @@
                             <td>{{data.service}}</td>
                           </tr>
                           <tr>
-                            <td>Pet Type</td>
-                            <td>{{data.pet_type}}</td>  
-                          </tr>
-                          <tr>
-                            <td>Breed</td>
-                            <td>{{data.breed}}</td> 
-                          </tr>
-                          <tr>
                             <td>Date / Time</td>
-                            <td>{{data.date}} - {{data.time}}</td>  
+                            <td>{{data.date}}</td>  
                           </tr>
                           <tr>
-                            <td>Booking date</td>
-                            <td>{{data.created_date}}</td> 
+                            <td>Time</td>
+                            <td>{{data.time}}</td>  
                           </tr>
                           <tr>
                             <td colspan="2"><button type="button" data-id="{{data.id}}" class="btn btn-sm font-sm rounded btn-brand view-booking"> <i class="material-icons md-fullscreen"></i> View </button>
