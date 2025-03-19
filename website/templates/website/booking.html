@@ -51,7 +51,7 @@
                   {% endfor %}
                 </optgroup>
                 {% else %}                
-                <option value="{{data.title}}">{{data.title}}</option>
+                <option value="{{data.title}}" data-id="{{data.id}}" {% if request.GET.service|add:'0' == data.id|add:'0' %}selected{% endif %}>{{data.title}}</option>
                 {% endif %}
                 {% endfor %}
               </select>
