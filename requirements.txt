@@ -5,3 +5,6 @@ tzdata==2024.1
 
 Pillow
 whitenoise
+
+dj-database-url
+psycopg2-binary
