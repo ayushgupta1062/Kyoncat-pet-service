@@ -758,3 +758,5 @@ static/rest_framework/*
 static/debug_toolbar/*
 
 setting/__init__.py
+
+venv_new/
