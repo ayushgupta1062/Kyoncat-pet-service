@@ -17,11 +17,7 @@ SECRET_KEY = 'django-insecure-q+)z$cqsz5(88fey%kz0efs-m2+)s#+3q-s5%nu(dqnhs@zy8x
 DEBUG = True
 
 # ALLOWED_HOSTS = ['.vercel.app', 'kyonkat-pet-service.vercel.app', '127.0.0.1', 'localhost']
-ALLOWED_HOSTS = [
-    "kyoncat-pet-service.onrender.com",
-    "localhost",
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
