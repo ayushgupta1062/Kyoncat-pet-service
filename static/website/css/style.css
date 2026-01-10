@@ -103,6 +103,8 @@
 	bottom: 0px;
 	background-color: #000;
 	opacity: 0.4;
+	/* Allow interacting with content (buttons/links) above overlays */
+	pointer-events: none;
 }
 section{
 	padding:100px 0px;
@@ -194,9 +196,16 @@ section{
 }
 .main_top_bar .main_button{
 	color:#fff;
+	background-color: #ff8a3d;
+	border-color: #fff;
+	transition: all 0.3s ease;
 }
 .main_top_bar .main_button:hover{
-	box-shadow: 0px 0px 6px -1px #fff;
+	background-color: #ef6b0d;
+	border-color: #e6792a;
+	color: #fff;
+	box-shadow: 0px 4px 16px rgba(230, 121, 42, 0.4);
+	transform: translateY(-2px);
 }
 .btn2{
 	padding: 16px 40px;
@@ -289,11 +298,17 @@ section{
 	color:#333;
 }
 .main_header.fixed .main_top_bar .main_button{
-	color:#333;
-	border-color:#333;
+	color:#fff;
+	background-color: #ff8a3d;
+	border-color: #ff8a3d;
+	transition: all 0.3s ease;
 }
 .main_header.fixed .main_top_bar .main_button:hover{
-	color:#fff;
+	background-color: #f66607;
+	border-color: #ff8a3d;
+	color: #fff;
+	box-shadow: 0px 4px 16px rgba(255, 138, 61, 0.4);
+	transform: translateY(-2px);
 }
 .scrolled .main_header.fixed {
   -webkit-transform: translate3d(0, 0, 0);
@@ -328,7 +343,7 @@ section{
     width: 100%;
     border-radius: 0px;
     transform: rotate(-0deg);
-    background-color: #bc5000;
+    background-color: #ff8a3d;
     z-index: -1;
 }
 .main_banner .top_banner{
@@ -353,6 +368,8 @@ section{
 	background-image: url(images/service-bg-paw.png);
 	opacity: 0.1;
 	animation: layer 100s ease-in-out infinite;
+	/* Don't block clicks on banner CTA/buttons */
+	pointer-events: none;
 }
 @keyframes layer {
 0% {top: 0;}
@@ -364,7 +381,9 @@ section{
 }
 .top_banner .mian_banner_text {
     padding-top: 150px;
-    z-index: 999;
+    /* Ensure this layer sits above decorative overlays so CTA is clickable */
+    position: relative;
+    z-index: 2;
 }
 .top_banner .slick-slider{
 	width: 45%;
@@ -413,6 +432,7 @@ section{
 	background-image: url(images/banner-bg01.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: #ff8a3d;
     min-height:900px;
 }
 .main_banner_row{
@@ -461,15 +481,22 @@ section{
     background-image: url(images/anda-banner.png);
     background-repeat: no-repeat;
     opacity: 0.3;
+	/* Decorative only; don't block clicks */
+	pointer-events: none;
+	z-index: -1;
 }
 .mian_banner_text{
 	padding-top: 80px;
+	/* Keep banner CTAs clickable above decorative layers */
+	position: relative;
+	z-index: 3;
 }
 .mian_banner_text h2{
 	 font-family: 'Allison', cursive;
 	  font-size: 92px;
 	  margin-bottom: 0px;
 	  position: relative;
+	  color: #FFD700;
 	  animation-name: slide-fade;
    	  animation-duration: 2s;
    	  animation-fill-mode: forwards;

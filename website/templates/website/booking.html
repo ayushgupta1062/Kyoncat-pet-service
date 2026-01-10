@@ -3,7 +3,82 @@
 {% block title %}Make an Appointment{% endblock %}
 {% block keyword %}{% endblock %}
 {% block description %}{% endblock %}
-{% block css %}{% endblock %}
+{% block css %}
+<style>
+.pet-type-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 8px;
+}
+.pet-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 16px 12px;
+  border: 2px solid #e5e5e5;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  min-height: 180px;
+}
+.pet-card:hover {
+  border-color: #ff8a3d;
+  box-shadow: 0 4px 12px rgba(255, 138, 61, 0.2);
+  transform: translateY(-2px);
+}
+.pet-card.selected {
+  border-color: #ff8a3d;
+  background: linear-gradient(135deg, rgba(255, 138, 61, 0.08) 0%, rgba(255, 138, 61, 0.03) 100%);
+  box-shadow: 0 6px 20px rgba(255, 138, 61, 0.3);
+  transform: translateY(-2px);
+}
+.pet-label { display: none; }
+.pet-thumb-img {
+  width: 100%;
+  max-width: 140px;
+  height: 140px;
+  border-radius: 8px;
+  border: 2px solid #e5e5e5;
+  transition: all 0.3s ease;
+  object-fit: contain;
+  background: #f9f9f9;
+  display: block;
+  margin: 0 auto;
+  padding: 8px;
+}
+.pet-card.selected .pet-thumb-img {
+  border-color: #ff8a3d;
+  box-shadow: 0 4px 12px rgba(255, 138, 61, 0.25);
+  transform: scale(1.05);
+}
+.pet-card:hover .pet-thumb-img {
+  border-color: #ff8a3d;
+}
+/* Custom scrollbar for dropdown */
+.pet-type-options::-webkit-scrollbar {
+  width: 6px;
+}
+.pet-type-options::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+.pet-type-options::-webkit-scrollbar-thumb {
+  background: #ff8a3d;
+  border-radius: 10px;
+}
+.pet-type-options::-webkit-scrollbar-thumb:hover {
+  background: #e6792a;
+}
+</style>
+{% endblock %}
 {% block content %}
 
 {% include 'website/header.html' %}
@@ -26,7 +101,7 @@
 
 <section class="pet_appointment_wrap">
   <div class="container bgc1" style="padding: 5rem;">
-    <h4 class="appointment-main-title">Make an Appointment</h4>
+    <h4 class="appointment-main-title">Make an Appointment </h4>
     {% if messages %}
       {% for message in messages %}
         <div class="bg-info panel-heading">
@@ -42,20 +117,22 @@
           <div class="col-md-6 col-lg-4">
             <h6>Available Services<span class="text-danger">*</span></h6>
             <div class="">
-              <select class="small" required name="service">
+              <select class="small" required name="service" id="serviceSelect">
+                <option value="" selected disabled>Select Service</option>
                 {% for data in service %}
                 {% if data.packages.all %}
                 <optgroup label="{{data.title}}">
                   {% for package in data.packages.all %}
-                  <option value="{{data.title}} - {{package.name}}" {% if request.GET.id|add:'0' == package.id|add:'0' %}selected{% endif %}>{{data.title}} - {{package.name}}</option>
+                  <option value="{{data.title}} - {{package.name}}" data-price="{{package.price|default:'0'}}" {% if request.GET.id|add:'0' == package.id|add:'0' %}selected{% endif %}>{{data.title}} - {{package.name}}</option>
                   {% endfor %}
                 </optgroup>
                 {% else %}                
-                <option value="{{data.title}}" data-id="{{data.id}}" {% if request.GET.service|add:'0' == data.id|add:'0' %}selected{% endif %}>{{data.title}}</option>
+                <option value="{{data.title}}" data-id="{{data.id}}" data-price="0" {% if request.GET.service|add:'0' == data.id|add:'0' %}selected{% endif %}>{{data.title}}</option>
                 {% endif %}
                 {% endfor %}
               </select>
             </div>
+            <input type="hidden" name="amount" id="amountField" value="0">
           </div>
           <div class="col-md-6 col-lg-4">
             <h6>Date<span class="text-danger">*</span></h6>
@@ -78,10 +155,28 @@
           <div class="col-md-6 col-lg-4">
             <h6>Pet Type<span class="text-danger">*</span></h6>
             <div class="">
-              <select class="small" required name="pet_type">
+              <!-- keep original select for form compatibility -->
+              <select name="pet_type" required style="position:absolute; left:-9999px; width:1px; height:1px;">
+                <option value="" selected disabled>Select Pet Type</option>
                 <option value="Dog">Dog</option>
                 <option value="Cat">Cat</option>
               </select>
+              <!-- custom dropdown trigger -->
+              <div class="form-control" id="petTypeTrigger" style="display:flex; align-items:center; justify-content:space-between; cursor:pointer; color:#999;">
+                <span id="petTypeSelectedText">Select Pet Type</span>
+                <span class="fa fa-angle-down"></span>
+              </div>
+              <!-- dropdown with images - vertical slider -->
+              <div id="petTypeDropdown" class="pet-type-options" style="display:none; margin-top:10px;">
+                <div class="pet-card" data-value="Dog">
+                  <img src="{% static 'website/images/svg pets (1) (1).png' %}" class="pet-thumb-img" alt="Dog">
+                  <span class="pet-label">Dog</span>
+                </div>
+                <div class="pet-card" data-value="Cat">
+                  <img src="{% static 'website/images/pet3.png' %}" class="pet-thumb-img" alt="Cat">
+                  <span class="pet-label">Cat</span>
+                </div>
+              </div>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -104,6 +199,7 @@
             <h6>Aggressive<span class="text-danger">*</span></h6>
             <div class="">
               <select class="small" required name="aggressive">
+                <option value="" selected disabled>Select</option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
               </select>
@@ -113,8 +209,9 @@
             <h6>Vaccinations<span class="text-danger">*</span></h6>
             <div class="">
               <select class="small" required name="vaccinations">
+                <option value="" selected disabled>Select</option>
                 <option value="Completed">Completed</option>
-                <option value="Pending">pending</option>
+                <option value="Pending">Pending</option>
               </select>
             </div>
           </div>   
@@ -162,7 +259,7 @@
         <br>
 
         <div class="pet_appointment_colum">
-          <button type="submit" class="main_button btn2 bdr-clr hover-affect">Book</button>
+          <button type="submit" class="main_button btn2 bdr-clr hover-affect">Book Now</button>
         </div>
       </form>
       <div class="workin_hours col-lg-4">
@@ -179,4 +276,98 @@
 {% include 'website/footer.html' %}
 
 {% endblock %}
-{% block js %}{% endblock %}
+{% block js %}
+<script type="text/javascript">
+  (function($){
+    $(function(){
+      var $trigger = $("#petTypeTrigger");
+      var $dropdown = $("#petTypeDropdown");
+      var $select = $("select[name='pet_type']");
+      var $text = $("#petTypeSelectedText");
+      
+      // open/close dropdown with a slide animation (like native selects)
+      $trigger.on("click", function(){
+        $dropdown.stop(true, true).slideToggle(160, function(){
+          if($(this).is(":visible")){
+            $(this).css("display", "flex"); // ensure flex layout when visible
+          }
+        });
+      });
+      
+      // choose pet by clicking an image card
+      $dropdown.on("click", ".pet-card", function(){
+        var $clickedCard = $(this);
+        var value = $clickedCard.data("value");
+        
+        // Remove selected class from all cards
+        $dropdown.find(".pet-card").removeClass("selected");
+        
+        // Add selected class to clicked card
+        $clickedCard.addClass("selected");
+        
+        // Update form field
+        $select.val(value);
+        $text.text(value);
+        $text.css("color", "#333");
+        
+        // Close dropdown after a brief delay to show selection
+        setTimeout(function(){
+          $dropdown.slideUp(160);
+        }, 300);
+      });
+      
+      // Initialize selected state based on current value
+      function updateSelectedState(){
+        var currentValue = $select.val();
+        $dropdown.find(".pet-card").removeClass("selected");
+        if(currentValue && currentValue !== ""){
+          $dropdown.find(".pet-card[data-value='" + currentValue + "']").addClass("selected");
+        }
+      }
+      
+      // Run on dropdown open
+      $trigger.on("click", function(){
+        setTimeout(updateSelectedState, 170);
+      });
+      
+      // Update trigger text color when value is selected
+      $select.on("change", function(){
+        if($(this).val() && $(this).val() !== ""){
+          $("#petTypeTrigger").css("color", "#333");
+        } else {
+          $("#petTypeTrigger").css("color", "#999");
+        }
+      });
+      
+      // close when clicking outside
+      $(document).on("click", function(e){
+        if(!$(e.target).closest("#petTypeTrigger, #petTypeDropdown").length){
+          $dropdown.slideUp(160);
+        }
+      });
+    });
+  })(jQuery);
+</script>
+<script type="text/javascript">
+  (function($){
+    function syncAmount(){
+      var $opt = $("#serviceSelect option:selected");
+      var price = $opt.data("price");
+      if(price === undefined || price === null || price === "") price = 0;
+      $("#amountField").val(price);
+    }
+    $(function(){
+      syncAmount();
+      $("#serviceSelect").on("change", syncAmount);
+      
+      // Set minimum date to today to prevent selecting past dates
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+      var yyyy = today.getFullYear();
+      var todayStr = yyyy + '-' + mm + '-' + dd;
+      $("#date").attr('min', todayStr);
+    });
+  })(jQuery);
+</script>
+{% endblock %}

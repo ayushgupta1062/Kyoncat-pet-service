@@ -1,8 +1,8 @@
 {% extends 'website/base.html' %}
 {% load static %}
-{% block title %}{{page_title|default:'Home'}}{% endblock %}
+{% block title %}Expert & Professional Pet Care Services in Bengaluru - Kyonkat Groomers{% endblock %}
 {% block keyword %}{{page_keywords|default:''}}{% endblock %}
-{% block description %}{{page_description|default:''}}{% endblock %}
+{% block description %}Looking for expert pet care in Bengaluru? Kyonkat Groomers offers professional pet care services, from grooming to wellness. Trust our expert pet care team today!{% endblock %}
 {% block css %}{% endblock %}
 {% block content %}
 
@@ -18,7 +18,7 @@
                       <div class="mian_banner_text">
                         <h2>{{config.banner_sub_title}}</h2>
                         <h1>{{config.banner_title}}</h1>
-                        <p>{{config.banner_content|safe}}</p>                        
+                        <p>{{config.banner_content|safe}}</p>
                       </div>
                   </div>        
               </div>
@@ -156,4 +156,105 @@
     {% include 'website/footer.html' %}
 
 {% endblock %}
-{% block js %}{% endblock %}
+{% block js %}
+<script type="text/javascript">
+  // Make the existing "Book Appointment" banner button (from CMS content) clickable.
+  (function(){
+    var bookingUrl = "{% url 'w_booking' %}";
+
+    function looksLikeBookingCta(el){
+      var text = (el.textContent || el.innerText || "").trim().toLowerCase();
+      return text.indexOf("book appointment") !== -1 || 
+             text.indexOf("book apointment") !== -1 || 
+             text === "book now" ||
+             text.indexOf("appointment") !== -1;
+    }
+
+    // Wait for DOM to be fully loaded
+    document.addEventListener("DOMContentLoaded", function(){
+      // search only inside banner text to avoid changing other links
+      var containers = document.querySelectorAll(".mian_banner_text");
+      containers.forEach(function(c){
+        // Find any element that looks like a Book Appointment button
+        var allElements = c.querySelectorAll("a, button, div, span, p");
+        allElements.forEach(function(el){
+          if(looksLikeBookingCta(el)){
+            var tag = (el.tagName || "").toLowerCase();
+            
+            // If it's an anchor, fix the href
+            if(tag === "a"){
+              var href = el.getAttribute("href") || "";
+              if(!href || href === "#" || href === "javascript:void(0)" || href.indexOf("booking") === -1){
+                el.setAttribute("href", bookingUrl);
+                el.style.cursor = "pointer";
+              }
+            } 
+            // If it's a button or div/span/p, make it clickable
+            else if(tag === "button" || el.classList.contains("main_button") || el.style.cursor === "pointer" || el.parentElement && el.parentElement.classList.contains("main_button")){
+              el.style.cursor = "pointer";
+              el.addEventListener("click", function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                window.location.href = bookingUrl;
+              });
+            }
+            // For other elements, check if they're inside a clickable container
+            else {
+              // Make parent clickable if it has button-like styling
+              var parent = el.parentElement;
+              if(parent && (parent.classList.contains("main_button") || parent.style && parent.style.cursor === "pointer")){
+                parent.style.cursor = "pointer";
+                parent.addEventListener("click", function(e){
+                  if(e.target === el || e.target.closest(".mian_banner_text p")){
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.location.href = bookingUrl;
+                  }
+                });
+              } else {
+                // Make the element itself clickable
+                el.style.cursor = "pointer";
+                el.addEventListener("click", function(e){
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.location.href = bookingUrl;
+                });
+              }
+            }
+          }
+        });
+      });
+
+      // Additional safety net: catch clicks on Book Appointment text anywhere in banner
+      document.addEventListener("click", function(e){
+        var el = e.target;
+        // Check up to 5 parent levels
+        for(var i=0; i<5 && el; i++, el = el.parentElement){
+          if(!el) break;
+          
+          // Only process if inside banner text area
+          if(!el.closest(".mian_banner_text")) continue;
+          
+          var tag = (el.tagName || "").toLowerCase();
+          var text = (el.textContent || el.innerText || "").trim().toLowerCase();
+          
+          if(looksLikeBookingCta(el) || (text && text.indexOf("book appointment") !== -1)){
+            // Skip if already has a working href
+            if(tag === "a"){
+              var href = el.getAttribute("href") || "";
+              if(href && href !== "#" && href !== "javascript:void(0)" && href.indexOf("booking") !== -1){
+                return; // let default anchor behavior work
+              }
+            }
+            
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = bookingUrl;
+            return;
+          }
+        }
+      }, true);
+    });
+  })();
+</script>
+{% endblock %}

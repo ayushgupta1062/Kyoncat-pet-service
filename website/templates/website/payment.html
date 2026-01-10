@@ -1,0 +1,312 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% block title %}Payment{% endblock %}
+
+{% block css %}
+<style>
+.pay-wrap{
+  padding: 160px 0 96px 0;
+  background: #ff8a3d;
+  position: relative;
+}
+.pay-wrap:before{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  top:-180px; height:180px;
+  background:#ff8a3d;
+}
+.pay-container{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.pay-card{
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+  overflow: hidden;
+}
+.pay-header{
+  background: #ff8a3d;
+  padding: 18px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.pay-header .brand{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  color:#fff;
+  font-weight:700;
+}
+.pay-header img{ height: 26px; }
+.pay-stage{
+  padding: 22px;
+}
+.pay-step-title{
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 14px 0;
+}
+.svc-pill{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 14px 14px;
+  border: 1px solid #f0e7df;
+  border-radius: 14px;
+  background: #fffaf6;
+  margin-bottom: 16px;
+}
+.svc-pill .svc-name{ font-weight: 600; }
+.svc-pill .svc-amt{ font-weight: 800; font-size: 18px; }
+.method-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.method-tile{
+  border: 1px solid #f0e7df;
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  cursor:pointer;
+  transition: transform .08s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.method-tile:hover{
+  transform: translateY(-1px);
+  border-color: rgba(255,138,61,0.7);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+}
+.method-tile .left{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  font-weight: 600;
+}
+.method-ico{
+  width: 38px; height: 38px;
+  border-radius: 12px;
+  background: #fff4ea;
+  display:flex; align-items:center; justify-content:center;
+  border: 1px solid #ffe1cd;
+  color:#ff8a3d;
+  font-weight: 800;
+}
+.arrow{ color:#c7b7a7; font-size: 18px; }
+.full-row{ grid-column: 1 / -1; }
+.pay-actions{
+  margin-top: 18px;
+  display:flex;
+  gap: 12px;
+  justify-content:flex-end;
+}
+.btn-primary{
+  background: #ff8a3d;
+  color:#fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+.btn-ghost{
+  background: transparent;
+  color:#444;
+  border: 1px solid rgba(0,0,0,0.12);
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+.otp-row{
+  display:flex;
+  gap: 10px;
+  margin: 10px 0 16px 0;
+}
+.otp-box{
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  border: 1px solid #e6e2de;
+  text-align:center;
+  font-size: 20px;
+  font-weight: 700;
+}
+.otp-box:focus{
+  outline: none;
+  border-color: #ff8a3d;
+  box-shadow: 0 0 0 4px rgba(255,138,61,0.18);
+}
+.success{
+  text-align:center;
+  padding: 24px 10px 8px 10px;
+}
+.success-badge{
+  width: 84px; height: 84px;
+  border-radius: 999px;
+  background: #6aa84f;
+  margin: 0 auto 14px auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size: 42px;
+  font-weight: 900;
+}
+.success h3{ margin: 0 0 10px 0; font-weight: 800; }
+.muted{ color:#6b6b6b; }
+.slide{ display:none; }
+.slide.active{ display:block; }
+@media (max-width: 720px){
+  .method-grid{ grid-template-columns: 1fr; }
+  .pay-wrap{ padding-top: 140px; }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+{% include 'website/header.html' %}
+
+<section class="pay-wrap">
+  <div class="pay-container">
+    <div class="pay-card">
+      <div class="pay-header">
+        <div class="brand">
+          <img src="{% static 'logo/logo-white.svg' %}" alt="Kyonkat">
+          <span>Kyonkat</span>
+        </div>
+        <div style="color:#fff; font-weight:700;">Payment</div>
+      </div>
+
+      <div class="pay-stage">
+        <div class="svc-pill">
+          <div>
+            <div class="muted" style="font-size:12px;">Service</div>
+            <div class="svc-name">{{pending.service}}</div>
+          </div>
+          <div class="svc-amt">₹ {{pending.amount|default:"0"}}</div>
+        </div>
+
+        <div id="slide1" class="slide {% if not paid %}active{% endif %}">
+          <div class="pay-step-title">Select Payment Method</div>
+          <div class="method-grid">
+            <div class="method-tile full-row" data-next="2">
+              <div class="left"><div class="method-ico">UPI</div>UPI</div>
+              <div class="arrow">›</div>
+            </div>
+            <div class="method-tile" data-next="2">
+              <div class="left"><div class="method-ico">₹</div>PhonePe</div>
+              <div class="arrow">›</div>
+            </div>
+            <div class="method-tile" data-next="2">
+              <div class="left"><div class="method-ico">P</div>Paytm</div>
+              <div class="arrow">›</div>
+            </div>
+            <div class="method-tile" data-next="2">
+              <div class="left"><div class="method-ico">C</div>CRED UPI</div>
+              <div class="arrow">›</div>
+            </div>
+            <div class="method-tile" data-next="2">
+              <div class="left"><div class="method-ico">⋯</div>Apps & UPI ID</div>
+              <div class="arrow">›</div>
+            </div>
+            <div class="method-tile full-row" data-next="2">
+              <div class="left"><div class="method-ico">💳</div>Cards</div>
+              <div class="arrow">›</div>
+            </div>
+            <div class="method-tile full-row" data-next="2">
+              <div class="left"><div class="method-ico">🏦</div>Netbanking</div>
+              <div class="arrow">›</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="slide2" class="slide">
+          <div class="pay-step-title">Complete Your Payment</div>
+          <div class="muted" style="margin-bottom:10px;">
+            OTP sent to <strong>{{pending.mobile}}</strong>
+          </div>
+
+          <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="confirm" value="1">
+            <div class="otp-row">
+              <input class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]*">
+              <input class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]*">
+              <input class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]*">
+              <input class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]*">
+            </div>
+            <div class="pay-actions">
+              <button type="button" class="btn-ghost" id="backToMethods">Back</button>
+              <button type="submit" class="btn-primary">Pay ₹ {{pending.amount|default:"0"}}</button>
+            </div>
+          </form>
+        </div>
+
+        <div id="slide3" class="slide {% if paid %}active{% endif %}">
+          <div class="success">
+            <div class="success-badge">✓</div>
+            <h3>Payment Successful!</h3>
+            <div class="muted">
+              ₹ {{pending.amount|default:"0"}} has been paid successfully.
+              {% if booking_id %}<br>Booking ID: <strong>#{{booking_id}}</strong>{% endif %}
+            </div>
+            <div class="pay-actions" style="justify-content:center; margin-top:18px;">
+              <a href="{% url 'w_dashboard' %}" class="btn-primary" style="display:inline-block; text-decoration:none;">Go to Dashboard</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include 'website/footer.html' %}
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+  (function($){
+    function showSlide(n){
+      $("#slide1,#slide2,#slide3").removeClass("active");
+      $("#slide"+n).addClass("active");
+    }
+
+    $(function(){
+      {% if paid %}
+        showSlide(3);
+      {% else %}
+        showSlide(1);
+      {% endif %}
+
+      $(".method-tile").on("click", function(){
+        showSlide(2);
+        $(".otp-box").first().focus();
+      });
+      $("#backToMethods").on("click", function(){
+        showSlide(1);
+      });
+
+      // OTP UX: auto-advance
+      $(document).on("input", ".otp-box", function(){
+        this.value = (this.value || "").replace(/[^0-9]/g,'').slice(0,1);
+        if(this.value && $(this).next(".otp-box").length){
+          $(this).next(".otp-box").focus();
+        }
+      });
+      $(document).on("keydown", ".otp-box", function(e){
+        if(e.key === "Backspace" && !this.value && $(this).prev(".otp-box").length){
+          $(this).prev(".otp-box").focus();
+        }
+      });
+    });
+  })(jQuery);
+</script>
+{% endblock %}
+
+

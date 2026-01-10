@@ -12,6 +12,57 @@
     <meta name="description" content="{% block description %}{% endblock %}">
     <meta name="keyword" content="{% block keyword %}{% endblock %}">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'logo/logo-black.svg' %}" />
+	 <link rel="canonical" href="{{ request.build_absolute_uri }}" />
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VHWBJW6VVF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VHWBJW6VVF');
+</script>	
+
+<meta name="google-site-verification" content="Orzh61lx8Cx3tTocE254LndrIQxbntcUJJtMEO_jzeA" />	
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AnimalShelter",
+  "name": "Kyonkat Pet Services",
+  "image": "https://kyonkatgroomers.com/media/Kyonkat-black.svg",
+  "@id": "https://kyonkatgroomers.com/#petservices",
+  "url": "https://kyonkatgroomers.com/",
+  "telephone": "+91 7760297708",
+  "priceRange": "500-2000",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "No.443, 1st Stage, 5th Block, 5th Main Road H.B.R,Layout",
+    "addressLocality": "Bengaluru",
+    "postalCode": "560 043",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 13.0200185,
+    "longitude": 77.6394876
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "09:00",
+    "closes": "17:00"
+  } 
+}
+</script>	
     
     <!-- Slick Slider CSS -->
     <link href="{% static 'website' %}/css/slick-theme.css" rel="stylesheet" />

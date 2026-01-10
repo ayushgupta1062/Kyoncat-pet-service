@@ -13,13 +13,13 @@
               </div>
             </div>
             <div class="main_widget_column">
-              <span><img src="{% static 'website' %}/images/envelope-fig.png"></span>
+              <span><img alt="kyonkatgroomers" src="{% static 'website' %}/images/envelope-fig.png"></span>
               <div class="main_widget_contact">
                 {{config.email|safe}}
               </div>
             </div>
             <div class="main_widget_column">
-              <span><img src="{% static 'website' %}/images/map-fig.png"></span>
+              <span><img alt="kyonkatgroomers" src="{% static 'website' %}/images/map-fig.png"></span>
               <div class="main_widget_contact">
                 {{config.address|safe}}
               </div>
@@ -28,9 +28,9 @@
 
           <div class="pet_widget_column">
             {% if config.white_logo %}
-            <figure><img src="{{config.white_logo.url}}" style="width:150px"></figure>
+            <figure><img alt="kyonkatgroomers" src="{{config.white_logo.url}}" style="width:150px"></figure>
             {% else %}
-            <figure><img src="{% static 'logo/logo-white.svg' %}" style="width:150px"></figure>
+            <figure><img alt="kyonkatgroomers" src="{% static 'logo/logo-white.svg' %}" style="width:150px"></figure>
             {% endif %}
             <p>{{config.about_us|safe}}</p>
             <ul class="widget_social_share">

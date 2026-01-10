@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from portal.models import MENUTYPE, Booking, Career, Config, Navigation, Packages, Pages, Services
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import user_passes_test
+from django.http import HttpResponse
 
 # Create your views here.
 def index(request):   
@@ -128,7 +129,38 @@ def dashboard(request):
 def booking(request):
   config = Config.objects.filter(is_valid = True).first()
   if request.POST:
-    email = request.POST['email']
+    # Store booking data in session and redirect to payment page.
+    request.session['pending_booking'] = {
+      'name': request.POST.get('name', ''),
+      'mobile': request.POST.get('mobile', ''),
+      'email': request.POST.get('email', ''),
+      'service': request.POST.get('service', ''),
+      'amount': request.POST.get('amount', '0'),
+      'pet_type': request.POST.get('pet_type', ''),
+      'breed': request.POST.get('breed', ''),
+      'pet_age': request.POST.get('pet_age', ''),
+      'aggressive': request.POST.get('aggressive', ''),
+      'vaccinations': request.POST.get('vaccinations', ''),
+      'date': request.POST.get('date', ''),
+      'time': request.POST.get('time', ''),
+      'address': request.POST.get('address', ''),
+      'location_link': request.POST.get('location_link', ''),
+    }
+    return HttpResponseRedirect(reverse('w_payment'))
+
+  service = Services.objects.filter(is_valid = True).all()
+  context={'service':service, 'config':config}
+  return render(request, 'website/booking.html', context)
+
+def payment(request):
+  config = Config.objects.filter(is_valid = True).first()
+  pending = request.session.get('pending_booking')
+  if not pending:
+    return HttpResponseRedirect(reverse('w_booking'))
+
+  # Finalize "payment" and create booking (mock integration UI).
+  if request.POST and request.POST.get('confirm') == '1':
+    email = pending.get('email')
     password = str(random.randint(100000, 999999))
     user = User.objects.filter(username = email).first()
     if not user:
@@ -136,21 +168,21 @@ def booking(request):
 
     booking = Booking()
     booking.user = user
-    booking.name = request.POST['name']
-    booking.mobile = request.POST['mobile']
-    booking.email = request.POST['email']
-    booking.service = request.POST['service']
-    booking.pet_type = request.POST['pet_type']
-    booking.breed = request.POST['breed']
-    booking.pet_age = request.POST['pet_age']
-    booking.aggressive = request.POST['aggressive']
-    booking.vaccinations = request.POST['vaccinations']
-    booking.date = request.POST['date']
-    booking.time = request.POST['time']
-    booking.address = request.POST['address']
-    booking.location_link = request.POST['location_link']
+    booking.name = pending.get('name')
+    booking.mobile = pending.get('mobile')
+    booking.email = pending.get('email')
+    booking.service = pending.get('service')
+    booking.pet_type = pending.get('pet_type')
+    booking.breed = pending.get('breed')
+    booking.pet_age = pending.get('pet_age')
+    booking.aggressive = pending.get('aggressive')
+    booking.vaccinations = pending.get('vaccinations')
+    booking.date = pending.get('date')
+    booking.time = pending.get('time')
+    booking.address = pending.get('address')
+    booking.location_link = pending.get('location_link')
     booking.save()
-    
+
     try:
       template = get_template('website/email/booking.html')
       context = {'booking':booking}
@@ -161,12 +193,12 @@ def booking(request):
       print(str(e))
       pass
 
-    messages.success(request, 'Thank you for booking, you booking Id :#{0}.'.format(booking.id))
-    return HttpResponseRedirect(reverse('w_booking'))
+    request.session.pop('pending_booking', None)
+    context={'config':config, 'pending':pending, 'paid': True, 'booking_id': booking.id}
+    return render(request, 'website/payment.html', context)
 
-  service = Services.objects.filter(is_valid = True).all()
-  context={'service':service, 'config':config}
-  return render(request, 'website/booking.html', context)
+  context={'config':config, 'pending':pending, 'paid': False}
+  return render(request, 'website/payment.html', context)
   
   
 def career(request):
@@ -188,3 +220,12 @@ def career(request):
   context={'config':config}
   return render(request, 'website/career.html', context)
   
+  
+  
+  
+
+def robots_txt(request):
+    return HttpResponse(
+        "User-agent: *\nDisallow:\nSitemap: https://kyonkatgroomers.com/static/sitemap.xml",
+        content_type="text/plain"
+    )
