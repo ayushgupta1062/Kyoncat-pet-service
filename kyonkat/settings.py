@@ -75,10 +75,24 @@ DATABASES = {
     }
 }
 
-if 'POSTGRES_URL' in os.environ:
-    DATABASES['default'] = dj_database_url.parse(os.environ.get('POSTGRES_URL'))
-elif 'DATABASE_URL' in os.environ:
-    DATABASES['default'] = dj_database_url.parse(os.environ.get('DATABASE_URL'))
+# Database Configuration with Debugging
+import sys
+
+# Print all env vars to logs (keys only for security) to verify they are loaded
+print("DEBUG: Loaded Environment Variables Keys:", list(os.environ.keys()), file=sys.stderr)
+
+db_from_env = dj_database_url.config(conn_max_age=600)
+if db_from_env:
+    DATABASES['default'].update(db_from_env)
+    print("DEBUG: Database config updated from environment.", file=sys.stderr)
+else:
+    print("DEBUG: No DATABASE_URL or POSTGRES_URL found. Using default SQLite.", file=sys.stderr)
+    # Fallback to checking specific Vercel keys if default config() misses them
+    if 'POSTGRES_URL' in os.environ:
+         DATABASES['default'] = dj_database_url.parse(os.environ.get('POSTGRES_URL'))
+         print("DEBUG: Database config updated from POSTGRES_URL manually.", file=sys.stderr)
+
+
 
 
 # Password validation
