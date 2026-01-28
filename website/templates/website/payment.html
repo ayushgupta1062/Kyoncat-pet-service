@@ -595,13 +595,40 @@
     pointer-events: none;
   }
 
+  .pay-interface {
+    text-align: center;
+    padding: 50px 30px;
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(24px);
+    transition: all 0.3s ease;
+    box-shadow: 0 35px 70px -10px rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    max-width: 500px;
+    width: 100%;
+    /* Ensure it doesn't overflow mobile screens */
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.4s ease-out;
+    box-sizing: border-box;
+    /* Include padding in width */
+  }
+
+  /* ... (intervening lines unchanged usually, but for this specific tool use, I will target specific blocks to replace effectively) */
+
   .qr-img {
-    width: 350px;
-    height: 350px;
-    max-width: 100%;
+    width: 100%;
+    /* Responsive width */
+    max-width: 300px;
+    /* Cap width for larger screens */
+    height: auto;
+    /* Maintain aspect ratio */
     object-fit: contain;
     display: block;
     border-radius: 8px;
+    margin: 0 auto;
+    /* Center image */
   }
 
   .upi-id-container {
@@ -613,7 +640,12 @@
     gap: 0;
     margin-bottom: 32px;
     border-radius: 50px;
-    width: fit-content;
+    width: 100%;
+    /* Full width on mobile */
+    max-width: 100%;
+    /* Prevent overflow */
+    box-sizing: border-box;
+    /* Include padding/border */
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
@@ -621,37 +653,25 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   }
 
-  .upi-id-container:hover {
-    border-color: #ff8a3d;
-    box-shadow: 0 8px 25px rgba(255, 138, 61, 0.2);
-    transform: translateY(-2px);
-  }
-
-  .upi-label {
-    background: linear-gradient(to bottom, #ff9933, #ffb366);
-    color: white;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    border-right: 1px solid #e67e22;
-    font-weight: 800;
-    font-size: 14px;
-    padding: 14px 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-  }
+  /* ... */
 
   .upi-id {
     font-family: 'Poppins', sans-serif;
-    font-size: 17px;
+    font-size: 15px;
+    /* Slightly smaller font for mobile */
     color: #212529;
     font-weight: 600;
-    padding: 14px 20px;
+    padding: 14px 10px;
+    /* Reduced padding */
     background: transparent;
     cursor: text;
     border: none;
     margin: 0;
     user-select: all;
+    min-width: 0;
+    /* Allow shrinking */
+    flex: 1;
+    /* Take available space */
   }
 
   .copy-btn {
