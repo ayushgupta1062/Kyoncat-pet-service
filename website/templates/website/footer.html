@@ -2,78 +2,85 @@
 
 <!--pet widget start-->
 <div class="pet_widget">
-    <div class="custom-container">
-        <div class="main_widget_row">
-          <div class="widget_contact">
-             <h6 class="widget_title">Contact Us</h6>
-            <div class="main_widget_column">
-              <span><img src="{% static 'website' %}/images/phone-fig.png"></span>
-              <div class="main_widget_contact">
-                {{config.mobile|safe}}
-              </div>
-            </div>
-            <div class="main_widget_column">
-              <span><img alt="kyonkatgroomers" src="{% static 'website' %}/images/envelope-fig.png"></span>
-              <div class="main_widget_contact">
-                {{config.email|safe}}
-              </div>
-            </div>
-            <div class="main_widget_column">
-              <span><img alt="kyonkatgroomers" src="{% static 'website' %}/images/map-fig.png"></span>
-              <div class="main_widget_contact">
-                {{config.address|safe}}
-              </div>
-            </div>
+  <div class="custom-container">
+    <div class="main_widget_row">
+      <div class="widget_contact">
+        <h6 class="widget_title">Contact Us</h6>
+        <div class="main_widget_column">
+          <span><img src="{% static 'website' %}/images/phone-fig.png"></span>
+          <div class="main_widget_contact">
+            {{config.mobile|safe}}
           </div>
-
-          <div class="pet_widget_column">
-            {% if config.white_logo %}
-            <figure><img alt="kyonkatgroomers" src="{{config.white_logo.url}}" style="width:150px"></figure>
-            {% else %}
-            <figure><img alt="kyonkatgroomers" src="{% static 'logo/logo-white.svg' %}" style="width:150px"></figure>
-            {% endif %}
-            <p>{{config.about_us|safe}}</p>
-            <ul class="widget_social_share">
-                
-                {% if config.fb_link %}
-                <li><a class="hover-affect" href="{{config.fb_link}}" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                {% endif %}
-                {% if config.x_link %}
-                <li><a class="hover-affect" href="{{config.x_link}}" target="_blank">X</a></li>
-                {% endif %}
-                {% if config.linkedin_link %}
-                <li><a class="hover-affect" href="{{config.linkedin_link}}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                {% endif %}
-                {% if config.youtube_link %}
-                <li><a class="hover-affect" href="{{config.youtube_link}}" target="_blank"><i class="fa fa-youtube"></i></a></li>
-                {% endif %}
-                {% if config.instagram_link %}
-                <li><a class="hover-affect" href="{{config.instagram_link}}" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                {% endif %}
-                {% if config.whatsapp_link %}
-                <li><a class="hover-affect" href="{{config.whatsapp_link}}" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
-                {% endif %}
-
-            </ul>
-            <a class="main_button btn2 bdr-clr hover-affect" href="{% url 'w_booking' %}">Book Now</a>
+        </div>
+        <div class="main_widget_column">
+          <span><img alt="kyonkatgroomers" src="{% static 'website' %}/images/envelope-fig.png"></span>
+          <div class="main_widget_contact">
+            {{config.email|safe}}
           </div>
-          <div class="pet_widget_column widtget-hours">
-             <h6 class="widget_title">Opening Hours</h6>
-             {{config.opening_hours|safe}}
+        </div>
+        <div class="main_widget_column">
+          <span><img alt="kyonkatgroomers" src="{% static 'website' %}/images/map-fig.png"></span>
+          <div class="main_widget_contact">
+            {{config.address|safe}}
+          </div>
         </div>
       </div>
+
+      <div class="pet_widget_column">
+        {% if config.white_logo %}
+        <figure><img alt="kyonkatgroomers" src="{{config.white_logo.url}}" style="width:150px"></figure>
+        {% else %}
+        <figure><img alt="kyonkatgroomers" src="{% static 'logo/logo-white.svg' %}" style="width:150px"></figure>
+        {% endif %}
+        <p>{{config.about_us|safe}}</p>
+        <ul class="widget_social_share">
+
+          {% if config.fb_link %}
+          <li><a class="hover-affect" href="{{config.fb_link}}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+          {% endif %}
+          {% if config.x_link %}
+          <li><a class="hover-affect" href="{{config.x_link}}" target="_blank">X</a></li>
+          {% endif %}
+          {% if config.linkedin_link %}
+          <li><a class="hover-affect" href="{{config.linkedin_link}}" target="_blank"><i class="fa fa-linkedin"></i></a>
+          </li>
+          {% endif %}
+          {% if config.youtube_link %}
+          <li><a class="hover-affect" href="{{config.youtube_link}}" target="_blank"><i class="fa fa-youtube"></i></a>
+          </li>
+          {% endif %}
+          {% if config.instagram_link %}
+          <li><a class="hover-affect" href="{{config.instagram_link}}" target="_blank"><i
+                class="fa fa-instagram"></i></a></li>
+          {% endif %}
+          {% if config.whatsapp_link %}
+          <li><a class="hover-affect" href="{{config.whatsapp_link}}" target="_blank"><i class="fa fa-whatsapp"></i></a>
+          </li>
+          {% endif %}
+
+        </ul>
+        <a class="main_button btn2 bdr-clr hover-affect" href="{% url 'w_booking' %}">Book Now</a>
+      </div>
+      <div class="pet_widget_column widtget-hours">
+        <h6 class="widget_title">Opening Hours</h6>
+        {{config.opening_hours|safe}}
+      </div>
     </div>
-   <div class="pet_copyright" style="margin-top: 0;">
-        <div class="container">
-            <div class="pet_copyright_text">
-                <p>@ {% now 'Y' %} All Rights Reserved and Registered</p>
-            </div>
-        </div>
+  </div>
+  <div class="pet_copyright" style="margin-top: 0;">
+    <div class="container">
+      <div class="pet_copyright_text">
+        <p>@ {% now 'Y' %} All Rights Reserved and Registered <span
+            style="font-size:10px; color:#aaa; margin-left:10px;">v2.1 (Mobile Fix)</span></p>
+      </div>
     </div>
+  </div>
 </div>
 
 {% if config.whatsapp_number %}
-<a target="_blank" href="https://wa.me/{{config.whatsapp_number}}" style="position: fixed;bottom: 2rem;z-index: 99999;left: 2rem;">
-  <i class="fa fa-whatsapp" style="background: green;padding: 3px 6px;border-radius: 2rem;font-size: 40px;color: white;"></i>
+<a target="_blank" href="https://wa.me/{{config.whatsapp_number}}"
+  style="position: fixed;bottom: 2rem;z-index: 99999;left: 2rem;">
+  <i class="fa fa-whatsapp"
+    style="background: green;padding: 3px 6px;border-radius: 2rem;font-size: 40px;color: white;"></i>
 </a>
 {% endif %}

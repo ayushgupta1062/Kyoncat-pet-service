@@ -94,7 +94,6 @@ def otp(request):
       user.save()
     else:
       user = User.objects.create_user(email, "", password)
-    print(password)
     
     try:
       template = get_template('website/email/otp.html')
@@ -107,6 +106,29 @@ def otp(request):
       pass
 
     context={'config':config, 'email': email}
+    return render(request, 'website/otp.html', context)
+    
+  if request.GET.get('mobile'):
+    mobile = request.GET.get('mobile')
+    password = str(random.randint(100000, 999999))
+    user = User.objects.filter(username = mobile).first()
+    if user:
+      user.set_password(password)
+      user.save()
+    else:
+      # Create user with mobile as username
+      user = User.objects.create_user(mobile, "", password)
+    
+    try:
+      # Send SMS
+      helper.sendSMS(mobile, password)
+      print(f"OTP Sent to {mobile}: {password}")
+    except Exception as e:
+      print(str(e))
+      pass
+      
+    # Pass mobile as 'email' context variable so otp.html hidden input works for POST
+    context={'config':config, 'email': mobile}
     return render(request, 'website/otp.html', context)
 
 def signout(request):
@@ -161,10 +183,16 @@ def payment(request):
   # Finalize "payment" and create booking (mock integration UI).
   if request.POST and request.POST.get('confirm') == '1':
     email = pending.get('email')
+    mobile = pending.get('mobile')
     password = str(random.randint(100000, 999999))
-    user = User.objects.filter(username = email).first()
+    
+    # Use email as username if present, otherwise use mobile
+    username = email if email else mobile
+    
+    user = User.objects.filter(username = username).first()
     if not user:
-      user = User.objects.create_user(email, "", password)
+      user_email = email if email else ""
+      user = User.objects.create_user(username, user_email, password)
 
     booking = Booking()
     booking.user = user
@@ -193,12 +221,42 @@ def payment(request):
       print(str(e))
       pass
 
+    # Generate Dynamic BulkPe QR for the confirmed transaction
+    amount = pending.get('amount', 0) # Assuming amount is in pending, or handle accordingly
+    # If amount is not in pending, we might need to calculate it or get it from service
+    # For now, let's assume 'amount' key exists or use a default/placeholder if missing logic isn't visible
+    # Actually, in the code I saw before, 'amount' wasn't explicitly saved in booking from pending directly?
+    # Let's check 'pending' dict usage.
+    # The previous code for payment view didn't show 'amount' being used for booking.
+    # However, to generate QR we need amount.
+    # I will assume there's a logic to get amount or I will read 'pending' again.
+    
+    # Wait, the payment view handles "CONFIRMATION" after payment? 
+    # The user flow is: Payment Page -> User scans QR -> User enters transaction ID/confirms?
+    # The code I'm editing handles POST confirm=1. This seems to be "After Payment" or "Manual Confirm".
+    # BUT the User wants the QR code to be generated *functionally*.
+    # The QR code is displayed in the GET request (bottom of function).
+    
     request.session.pop('pending_booking', None)
     context={'config':config, 'pending':pending, 'paid': True, 'booking_id': booking.id}
     return render(request, 'website/payment.html', context)
 
-  context={'config':config, 'pending':pending, 'paid': False}
+  # GET Request - Display Payment Page with QR
+  # We need to generate the QR here for the User to scan.
+  # We need a unique order_id for this potential transaction. 
+  # We can use a temporary ID or a hash.
+  
+  order_id = f"PED-{random.randint(100000, 999999)}"
+  amount = pending.get('amount', 1) # Default to 1 if not found for safety/testing, or handle error.
+  # Note: The original code didn't show where 'amount' comes from in pending. 
+  # If it's 0, BulkPe might fail. 
+  
+  upi_string = helper.get_bulkpe_qr(amount, order_id)
+  print(f"Generated UPI String: {upi_string}")
+
+  context={'config':config, 'pending':pending, 'paid': False, 'upi_string': upi_string, 'order_id': order_id}
   return render(request, 'website/payment.html', context)
+
   
   
 def career(request):

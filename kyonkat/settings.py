@@ -12,11 +12,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-q+)z$cqsz5(88fey%kz0efs-m2+)s#+3q-s5%nu(dqnhs@zy8x'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 # Enable debug locally so Django serves static files during development.
-DEBUG = True
+# In production, this should be False. We read from env, default to True for local dev convenience if not set.
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['.vercel.app', 'kyonkat-pet-service.vercel.app', '127.0.0.1', 'localhost']
+# ALLOWED_HOSTS = ['.vercel.app', 'kyonkat-pet-service.vercel.app', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = [
+    "kyoncat-pet-service.onrender.com",
+    "localhost",
+    "127.0.0.1",
+    ".elasticbeanstalk.com",  # Allow all AWS EB subdomains
+    "*", # Allow all for simplicity in this user context, or restrict if they provide domain
+]
 
 
 # Application definition
@@ -119,7 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -137,7 +144,7 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = 'media'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -146,6 +153,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-CSRF_TRUSTED_ORIGINS = ['http://kyonkatgroomers.com/', 'http://www.kyonkatgroomers.com/', 'http://13.234.116.103/']
+CSRF_TRUSTED_ORIGINS = [
+    'http://kyonkatgroomers.com/', 
+    'http://www.kyonkatgroomers.com/', 
+    'http://13.234.116.103/',
+    'http://kyonkatapp-env.eba-4fptapqs.ap-south-1.elasticbeanstalk.com',
+    'https://kyonkatapp-env.eba-4fptapqs.ap-south-1.elasticbeanstalk.com'
+]
 USE_X_FORWARDED_HOST = True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'http')
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = False

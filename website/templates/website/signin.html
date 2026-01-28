@@ -3,136 +3,212 @@
 {% block title %}Sign In{% endblock %}
 {% block css %}
 <style>
-.auth-wrapper{
-  /* extra top space to avoid overlap with absolute header */
-  padding: 160px 0 96px 0;
-  /* solid brand orange background */
-  background: #ff8a3d;
-  position: relative;
-}
-/* extend the orange background behind the absolute header area */
-.auth-wrapper:before{
-  content: "";
-  position: absolute;
-  left: 0; right: 0;
-  top: -180px; height: 180px;
-  background: inherit;
-}
-.auth-container{
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-.auth-card{
-  background: #fff;
-  border-radius: 16px;
-  padding: 32px 28px;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.08);
-  border: 1px solid rgba(0,0,0,0.06);
-  max-width: 520px;
-  margin: 0 auto;
-}
-.auth-title{
-  margin: 0 0 8px 0;
-  font-weight: 700;
-  font-size: 28px;
-}
-.auth-subtitle{
-  margin: 0 0 28px 0;
-  color: #6b6b6b;
-}
-.form-label{
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-.form-control{
-  height: 48px;
-  border-radius: 10px;
-  border: 1px solid #e6e2de;
-}
-.form-control:focus{
-  border-color: #f06d1f;
-  box-shadow: 0 0 0 4px rgba(240,109,31,0.12);
-}
-.btn-gradient{
-  background: linear-gradient(90deg, #f27a2d 0%, #f06d1f 100%);
-  color: #fff;
-  border: none;
-  height: 52px;
-  border-radius: 12px;
-  font-weight: 600;
-  width: 100%;
-  transition: transform .08s ease, box-shadow .2s ease;
-}
-.btn-gradient:hover{ transform: translateY(-1px); box-shadow: 0 10px 24px rgba(240,109,31,0.35); }
-.auth-footer{
-  margin-top: 14px;
-  color:#7a7a7a;
-  font-size: 13px;
-}
-.login-type-toggle{
-  display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
-  background: #f5f5f5;
-  padding: 4px;
-  border-radius: 12px;
-}
-.login-type-toggle label{
-  flex: 1;
-  text-align: center;
-  padding: 10px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  color: #666;
-  transition: all 0.3s ease;
-  margin: 0;
-}
-.login-type-toggle input[type="radio"]{
-  display: none;
-}
-.login-type-toggle input[type="radio"]:checked + label{
-  background: #ff8a3d;
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(255, 138, 61, 0.25);
-}
-.input-wrapper{
-  position: relative;
-  margin-bottom: 20px;
-}
-.input-wrapper.hidden{
-  display: none;
-}
-.country-code-select{
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  background: transparent;
-  font-weight: 600;
-  color: #333;
-  z-index: 2;
-  padding-right: 8px;
-  border-right: 1px solid #e6e2de;
-}
-.mobile-input{
-  padding-left: 70px;
-}
-@media (max-width: 991px){ .auth-wrapper{ padding-top: 140px; } }
+  .auth-wrapper {
+    /* extra top space to avoid overlap with absolute header */
+    padding: 160px 0 96px 0;
+    /* solid brand orange background */
+    background: #ff8a3d;
+    position: relative;
+  }
+
+  /* extend the orange background behind the absolute header area */
+  .auth-wrapper:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -180px;
+    height: 180px;
+    background: inherit;
+  }
+
+  .auth-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .auth-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .auth-title {
+    margin: 0 0 8px 0;
+    font-weight: 700;
+    font-size: 28px;
+  }
+
+  .auth-subtitle {
+    margin: 0 0 28px 0;
+    color: #6b6b6b;
+  }
+
+  .form-label {
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .form-control {
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid #e6e2de;
+  }
+
+  .form-control:focus {
+    border-color: #f06d1f;
+    box-shadow: 0 0 0 4px rgba(240, 109, 31, 0.12);
+  }
+
+  .btn-gradient {
+    background: linear-gradient(90deg, #f27a2d 0%, #f06d1f 100%);
+    color: #fff;
+    border: none;
+    height: 52px;
+    border-radius: 12px;
+    font-weight: 600;
+    width: 100%;
+    transition: transform .08s ease, box-shadow .2s ease;
+  }
+
+  .btn-gradient:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(240, 109, 31, 0.35);
+  }
+
+  .auth-footer {
+    margin-top: 14px;
+    color: #7a7a7a;
+    font-size: 13px;
+  }
+
+  .login-type-toggle {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    background: #f5f5f5;
+    padding: 4px;
+    border-radius: 12px;
+  }
+
+  .login-type-toggle label {
+    flex: 1;
+    text-align: center;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #666;
+    transition: all 0.3s ease;
+    margin: 0;
+  }
+
+  .login-type-toggle input[type="radio"] {
+    display: none;
+  }
+
+  .login-type-toggle input[type="radio"]:checked+label {
+    background: #ff8a3d;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(255, 138, 61, 0.25);
+  }
+
+  .input-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .input-wrapper.hidden {
+    display: none;
+  }
+
+  /* Removed obsolete absolute positioning styles for country code */
+
+  /* Custom Dropdown for Flags */
+  .custom-select-container {
+    position: relative;
+    width: 100px;
+    height: 48px;
+    border: 1px solid #e6e2de;
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .selected-option {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .options-list {
+    position: absolute;
+    top: 105%;
+    left: 0;
+    width: 140px;
+    /* Wider to show full content */
+    background: #fff;
+    border: 1px solid #e6e2de;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 100;
+    overflow: hidden;
+  }
+
+  .options-list.show {
+    display: block;
+    animation: fadeIn 0.1s ease-out;
+  }
+
+  .option-item {
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.1s;
+  }
+
+  .option-item:hover {
+    background: #fff4ea;
+    color: #ff8a3d;
+  }
+
+  .flag-svg {
+    width: 24px;
+    height: 16px;
+    border-radius: 2px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+  }
+
+  @media (max-width: 991px) {
+    .auth-wrapper {
+      padding-top: 140px;
+    }
+  }
 </style>
 {% endblock %}
 {% block content %}
 
-    {% include 'website/header.html' %}
+{% include 'website/header.html' %}
 
 <section class="auth-wrapper">
   <div class="auth-container">
     <div class="auth-card">
       <h1 class="auth-title">Welcome back</h1>
       <p class="auth-subtitle" id="subtitle">Login with your email or mobile to get an OTP and continue.</p>
-      
+
       <!-- Login Type Toggle -->
       <div class="login-type-toggle">
         <input type="radio" id="loginEmail" name="loginType" value="email" checked>
@@ -151,14 +227,38 @@
         <!-- Mobile Input -->
         <div class="input-wrapper hidden" id="mobileWrapper">
           <label for="mobile" class="form-label">Mobile Number</label>
-          <div style="position: relative;">
-            <select class="country-code-select" id="countryCode" name="country_code">
-              <option value="+91">+91</option>
-              <option value="+1">+1</option>
-              <option value="+44">+44</option>
-              <option value="+61">+61</option>
-            </select>
-            <input class="form-control mobile-input" id="mobile" name="mobile" type="tel" placeholder="9876543210" maxlength="10" pattern="[0-9]{10}">
+          <div style="display: flex; gap: 12px;">
+            <div style="width: 100px;">
+              <!-- Hidden input to store value -->
+              <input type="hidden" id="countryCode" name="country_code" value="+91">
+
+              <!-- Custom Dropdown Trigger -->
+              <div class="custom-select-container" id="customDropdown">
+                <div class="selected-option" id="selectedOption">
+                  <img src="https://flagcdn.com/in.svg" class="flag-svg" alt="IN"> +91
+                </div>
+
+                <!-- Dropdown Options -->
+                <div class="options-list" id="optionsList">
+                  <div class="option-item" data-value="+91" data-flag="in">
+                    <img src="https://flagcdn.com/in.svg" class="flag-svg" alt="IN"> +91
+                  </div>
+                  <div class="option-item" data-value="+1" data-flag="us">
+                    <img src="https://flagcdn.com/us.svg" class="flag-svg" alt="US"> +1
+                  </div>
+                  <div class="option-item" data-value="+44" data-flag="gb">
+                    <img src="https://flagcdn.com/gb.svg" class="flag-svg" alt="GB"> +44
+                  </div>
+                  <div class="option-item" data-value="+61" data-flag="au">
+                    <img src="https://flagcdn.com/au.svg" class="flag-svg" alt="AU"> +61
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="flex: 1;">
+              <input class="form-control" id="mobile" name="mobile" type="tel" placeholder="9876543210" maxlength="10"
+                pattern="[0-9]{10}">
+            </div>
           </div>
         </div>
 
@@ -173,12 +273,12 @@
 </section>
 
 
-    {% include 'website/footer.html' %}
+{% include 'website/footer.html' %}
 
 {% endblock %}
 {% block js %}
 <script type="text/javascript">
-  (function(){
+  (function () {
     var loginTypeRadios = document.querySelectorAll('input[name="loginType"]');
     var emailWrapper = document.getElementById('emailWrapper');
     var mobileWrapper = document.getElementById('mobileWrapper');
@@ -188,8 +288,8 @@
     var subtitle = document.getElementById('subtitle');
     var submitBtn = document.getElementById('submitBtn');
 
-    function switchLoginType(type){
-      if(type === 'email'){
+    function switchLoginType(type) {
+      if (type === 'email') {
         emailWrapper.classList.remove('hidden');
         mobileWrapper.classList.add('hidden');
         emailInput.setAttribute('required', 'required');
@@ -209,18 +309,18 @@
     }
 
     // Handle radio button changes
-    loginTypeRadios.forEach(function(radio){
-      radio.addEventListener('change', function(){
+    loginTypeRadios.forEach(function (radio) {
+      radio.addEventListener('change', function () {
         switchLoginType(this.value);
       });
     });
 
     // Form validation and submission
-    form.addEventListener('submit', function(e){
+    form.addEventListener('submit', function (e) {
       var selectedType = document.querySelector('input[name="loginType"]:checked').value;
-      
-      if(selectedType === 'email'){
-        if(!emailInput.value || !emailInput.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)){
+
+      if (selectedType === 'email') {
+        if (!emailInput.value || !emailInput.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
           e.preventDefault();
           alert('Please enter a valid email address');
           emailInput.focus();
@@ -229,7 +329,7 @@
         // Remove mobile field from form submission
         mobileInput.removeAttribute('name');
       } else {
-        if(!mobileInput.value || mobileInput.value.length !== 10 || !mobileInput.value.match(/^[0-9]{10}$/)){
+        if (!mobileInput.value || mobileInput.value.length !== 10 || !mobileInput.value.match(/^[0-9]{10}$/)) {
           e.preventDefault();
           alert('Please enter a valid 10-digit mobile number');
           mobileInput.focus();
@@ -238,20 +338,59 @@
         // Remove email field from form submission
         emailInput.removeAttribute('name');
       }
-      
+
       return true;
     });
 
     // Mobile number validation - only allow numbers
-    mobileInput.addEventListener('input', function(e){
+    mobileInput.addEventListener('input', function (e) {
       this.value = this.value.replace(/[^0-9]/g, '');
-      if(this.value.length > 10){
+      if (this.value.length > 10) {
         this.value = this.value.substring(0, 10);
       }
     });
 
     // Initialize on page load
     switchLoginType('email');
+
+    // Custom Dropdown Logic
+    var dropdown = document.getElementById('customDropdown');
+    var optionsList = document.getElementById('optionsList');
+    var selectedOptionDisplay = document.getElementById('selectedOption');
+    var hiddenInput = document.getElementById('countryCode');
+
+    // Toggle dropdown
+    dropdown.addEventListener('click', function (e) {
+      optionsList.classList.toggle('show');
+      e.stopPropagation();
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!dropdown.contains(e.target)) {
+        optionsList.classList.remove('show');
+      }
+    });
+
+    // Handle option selection
+    var optionItems = document.querySelectorAll('.option-item');
+    optionItems.forEach(function (item) {
+      item.addEventListener('click', function (e) {
+        var value = this.getAttribute('data-value');
+        var flag = this.getAttribute('data-flag');
+
+        // Update display
+        selectedOptionDisplay.innerHTML = '<img src="https://flagcdn.com/' + flag + '.svg" class="flag-svg" alt="' + flag.toUpperCase() + '"> ' + value;
+
+        // Update hidden input
+        hiddenInput.value = value;
+
+        // Close dropdown
+        optionsList.classList.remove('show');
+        e.stopPropagation();
+      });
+    });
+
   })();
 </script>
 {% endblock %}

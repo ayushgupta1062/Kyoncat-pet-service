@@ -1,6 +1,8 @@
 import datetime
 from django.conf import settings
 from django.core.mail import EmailMessage
+import requests
+import json
 
 from portal.models import Config
 
@@ -51,4 +53,37 @@ def sendEmail(subject, body, to = None, filepath = None):
         responseError = {'status':False, 'message': str(e)}
         print(responseError)
         return responseError
+
+
+def sendSMS(mobile, otp):
+    try:
+        api_key = "e2f04edd-f843-11f0-a6b2-0200cd936042"
+        # Using custom OTP with 'OTP1' template to prevent Voice fallback
+        url = f"https://2factor.in/API/V1/{api_key}/SMS/{mobile}/{otp}/OTP1"
+        response = requests.get(url)
+        return response.json()
+    except Exception as e:
+        print(f"SMS Error: {e}")
+        return False
+
+def get_bulkpe_qr(amount, order_id):
+    try:
+        url = "https://api.bulkpe.in/client/createDynamicVpa"
+        payload = json.dumps({
+            "amount": amount,
+            "reference_id": str(order_id)
+        })
+        headers = {
+            'Authorization': 'Bearer aWSVQNyt+z3IiJHV+YX9UneFZtSRs1R0Yrn9gjtmn6tbpgujtLpnUCE6pmH1dGgAk3I7b49X1meRaU9Vkg+JGXdpuqmALhCS3hF4u3IzuVQfIdMFX8zcVz9CignYKfFLUJzQQjiBUPcWwa4RWu+6Tg==',
+            'Content-Type': 'application/json'
+        }
+        response = requests.request("POST", url, headers=headers, data=payload)
+        data = response.json()
+        if data.get('data') and data['data'].get('upi_uri'):
+             return data['data']['upi_uri']
+        return None
+    except Exception as e:
+        print(f"BulkPe Error: {e}")
+        return None
+
 
